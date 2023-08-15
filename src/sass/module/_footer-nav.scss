@@ -1,0 +1,94 @@
+@use "global" as *;
+
+// ----------------------------------------
+// footer-nav.scss
+// ----------------------------------------
+.footer-nav{
+  display: flex;
+}
+
+.footer-nav__container{
+  @include mq('md'){
+    display: flex;
+  }
+}
+
+.footer-nav__container + .footer-nav__container{
+  margin-left: rem(16);
+  @include mq('md'){
+    margin-left: rem(120);
+  }
+}
+
+.footer-nav__items:nth-child(n + 2){
+  @include mq('md'){
+    margin-left: rem(120);
+  }
+}
+
+.footer-nav__item a{
+  display: block;
+  width: 100%;
+  padding-top: rem(9);
+  padding-bottom: rem(9);
+  padding-left: rem(22);
+  font-size: rem(16);
+  color: $white;
+  font-weight: $bold;
+  position: relative;
+}
+
+.footer-nav__item a:before{
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: rem(12);
+  left: 0;
+  background-image: url('../images/common/hitode.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: rem(18);
+  height: rem(18);
+}
+
+// ----------------------------------------
+// 余白の調整
+// ----------------------------------------
+.footer-nav__item--about{
+  margin-top: rem(16);
+}
+
+.footer-nav__item--blog{
+  margin-top: rem(16);
+}
+
+.footer-nav__item--price{
+  margin-top: rem(16);
+}
+
+.footer-nav__item--policy{
+  margin-top: rem(16);
+}
+
+.footer-nav__item--terms{
+  margin-top: rem(16);
+}
+
+.footer-nav__item--faq{
+  margin-top: rem(16);
+  @include mq('md'){
+    margin-top: 0;
+  }
+}
+
+.footer-nav__item--information{
+  margin-top: rem(16);
+  @include mq('md'){
+    margin-top: 0;
+  }
+}
+
+.footer-nav__item--contact{
+  margin-top: rem(16);
+}

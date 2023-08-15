@@ -1,0 +1,74 @@
+@use "global" as *;
+
+// ----------------------------------------
+// section-header.scss
+// ----------------------------------------
+.section-header{
+  text-align: center;
+}
+
+.section-header__title{
+  font-size: rem(32);
+  font-family: $second-font-family;
+  color: $black;
+  font-weight: $regular;
+  line-height: 1.25;
+  @include mq('md'){
+    font-size: rem(40);
+    line-height: 1;
+  }
+}
+
+.section-header__title::first-letter{
+  color: $accent;
+}
+
+.section-header__subtitle{
+  font-size: rem(12);
+  color: $accent;
+  margin-top: rem(4);
+  @include mq('md'){
+    margin-top: rem(7);
+  }
+}
+
+.section-header__title--pc-white{
+  @include mq('md'){
+    color: $white;
+  }
+}
+
+.section-header__title--pc-white::first-letter{
+  @include mq('md'){
+    color: $white;
+  }
+}
+
+.section-header__subtitle--pc-white{
+  @include mq('md'){
+    color: $white;
+  }
+}
+
+.section-header--contact{
+  @include mq('md'){
+      margin-top: rem(22);
+  }
+}
+
+.section-header__title--contact{
+  font-size: rem(80);
+  line-height: 1;
+  margin-left: rem(-9);
+  @include mq('md'){
+    font-size: rem(80);
+    margin-left: 0;
+  }
+}
+
+.section-header__subtitle--contact{
+  margin-top: rem(-6);
+  @include mq('md'){
+    margin-top: rem(-8);
+  }
+}

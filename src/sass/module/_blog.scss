@@ -1,0 +1,107 @@
+@use "global" as *;
+
+// ----------------------------------------
+// blog.scss
+// ----------------------------------------
+.blog{
+  position: relative;
+}
+
+.blog__inner{
+  max-width: rem(600);
+}
+
+.blog__inner::after{
+  display: none;
+  @include mq('md'){
+      content: '';
+      position: absolute;
+      display: inline-block;
+      top: rem(25);
+      left: clamp(calc(50% - rem(620)), calc(50vw - 43%), calc(50vw - 20%));
+      background-image: url('../images/common/fish-blog.svg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 100%;
+      max-width: rem(371);
+      aspect-ratio: 371 / 121;
+      z-index: 10;
+  }
+}
+
+
+.blog::before{
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    background-image: url(../images/common/blog1.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    @include mq('md') {
+      height: auto;
+      max-height: rem(500);
+      aspect-ratio: 1440 / 500;
+    }
+}
+
+.blog__items{
+  margin-top: rem(28);
+  @include mq('md'){
+    margin-top: rem(80);
+    display: flex;
+    // カードが３個だと良い感じだけど４個になると表示崩れ
+    // flex-wrap: wrap;で４個目は改行されるように
+    flex-wrap: wrap;
+  }
+}
+
+.blog__item{
+  // aタグはインライン要素なので高さがない→block要素に変更
+  display: block;
+  margin-right: rem(6);
+  margin-left: rem(6);
+  @include mq('md'){
+    margin-right: 0;
+    margin-left: 0;
+    // max-width: calc(33.33333% - rem(40) * 2 / 3);
+    // １行あたりの横幅＝全体の横幅ー余白の合計値÷行数
+    max-width: calc((100% - rem(40) * 2) / 3);
+  }
+}
+
+.blog__item + .blog__item{
+  margin-top: rem(40);
+  @include mq('md'){
+    margin-top: 0;
+    margin-left: rem(40);
+  }
+}
+
+// 4個目、７個目・・・margin-leftが付かなようにする
+.blog__item:nth-child(3n + 1){
+  @include mq('md'){
+    margin-left: 0;
+  }
+}
+
+// ２行目からはmargin-topが付くようにする
+.blog__item:nth-child(n + 4){
+  @include mq('md'){
+    margin-top: rem(25);
+  }
+}
+
+.blog__button{
+  margin-top: rem(40);
+  text-align: center;
+  @include mq('md'){
+    margin-top: rem(80);
+  }
+}

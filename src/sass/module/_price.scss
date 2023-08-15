@@ -1,0 +1,89 @@
+@use "global" as *;
+
+// ----------------------------------------
+// price.scss
+// ----------------------------------------
+.price{
+    position: relative;
+    background-color: $sub-accent;
+}
+
+.price__inner{
+    max-width: rem(600);
+    @include mq('md'){
+        width: 100%;
+    }
+}
+
+.price__inner::before{
+    display: none;
+    @include mq('md'){
+        content: '';
+        position: absolute;
+        display: inline-block;
+        bottom: rem(60);
+        left: clamp(calc(50% - rem(620)), calc(50vw - 43%), calc(50vw - 20%));
+        background-image: url('../images/common/fish-price.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 100%;
+        // ブラウザ幅を小さくすると右側に余白ができたので魚を小さくする
+        max-width: min(30%, rem(437));
+        aspect-ratio: 437 / 201;
+        z-index: 10;
+    }
+}
+
+
+.price__container{
+    display: flex;
+    flex-direction: column-reverse;
+    margin-top: rem(28);
+    @include mq('md'){
+        flex-direction: row;
+        margin-top: rem(40);
+    }
+}
+
+.price__items{
+    margin-top: rem(40);
+    @include mq('md'){
+        margin-top: 0;
+        width: calc(493 /1080) * 100%;
+    }
+}
+
+.price__item + .price__item{
+    margin-top: rem(42);
+    @include mq('md'){
+        margin-top: rem(39);
+    }
+}
+
+.price__image{
+    aspect-ratio: 345 / 227;
+    @include mq('md'){
+        aspect-ratio: 492 / 746;
+        margin-left: auto;
+    }
+}
+
+.price__image img{
+    // aspect-ratio: 345 / 227;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    @include mq('md'){
+        max-width: rem(492);
+        width: 100%;
+    }
+}
+
+.price__button{
+    text-align: center;
+    margin-top: rem(42);
+    @include mq('md'){
+        margin-top: rem(81);
+    }
+}

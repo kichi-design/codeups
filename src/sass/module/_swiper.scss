@@ -1,0 +1,48 @@
+@use "global" as *;
+
+// ----------------------------------------
+// swiper.scss
+// ----------------------------------------
+/* 前へ次への矢印カスタマイズ */
+.swiper-button-prev,
+.swiper-button-next {
+    display: none;
+    @include mq('md'){
+        display: flex;
+        height: 80px;
+        width: 80px;
+        position: absolute;
+    }
+}
+
+.swiper-button-prev{
+    top: rem(-83);
+    left: min(77.8%, calc(50% + rem(120)));
+
+}
+
+.swiper-button-next{
+    top: rem(-83);
+    left: min(92.6%, calc(50% + rem(280)));
+}
+
+/* 前へ次への矢印カスタマイズ */
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    background-repeat: no-repeat;
+    background-size: contain;
+    content: "";
+    height: 80px;
+    margin: auto;
+    width: 80px;
+}
+
+/* 前への矢印カスタマイズ */
+.swiper-button-prev::after {
+    background-image: url('../images/common/campaign-left.svg');
+}
+
+/* 次への矢印カスタマイズ */
+.swiper-button-next::after {
+    background-image: url('../images/common/campaign-right.svg');
+}

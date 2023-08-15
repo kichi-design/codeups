@@ -1,0 +1,76 @@
+@use "global" as *;
+
+// ----------------------------------------
+// sp-nav.scss
+// ----------------------------------------
+.sp-nav__container{
+  display: flex;
+  height: 100vh;
+  overflow: scroll;
+}
+
+.sp-nav__items + .sp-nav__items{
+  margin-left: rem(7);
+}
+
+.sp-nav__item a{
+  display: block;
+  width: 100%;
+  padding-top: rem(9);
+  padding-bottom: rem(9);
+  padding-left: rem(22);
+  // text-align: center;
+  font-size: rem(16);
+  color: $white;
+  font-weight: $bold;
+  position: relative;
+}
+
+.sp-nav__item a:before{
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: rem(12);
+  left: 0;
+  background-image: url('../images/common/hitode.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: rem(18);
+  height: rem(18);
+}
+
+// ----------------------------------------
+// 余白の調整
+// ----------------------------------------
+.sp-nav__item--about{
+  margin-top: rem(16);
+}
+
+.sp-nav__item--information{
+  margin-top: rem(16);
+}
+
+.sp-nav__item--blog{
+  margin-top: rem(16);
+}
+
+.sp-nav__item--price{
+  margin-top: rem(16);
+}
+
+.sp-nav__item--faq{
+  margin-top: rem(16);
+}
+
+.sp-nav__item--policy{
+  margin-top: rem(16);
+}
+
+.sp-nav__item--terms{
+  margin-top: rem(16);
+}
+
+.sp-nav__item--contact{
+  margin-top: rem(16);
+}

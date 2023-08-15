@@ -1,0 +1,165 @@
+@use "global" as *;
+
+// ----------------------------------------
+// contact.scss
+// ----------------------------------------
+.contact{
+    position: relative;
+}
+
+.contact__inner{
+    max-width: rem(600);
+    @include mq('md'){
+        max-width: 100%;
+    }
+}
+
+.contact__inner::before{
+    position: absolute;
+    content: '';
+    display: inline-block;
+    background-image: url('../images/common/fish-contact.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    max-width: rem(109);
+    aspect-ratio: 109 / 50;
+    z-index: 10;
+    top: rem(54);
+    left: calc(50% + rem(64));
+    @include mq('md'){
+        top: rem(101);
+        // left: min(50%, calc(50% + rem(540)));
+        // left: calc(50% + rem(370));
+        // left: min(calc(50vw + 20%),  calc(50% + rem(540)));
+        left: min(calc(50vw + 26%),  calc(50% + rem(369)));
+        // ブラウザ幅を小さくすると右側に余白ができたので魚を小さくする
+        max-width: min(21%, rem(301));
+
+        aspect-ratio: 301 / 138;
+    }
+}
+
+.contact__container{
+    padding-top: 0;
+    padding-right: rem(25);
+    padding-bottom: 0;
+    padding-left: rem(25);
+    @include mq('md'){
+        display: flex;
+        background-color: $white;
+        box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.25);
+        padding-top: rem(69);
+        padding-right: rem(35);
+        padding-bottom: rem(89);
+        padding-left: rem(41);
+    }
+}
+
+.contact__company{
+    padding-bottom: rem(16);
+    @include mq('md'){
+        border-right: solid 1px $accent;
+        padding-right: rem(82);
+        padding-left: rem(9);
+        padding-bottom: 0;
+        width: calc(572 /1080) *100%;
+    }
+}
+
+.contact__logo{
+    display: inline-block;
+    width: 100%;
+    padding-bottom: rem(5);
+    border-bottom: solid 1px $accent;
+    @include mq('md'){
+        padding-bottom: rem(8);
+    }
+}
+
+.contact__logo img{
+    aspect-ratio: 174 / 65;
+    max-width: rem(174);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin: 0 auto;
+    @include mq('md'){
+        aspect-ratio: 200 / 75;
+        max-width: rem(200);
+    }
+}
+
+.contact__company-map{
+    margin-top: rem(16);
+    @include mq('md'){
+        margin-top: 0;
+        margin-left: rem(21);
+    }
+}
+
+.contact__company-map img{
+    aspect-ratio: 295 / 160;
+    max-width: rem(295);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin: 0 auto;
+    @include mq('md'){
+        aspect-ratio: 273 / 148;
+        max-width: rem(273);
+    }
+}
+
+.contact__company-body{
+    @include mq('md'){
+        display: flex;
+        margin-top: rem(19);
+    }
+}
+
+.contact__company-text{
+    text-align: center;
+    font-size: rem(16);
+    margin-top: rem(11);
+    @include mq('md'){
+        margin-top: 0;
+        text-align: left;
+    }
+}
+
+.contact__company-tel{
+    margin-top: rem(4);
+}
+
+.contact__company-opening{
+    margin-top: rem(4);
+}
+
+.contact__company-holiday{
+    margin-top: rem(4);
+}
+
+.contact__info{
+    margin-top: rem(24);
+    @include mq('md'){
+        margin-top: 0;
+        margin-left: rem(81);
+    }
+}
+
+.contact__info-text{
+    font-size: rem(14);
+    color: $accent;
+    text-align: center;
+    margin-top: rem(6);
+}
+
+.contact__button{
+    margin-top: rem(39);
+    text-align: center;
+    @include mq('md'){
+        margin-top: rem(38);
+    }
+}

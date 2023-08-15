@@ -1,0 +1,12 @@
+@use "global" as *;
+
+// ----------------------------------------
+// l-footer.scss
+// ----------------------------------------
+.l-footer{
+  padding-top: rem(48);
+
+  @include mq('md'){
+    padding-top: rem(80);
+  }
+}

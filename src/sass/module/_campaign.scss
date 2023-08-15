@@ -1,0 +1,37 @@
+@use "global" as *;
+
+// ----------------------------------------
+// campaign.scss
+// ----------------------------------------
+// swiperの右側をはみ出させるために
+// ↓ .swiperのoverflow: hidden; を visible。
+// ↓ 親要素に overflow: hidden;
+// 親要素にinner幅を超える記述
+
+.campaign{
+  overflow: hidden;
+}
+
+campaign__swiper{
+  overflow: visible;
+}
+
+.campaign__inner{
+  max-width: rem(600);
+}
+
+.campaign__items{
+  position: relative;
+  margin-top: rem(29);
+  width: 100%;
+
+  // swiperの右側をはみ出させるために
+  // .swiperのoverflow: hidden; を visible
+  // 親要素に overflow: hidden;
+  // ↓ inner幅を超える記述
+    margin-right: calc(50% - 50vw);
+    width: 100vw;
+  @include mq('md'){
+    margin-top: rem(41);
+  }
+}
