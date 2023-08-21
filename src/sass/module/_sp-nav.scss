@@ -5,6 +5,8 @@
 // ----------------------------------------
 .sp-nav__container{
   display: flex;
+  justify-content: center;
+  margin-left: rem(-20);
   height: 100vh;
   overflow: scroll;
 }

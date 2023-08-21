@@ -25,30 +25,28 @@ jQuery(function ($) { // この中であればWordpressでも「$」が使用可
             },
             
             loop: true,
+            loopAdditionalSlides: 1,
             spaceBetween: 24,
             slidesPerView: "1",
             width: 280,
             
-            speed: 2000,
-            loopAdditionalSlides: 2,
+            speed: 1000,
             autoplay: {
-            delay: 5000,
+            delay: 1000,
             disableOnInteraction: false,
             },
             breakpoints: { //ブレークポイントの設定 小さい順に設定する！！
             768: {
                 slidesPerView: "3.5",
                 spaceBetween: 40,
-                width: 1260,
-                width: 1265.5,
-                initialSlide: 0,
+                width: 1265,
 
             },
             1920: {
                 slidesPerView: "4",
                 spaceBetween: 40,
+                // width: 1440,
                 width: 1825,
-                initialSlide: 0,
             },
             },
             });

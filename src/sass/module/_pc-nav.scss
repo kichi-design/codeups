@@ -27,11 +27,12 @@
   height: inherit;
   display: inline-block;
   display: flex;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
   padding: 0 rem(20);
+  white-space: nowrap;/*中途半端なサイズで文字列の折り返しを禁止*/
   font-size: rem(18);
-  padding-top: rem(22);
   font-family: $second-font-family;
   position: relative; /*ホバー時下線表示の位置を決めるための基準 */
 }
