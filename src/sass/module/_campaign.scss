@@ -48,3 +48,11 @@ campaign__swiper{
 .campaign__item{
   height: 100%;
 }
+
+.campaign__button{
+  text-align: center;
+  // ボタンの装飾下線が消えていたので追加※他のボタンは大丈夫だったけど。。
+  padding-bottom: rem(3);
+  @include mq('md'){
+  }
+}

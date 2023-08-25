@@ -2,8 +2,8 @@
 
 .top-about{
     // capmaignのボタンが少し消えて表示された為、campaignのpadding-bottomに変更した方が良い？
-    margin-top: rem(83);
+    margin-top: rem(80);
     @include mq('md'){
-        margin-top: rem(143);
+        margin-top: rem(140);
     }
 }
