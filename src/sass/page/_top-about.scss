@@ -1,11 +1,9 @@
 @use "global" as *;
 
 .top-about{
-    // capmaignのボタンが少し消えて表示された為、campaignのpadding-bottomに変更
-    // margin-top: rem(83);
-    padding-bottom: rem(671);
+    // capmaignのボタンが少し消えて表示された為、campaignのpadding-bottomに変更した方が良い？
+    margin-top: rem(83);
     @include mq('md'){
-        // margin-top: rem(143);
-        padding-bottom: rem(800);
+        margin-top: rem(143);
     }
 }

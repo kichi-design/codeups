@@ -23,13 +23,17 @@
 
 .swiper-button-prev{
     top: rem(-83);
-    left: min(77.8%, calc(50% + rem(120)));
+    left: min(rem(840), calc(50% + rem(120)));
+    // left: calc(50% + rem(120));
+    // right: calc(50% - rem(120));
 
 }
 
 .swiper-button-next{
     top: rem(-83);
-    left: min(92.6%, calc(50% + rem(280)));
+    left: min(rem(1000), calc(50% + rem(280)));
+    // left: calc(50% + rem(280));
+
 }
 
 /* 前へ次への矢印カスタマイズ */
