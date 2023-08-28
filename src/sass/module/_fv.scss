@@ -78,3 +78,24 @@
   @include mq('md'){
   }
 }
+
+.fv__img-01{
+  object-position: 10% 50%;
+  @include mq('md'){
+    object-position: center;
+  }
+}
+
+.fv__img-02{
+  object-position: 35% 50%;
+  @include mq('md'){
+    object-position: center;
+  }
+}
+
+.fv__img-03{
+  object-position: 40% 50%;
+  @include mq('md'){
+    object-position: center;
+  }
+}

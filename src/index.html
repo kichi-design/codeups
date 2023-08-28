@@ -31,6 +31,8 @@
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <!-- inview.jsは、「画面に現れたら」という条件メソッドを追加してくれるプラグイン -->
   <script src="./assets/js/jquery.inview.min.js"></script>
+  <!-- jquery.cookie というcookie を扱うライブラリを使い、サイトにアクセスした年月日を取得して同じ日付で2 回目以降ならローディング画面を非表示にする。 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
   <script defer src="./assets/js/script.js"></script>
 </head>
 <body>
@@ -97,31 +99,42 @@
   </header>
   <main>
     <div class="fv">
-      <!-- <div class="fv__inner"> -->
-          <!-- Swiper -->
-          <div class="swiper fv__swiper js-fv-swiper">
-            <div class="fv__header">
-              <h2 class="fv__title">DIVING</h2>
-              <p class="fv__subtitle">into the ocean</p>
+      <!-- ローディングアニメーション -->
+      <div class="fv-anim">
+        <div class="fv-anim__text">
+          <h2 class="fv-anim__title">DIVING</h2>
+          <p class="fv-anim__subtitle">into the ocean</p>
+        </div>
+        <div class="fv-anim__left">
+          <img class="fadeUp-left" src="./assets/images/common/anime-left.jpg" alt="" decoding="async">
+        </div>
+        <div class="fv-anim__right">
+          <img class="fadeUp-right" src="./assets/images/common/anime-right.jpg" alt="" decoding="async">
+        </div>
+      </div>
+      <!-- Swiper -->
+      <div class="swiper fv__swiper js-fv-swiper">
+        <div class="fv__header">
+          <h2 class="fv__title">DIVING</h2>
+          <p class="fv__subtitle">into the ocean</p>
+        </div>
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="fv__img">
+              <img class="fv__img-01" src="./assets/images/common/fv01.jpg" alt="海亀" decoding="async">
             </div>
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <div class="fv__img">
-                  <img src="./assets/images/common/fv01.jpg" alt="海亀" decoding="async">
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="fv__img">
-                  <img src="./assets/images/common/fv02.jpg" alt="船" decoding="async">
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="fv__img">
-                  <img src="./assets/images/common/fv03.jpg" alt="砂浜" decoding="async">
-                </div>
-              </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="fv__img">
+              <img class="fv__img-02" src="./assets/images/common/fv02.jpg" alt="船" decoding="async">
             </div>
-        <!-- </div> -->
+          </div>
+          <div class="swiper-slide">
+            <div class="fv__img">
+              <img class="fv__img-03" src="./assets/images/common/fv03.jpg" alt="砂浜" decoding="async">
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <section class="campaign top-campaign">
