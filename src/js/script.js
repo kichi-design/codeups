@@ -66,9 +66,12 @@ jQuery(function ($) { // この中であればWordpressでも「$」が使用可
 // ----------------------------------------
 // メインビューアニメーションの表示設定
 // ----------------------------------------
-    $(window).on('load',function(){
-        $(".fv-anim").delay(2500).fadeOut('slow');//ローディング画面を1.5秒（1500ms）待機してからフェードアウト
-    });
+// １
+    // $(window).on('load',function(){
+    //     $(".fv-anim").delay(2500).fadeOut('slow');//ローディング画面を1.5秒（1500ms）待機してからフェードアウト
+    // });
+
+// 2
     // var splash_text = $.cookie('accessdate'); //キーが入っていれば年月日を取得
     // var myD = new Date();//日付データを取得
     // var myYear = String(myD.getFullYear());//年
@@ -83,6 +86,43 @@ jQuery(function ($) { // この中であればWordpressでも「$」が使用可
     // }else{
     //     $(".fv-anim").css("display", "none");//同日2回目のアクセスでローディング画面非表示
     // }
+
+// 3
+    // var splash_text = $.cookie('accessdate'); // Cookieからアクセス日付を取得
+    // var myD = new Date(); // 現在の日付データを取得
+    // var myYear = myD.getFullYear().toString(); // 年を文字列として取得
+    // var myMonth = (myD.getMonth() + 1).toString().padStart(2, '0'); // 月を文字列として取得（2桁で表示）
+    // var myDate = myD.getDate().toString().padStart(2, '0'); // 日を文字列として取得（2桁で表示）
+    // var currentDate = myYear + myMonth + myDate; // 現在の年月日を結合
+
+    // if (splash_text !== currentDate) { // Cookieの値と現在の年月日を比較
+    //     $(".fv-anim").css("display", "block"); // ローディングを表示
+    //     setTimeout(function () {
+    //         $(".fv-anim").delay(2500).fadeOut('slow'); // ローディング画面を1.5秒待機してからフェードアウト
+    //     }, 0); // ゼロミリ秒遅延で実行（次のイベントループまで待たない）
+    // } else {
+    //     $(".fv-anim").css("display", "none"); // 同日2回目のアクセスでローディング画面非表示
+    // }
+
+// 4
+    var splash_text = $.cookie('accessdate'); // Cookieからアクセス日付を取得
+
+    if (!splash_text) { // Cookieが存在しない場合（初回アクセス）
+        var myD = new Date(); // 現在の日付データを取得
+        var myYear = myD.getFullYear().toString(); // 年を文字列として取得
+        var myMonth = (myD.getMonth() + 1).toString().padStart(2, '0'); // 月を文字列として取得（2桁で表示）
+        var myDate = myD.getDate().toString().padStart(2, '0'); // 日を文字列として取得（2桁で表示）
+        var currentDate = myYear + myMonth + myDate; // 現在の年月日を結合
+
+        $.cookie('accessdate', currentDate); // Cookieにアクセス日付をセット
+        $(".fv-anim").css("display", "block"); // ローディングを表示
+
+        setTimeout(function () {
+            $(".fv-anim").delay(2500).fadeOut('slow'); // ローディング画面を1.5秒待機してからフェードアウト
+        }, 0); // ゼロミリ秒遅延で実行（次のイベントループまで待たない）
+    } else {
+        $(".fv-anim").css("display", "none"); // 同日2回目のアクセスでローディング画面非表示
+    }
 
 // ----------------------------------------
 // ボタンの表示設定
