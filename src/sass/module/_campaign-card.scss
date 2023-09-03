@@ -4,9 +4,12 @@
 // campaign-card.scss
 // ----------------------------------------
 .campaign-card{
-  display: block;
+  // テキストが増えたときに値段部分.campaign-card__bodyを下漬けにするために親要素の.campaign-card__wrapperをflex
+  display: flex;
+  flex-direction: column;
   box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.25);
   background-color: $white;
+  height: 100%;
 }
 
 .campaign-card__image{
@@ -30,22 +33,29 @@
   object-fit: cover;
 }
 
-.campaign-card__wrapper{
+// .campaign-card__wrapper{
+//   padding-top: rem(16);
+//   padding-right: rem(16);
+//   padding-left: rem(16);
+//   padding-bottom: rem(16);
+//   @include mq('md'){
+//     padding-top: rem(24);
+//     padding-right: rem(16);
+//     padding-left: rem(16);
+//     padding-bottom: rem(24);
+//   }
+
+.campaign-card__info{
   padding-top: rem(16);
   padding-right: rem(16);
   padding-left: rem(16);
-  padding-bottom: rem(16);
+  padding-bottom: rem(7);
   @include mq('md'){
     padding-top: rem(24);
     padding-right: rem(16);
     padding-left: rem(16);
-    padding-bottom: rem(29);
+    padding-bottom: rem(7);
   }
-}
-
-.campaign-card__info{
-  padding-bottom: rem(8);
-  border-bottom: 1px solid $accent;
 }
 
 .campaign-card__tag{
@@ -72,9 +82,18 @@
 }
 
 .campaign-card__body{
+  // テキストが増えた時に値段部分を下付けにするため。あと親要素の.campaign-card__wrapperをflexにしてる
+  margin-top: auto;
+  border-top: 1px solid $accent;
   padding-top: rem(9);
+  padding-bottom: rem(16);
+  margin-right: rem(16);
+  margin-left: rem(16);
   @include mq('md'){
     padding-top: rem(14);
+    padding-bottom: rem(30);
+    margin-right: rem(16);
+    margin-left: rem(16);
   }
 }
 

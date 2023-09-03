@@ -23,36 +23,34 @@ campaign__swiper{
 .campaign__items{
   position: relative;
   margin-top: rem(29);
-  width: 100%;
-
+  height: auto;
   // swiperの右側をはみ出させるために
   // .swiperのoverflow: hidden; を visible
   // 親要素に overflow: hidden;
   // ↓ inner幅を超える記述
-    margin-right: calc(50% - 50vw);
-    width: 100vw;
+  margin-right: calc(50% - 50vw);
+  width: 100vw;
   @include mq('md'){
     margin-top: rem(41);
   }
 }
 
-// スライド下のboxshadowが消えるのを防ぐ
 .campaign__wrapper{
-  margin-bottom: rem(40);
-  @include mq('md'){
-    margin-bottom: rem(80);
-  }
-}
-
-// テキストが増えたときに、カードの高さを揃える為に必要。 .swiper-slideにも記述。
-.campaign__item{
+  //.campaign__itemsにheight: auto;　.campaign-cardに  height: 100%;
+  //campaign-cardにdisplay: flex;　flex-direction: column;にすることでテキストが増えた時の値段の下つけができた
   height: 100%;
+  // スライド下のboxshadowが消えるのを防ぐ
+  padding-bottom: rem(5);
+  @include mq('md'){
+  }
 }
 
 .campaign__button{
   text-align: center;
+  margin-top: rem(35);
   // ボタンの装飾下線が消えていたので追加※他のボタンは大丈夫だったけど。。
   padding-bottom: rem(3);
   @include mq('md'){
+    margin-top: rem(75);
   }
 }
