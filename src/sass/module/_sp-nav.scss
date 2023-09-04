@@ -3,12 +3,19 @@
 // ----------------------------------------
 // sp-nav.scss
 // ----------------------------------------
+.sp-nav__inner{
+  height: 100vh;
+  overflow: scroll;
+  // 余白調整
+  padding-bottom: rem(114);
+}
+
 .sp-nav__container{
   display: flex;
   justify-content: center;
   margin-left: rem(-20);
-  height: 100vh;
-  overflow: scroll;
+  // height: 100vh;
+  // overflow: scroll;
 }
 
 .sp-nav__items + .sp-nav__items{

@@ -25,14 +25,14 @@
     }
 }
 
-.price-card__course{
+.price-card__text dt{
     font-size: rem(14);
     font-weight: $regular;
     @include mq('md'){
         font-size: rem(16);
     }
 }
-.price-card__fee{
+.price-card__text dd{
     font-size: rem(14);
     padding-left: rem(30);
     margin-left: auto;

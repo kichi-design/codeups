@@ -17,7 +17,7 @@
         content: '';
         position: absolute;
         display: inline-block;
-        bottom: rem(-236);
+        bottom: rem(-180);
         left: min(calc(50vw + 40%),  calc(50% + rem(540)));
         transform: translate(-50%, -50%);
         background-image: url('../images/common/sango-about.svg');
@@ -92,12 +92,12 @@
 }
 
 .about__container{
-    margin-top: rem(58);
+    margin-top: rem(41);
     z-index: 100;
     @include mq('md'){
         position: absolute;
         display: flex;
-        top: rem(105);
+        top: rem(227);
         left: calc(50% - rem(340));
         align-items: center;
         max-width: rem(840);

@@ -55,12 +55,10 @@
   font-size: rem(12);
   color: $white;
   white-space: nowrap;
-  padding-top: rem(22);
-  padding-bottom: rem(56);
+  margin-top: rem(22);
   text-align: center;
   @include mq('md'){
-    padding-top: rem(66);
-    padding-bottom: rem(80);
+    margin-top: rem(66);
     font-size: rem(14);
   }
 }

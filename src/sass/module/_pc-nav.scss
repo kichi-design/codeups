@@ -30,7 +30,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 0 rem(20);
+  padding: 0 min(20px, 1.4vw);
   white-space: nowrap;/*中途半端なサイズで文字列の折り返しを禁止*/
   font-size: rem(18);
   font-family: $second-font-family;

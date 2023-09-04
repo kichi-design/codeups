@@ -44,6 +44,11 @@
 // ----------------------------------------
 // is-open時の動き
 // ----------------------------------------
+body.is-open{
+    height: 100%;
+    overflow: hidden;
+}
+
 .header__hamburger.is-open span{
     width: rem(40);
 }
@@ -126,5 +131,5 @@
 
     // 余白調整
     padding-top: rem(92);
-    padding-bottom: rem(114);
+    // padding-bottom: rem(114);
 }

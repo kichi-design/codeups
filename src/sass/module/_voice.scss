@@ -17,7 +17,7 @@
         content: '';
         position: absolute;
         display: inline-block;
-        top: rem(22);
+        top: rem(-121);
         left: clamp(calc(50% - rem(620)), calc(50vw - 43%), calc(50vw - 20%));
         background-image: url('../images/common/fish-voice.png');
         background-size: cover;
@@ -30,7 +30,7 @@
     }
 }
 
-.voice__illustration::before{
+.voice__inner::before{
     display: none;
     @include mq('md'){
         content: '';

@@ -21,7 +21,7 @@
         content: '';
         position: absolute;
         display: inline-block;
-        bottom: rem(60);
+        bottom: rem(62);
         left: clamp(calc(50% - rem(620)), calc(50vw - 43%), calc(50vw - 20%));
         background-image: url('../images/common/fish-price.png');
         background-size: cover;
@@ -84,6 +84,6 @@
     text-align: center;
     margin-top: rem(42);
     @include mq('md'){
-        margin-top: rem(81);
+        margin-top: rem(80);
     }
 }
