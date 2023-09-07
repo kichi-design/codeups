@@ -7,29 +7,28 @@
   position: relative;
 }
 
-.blog__inner{
-  max-width: rem(600);
-}
-
-.blog__inner::after{
+.blog::after{
   display: none;
   @include mq('md'){
       content: '';
       position: absolute;
       display: inline-block;
-      top: rem(25);
-      left: clamp(calc(50% - rem(620)), calc(50vw - 43%), calc(50vw - 20%));
+      width: rem(375);
+      height: rem(121);
+      aspect-ratio: 375 / 121;
       background-image: url('../images/common/fish-blog.svg');
-      background-size: cover;
+      background-size: contain;
       background-position: center;
       background-repeat: no-repeat;
-      width: 100%;
-      max-width: rem(371);
-      aspect-ratio: 371 / 121;
+      top: rem(25);
+      left: calc(50% - min(rem(620), 48%));
       z-index: 10;
   }
 }
 
+.blog__inner{
+  max-width: rem(600);
+}
 
 .blog::before{
     content: '';

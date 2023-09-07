@@ -8,33 +8,31 @@
     background-color: $sub-accent;
 }
 
+.price::before{
+    display: none;
+    @include mq('md'){
+        content: '';
+        position: absolute;
+        display: inline-block;
+        width: rem(437);
+        height: rem(201);
+        aspect-ratio: 437 / 201;
+        background-image: url('../images/common/fish-price.png');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        bottom: rem(62);
+        left: calc(50% - min(48%, rem(620)));
+        z-index: 10;
+    }
+}
+
 .price__inner{
     max-width: rem(600);
     @include mq('md'){
         width: 100%;
     }
 }
-
-.price__inner::before{
-    display: none;
-    @include mq('md'){
-        content: '';
-        position: absolute;
-        display: inline-block;
-        bottom: rem(62);
-        left: clamp(calc(50% - rem(620)), calc(50vw - 43%), calc(50vw - 20%));
-        background-image: url('../images/common/fish-price.png');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        width: 100%;
-        // ブラウザ幅を小さくすると右側に余白ができたので魚を小さくする
-        max-width: min(30%, rem(437));
-        aspect-ratio: 437 / 201;
-        z-index: 10;
-    }
-}
-
 
 .price__container{
     display: flex;

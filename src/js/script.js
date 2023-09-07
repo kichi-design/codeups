@@ -8,11 +8,12 @@ jQuery(function ($) { // この中であればWordpressでも「$」が使用可
         if($(".js-hamburger").hasClass("is-open")){
             $(".js-drawer-menu").fadeOut();
             $(".js-hamburger").removeClass("is-open");
+            $("body").removeClass("is-open");
         }else{
             $(".js-drawer-menu").fadeIn();
             $(".js-hamburger").addClass("is-open");
         // この記述でドロワーメニューを開いた時に背景画像がスクロールしないようになる
-            $("body").toggleClass("is-open");
+            $("body").addClass("is-open");
         }
         });
 // ----------------------------------------
@@ -30,9 +31,9 @@ jQuery(function ($) { // この中であればWordpressでも「$」が使用可
             slidesPerView: "1",
             width: 280,
             
-            speed: 1000,
+            speed: 3000,
             autoplay: {
-            delay: 1000,
+            delay: 2000,
             disableOnInteraction: false,
             },
             breakpoints: { //ブレークポイントの設定 小さい順に設定する！！
@@ -88,41 +89,41 @@ jQuery(function ($) { // この中であればWordpressでも「$」が使用可
     // }
 
 // 3
-    // var splash_text = $.cookie('accessdate'); // Cookieからアクセス日付を取得
-    // var myD = new Date(); // 現在の日付データを取得
-    // var myYear = myD.getFullYear().toString(); // 年を文字列として取得
-    // var myMonth = (myD.getMonth() + 1).toString().padStart(2, '0'); // 月を文字列として取得（2桁で表示）
-    // var myDate = myD.getDate().toString().padStart(2, '0'); // 日を文字列として取得（2桁で表示）
-    // var currentDate = myYear + myMonth + myDate; // 現在の年月日を結合
-
-    // if (splash_text !== currentDate) { // Cookieの値と現在の年月日を比較
-    //     $(".fv-anim").css("display", "block"); // ローディングを表示
-    //     setTimeout(function () {
-    //         $(".fv-anim").delay(2500).fadeOut('slow'); // ローディング画面を1.5秒待機してからフェードアウト
-    //     }, 0); // ゼロミリ秒遅延で実行（次のイベントループまで待たない）
-    // } else {
-    //     $(".fv-anim").css("display", "none"); // 同日2回目のアクセスでローディング画面非表示
-    // }
-
-// 4
     var splash_text = $.cookie('accessdate'); // Cookieからアクセス日付を取得
+    var myD = new Date(); // 現在の日付データを取得
+    var myYear = myD.getFullYear().toString(); // 年を文字列として取得
+    var myMonth = (myD.getMonth() + 1).toString().padStart(2, '0'); // 月を文字列として取得（2桁で表示）
+    var myDate = myD.getDate().toString().padStart(2, '0'); // 日を文字列として取得（2桁で表示）
+    var currentDate = myYear + myMonth + myDate; // 現在の年月日を結合
 
-    if (!splash_text) { // Cookieが存在しない場合（初回アクセス）
-        var myD = new Date(); // 現在の日付データを取得
-        var myYear = myD.getFullYear().toString(); // 年を文字列として取得
-        var myMonth = (myD.getMonth() + 1).toString().padStart(2, '0'); // 月を文字列として取得（2桁で表示）
-        var myDate = myD.getDate().toString().padStart(2, '0'); // 日を文字列として取得（2桁で表示）
-        var currentDate = myYear + myMonth + myDate; // 現在の年月日を結合
-
-        $.cookie('accessdate', currentDate); // Cookieにアクセス日付をセット
+    if (splash_text !== currentDate) { // Cookieの値と現在の年月日を比較
         $(".fv-anim").css("display", "block"); // ローディングを表示
-
         setTimeout(function () {
             $(".fv-anim").delay(2500).fadeOut('slow'); // ローディング画面を1.5秒待機してからフェードアウト
         }, 0); // ゼロミリ秒遅延で実行（次のイベントループまで待たない）
     } else {
         $(".fv-anim").css("display", "none"); // 同日2回目のアクセスでローディング画面非表示
     }
+
+// 4
+    // var splash_text = $.cookie('accessdate'); // Cookieからアクセス日付を取得
+
+    // if (!splash_text) { // Cookieが存在しない場合（初回アクセス）
+    //     var myD = new Date(); // 現在の日付データを取得
+    //     var myYear = myD.getFullYear().toString(); // 年を文字列として取得
+    //     var myMonth = (myD.getMonth() + 1).toString().padStart(2, '0'); // 月を文字列として取得（2桁で表示）
+    //     var myDate = myD.getDate().toString().padStart(2, '0'); // 日を文字列として取得（2桁で表示）
+    //     var currentDate = myYear + myMonth + myDate; // 現在の年月日を結合
+
+    //     $.cookie('accessdate', currentDate); // Cookieにアクセス日付をセット
+    //     $(".fv-anim").css("display", "block"); // ローディングを表示
+
+    //     setTimeout(function () {
+    //         $(".fv-anim").delay(2500).fadeOut('slow'); // ローディング画面を1.5秒待機してからフェードアウト
+    //     }, 0); // ゼロミリ秒遅延で実行（次のイベントループまで待たない）
+    // } else {
+    //     $(".fv-anim").css("display", "none"); // 同日2回目のアクセスでローディング画面非表示
+    // }
 
 // ----------------------------------------
 // ボタンの表示設定
