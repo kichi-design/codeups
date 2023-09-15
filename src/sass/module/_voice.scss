@@ -56,6 +56,11 @@
     margin-top: rem(45);
     @include mq('md'){
         margin-top: rem(30);
+    }
+}
+
+.voice-cards{
+    @include mq('md'){
         display: flex;
         // カードが３個だと良い感じだけど４個になると表示崩れ
         // flex-wrap: wrap;で４個目は改行されるように
@@ -63,7 +68,7 @@
     }
 }
 
-.voice__item{
+.voice-card{
     @include mq('md'){
        // max-width: calc(33.33333% - rem(40) * 1 / 2);
         // １行あたりの横幅＝全体の横幅ー余白の合計値÷行数
@@ -71,7 +76,7 @@
     }
 }
 
-.voice__item + .voice__item{
+.voice-card + .voice-card{
     margin-top: rem(40);
     @include mq('md'){
         margin-left: rem(40);
@@ -80,14 +85,14 @@
 }
 
 // 1個目,3個目、5個目・・・margin-leftが付かなようにする
-.voice__item:nth-child(2n + 1){
+.voice-card:nth-child(2n + 1){
         @include mq('md'){
         margin-left: 0;
     }
 }
 
 // ２行目からはmargin-topが付くようにする
-.voice__item:nth-child(n + 3){
+.voice-card:nth-child(n + 3){
         @include mq('md'){
         margin-top: rem(25);
     }

@@ -1,0 +1,55 @@
+@use "global" as *;
+
+// ----------------------------------------
+// pagination.scss
+// ----------------------------------------
+.page-campaign__pagination{
+    margin-top: rem(80);
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pagination__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: rem(38);
+    height: rem(38);
+    background: #fff;
+    border: solid 1px $accent;
+    font-size: rem(16);
+    color: $accent;
+    font-weight: $bold;
+    font-family: $fourth-font-family;
+    transition: all 0.15s linear;
+}
+
+.pagination__link-icon{
+    border: none;
+}
+
+.pagination__link.is-active {
+    background: $accent;
+    color: $white;
+    pointer-events: none;
+}
+
+.pagination__link:not(.is-active):hover {
+    background: $accent;
+    color: #fff;
+}
+.pagination > * + * {
+    margin-left: rem(12);
+}
+
+.pagination__item:first-child{
+    margin-right: rem(28);
+}
+
+.pagination__item:last-child{
+    margin-left: rem(28);
+}

@@ -38,7 +38,7 @@
 padding-top: rem(16);
 padding-right: rem(16);
 padding-left: rem(16);
-padding-bottom: rem(16);
+padding-bottom: rem(18);
   // テキストが増えたときに値段部分を下漬けにするため
 display: flex;
 flex-direction: column;
@@ -112,9 +112,10 @@ flex-grow: 1;
   font-family: $fourth-font-family;
   text-decoration: line-through;
   text-decoration-color: red;
-  margin-top: rem(8);
+  margin-top: rem(13);
   @include mq('md'){
     font-size: rem(24);
+    margin-top: rem(8);
   }
 }
 
@@ -128,4 +129,38 @@ flex-grow: 1;
     font-size: rem(40);
     margin-left: rem(25);
   }
+}
+
+.campaign-card__pc{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.campaign-card__title--campaign-card-pc{
+  font-size: rem(24);
+  font-weight: $normal;
+}
+
+.campaign-card__text{
+  margin-top: rem(24);
+}
+
+.campaign-card__time{
+  margin-top: rem(32);
+  font-family: $fourth-font-family;color: $accent;
+  font-weight: $bold;
+  text-align: center;
+}
+
+.campaign-card__info-text{
+  margin-top: rem(7);
+  font-size: rem(14);
+  color: $accent;
+  text-align: center;
+}
+
+.campaign-card__button{
+  margin-top: rem(16);
+  text-align: center;
 }

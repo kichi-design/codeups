@@ -54,14 +54,17 @@
   margin-top: rem(28);
   @include mq('md'){
     margin-top: rem(80);
-    display: flex;
-    // カードが３個だと良い感じだけど４個になると表示崩れ
-    // flex-wrap: wrap;で４個目は改行されるように
-    flex-wrap: wrap;
   }
 }
 
-.blog__item{
+.blog-cards{
+  display: flex;
+  // カードが３個だと良い感じだけど４個になると表示崩れ
+  // flex-wrap: wrap;で４個目は改行されるように
+  flex-wrap: wrap;
+}
+
+.blog-card{
   // aタグはインライン要素なので高さがない→block要素に変更
   display: block;
   margin-right: rem(6);
@@ -75,7 +78,7 @@
   }
 }
 
-.blog__item + .blog__item{
+.blog-card + .blog-card{
   margin-top: rem(40);
   @include mq('md'){
     margin-top: 0;
@@ -84,14 +87,14 @@
 }
 
 // 4個目、７個目・・・margin-leftが付かなようにする
-.blog__item:nth-child(3n + 1){
+.blog-card:nth-child(3n + 1){
   @include mq('md'){
     margin-left: 0;
   }
 }
 
 // ２行目からはmargin-topが付くようにする
-.blog__item:nth-child(n + 4){
+.blog-card:nth-child(n + 4){
   @include mq('md'){
     margin-top: rem(25);
   }
