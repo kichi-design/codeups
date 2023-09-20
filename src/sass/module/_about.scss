@@ -104,6 +104,12 @@
     }
 }
 
+.about__container--page-aboutus{
+    @include mq('md'){
+        top: rem(121);
+    }
+}
+
 .about__title{
     color: $accent;
     font-family: $second-font-family;

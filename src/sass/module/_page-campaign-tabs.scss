@@ -1,37 +1,37 @@
 @use "global" as *;
 
 // ----------------------------------------
-//  page-campaign-tab".scss
+//  page-campaign-tabs".scss
 // ----------------------------------------
 // ----------------------------------------
 // タブメニュー
 // ----------------------------------------
-.page-campaign-tab__items{
+.page-campaign-tabs{
     display: flex;
     flex-wrap: wrap;
     column-gap: rem(21);
     row-gap: rem(16);
     width: 100%;
-    margin-inline: auto;
+    justify-content: center;
     @include mq('md'){
         max-width: 100%;
-        margin-right: auto;
-        margin-left: 0;
         gap: rem(32);
+        justify-content: flex-start;
     }
 }
 
-.page-campaign-tab__item{
-    width: calc(50% - rem(10));
-    max-width: rem(162);
+.page-campaign-tabs__item{
+    // width: calc(50% - rem(10));
+    width: clamp(rem(162), rem(-25.504) + 50vw, rem(358));
     text-align: center;
     @include mq('md'){
-            width: 100%;
+        width: 100%;
+        max-width: rem(162);
         }
 }
 
 
-.page-campaign-tab__item a{
+.page-campaign-tabs__item a{
     display: inline-block;
     font-size: rem(14);
     color: $accent;
@@ -41,8 +41,8 @@
     border: solid 1px $accent;
 }
 
-.page-campaign-tab__item.active{
-    &.page-campaign-tab__item a{
+.page-campaign-tabs__item.active{
+    &.page-campaign-tabs__item a{
         color: $white;
         background-color: $accent;
     }

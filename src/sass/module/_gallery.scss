@@ -1,0 +1,40 @@
+@use "global" as *;
+
+// ----------------------------------------
+// gallery.scss
+// ----------------------------------------
+.gallery{
+    display: grid;
+    grid-template-columns: 1fr 0.1626fr 1fr;
+    grid-auto-flow: dense;
+    gap: rem(8);
+}
+
+.gallery__item{
+    aspect-ratio: 580 / 369;
+    width: 100%;
+    height: auto;
+    grid-column: span 2;
+}
+
+.gallery__item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gallery__item:nth-of-type(6n + 1),
+.gallery__item:nth-of-type(6n){
+    aspect-ratio: 492 / 746;
+    width: 100%;
+    height: auto;
+    grid-column: span 1;
+    grid-row: span 2;
+}
+
+.gallery__item img:nth-of-type(6n + 1),
+.gallery__item img:nth-of-type(6n){
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

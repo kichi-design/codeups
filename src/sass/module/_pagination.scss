@@ -4,13 +4,17 @@
 // pagination.scss
 // ----------------------------------------
 .page-campaign__pagination{
-    margin-top: rem(80);
+    margin-top: rem(73);
+    @include mq('md'){
+        margin-top: rem(75);
+    }
 }
 
 .pagination {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-left: rem(7);
 }
 .pagination__link {
     display: flex;
@@ -43,13 +47,14 @@
     color: #fff;
 }
 .pagination > * + * {
-    margin-left: rem(12);
+    margin-left: rem(6);
+    margin-right: rem(6);
 }
 
 .pagination__item:first-child{
-    margin-right: rem(28);
+    margin-right: rem(34);
 }
 
 .pagination__item:last-child{
-    margin-left: rem(28);
+    margin-left: rem(34);
 }

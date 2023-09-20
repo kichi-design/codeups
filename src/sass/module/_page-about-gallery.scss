@@ -1,0 +1,11 @@
+@use "global" as *;
+
+// ----------------------------------------
+// page-about-gallery.scss
+// ----------------------------------------
+.page-about-gallery__container{
+    margin-top: rem(40);
+    @include mq('md'){
+        margin-top: rem(80);
+        }
+}

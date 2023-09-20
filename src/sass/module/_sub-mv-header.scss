@@ -9,8 +9,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
     @include mq('md'){
-      padding-top: rem(90);
-    }
+        margin-top: rem(50);
+        }
 }
 
 .sub-mv-header__title{

@@ -51,12 +51,28 @@ flex-grow: 1;
 }
 }
 
+.campaign-card__wrapper--page-campaign{
+  padding-bottom: rem(16);
+  @include mq('md'){
+    padding-top: rem(21);
+    padding-left: rem(24);
+    padding-right: rem(24);
+    padding-bottom: rem(43);
+  }
+}
+
 .campaign-card__info{
   padding-bottom: rem(7);
     // テキストが増えたときに値段部分を下漬けにするため
   flex-grow: 1;
   @include mq('md'){
   padding-bottom: rem(7);
+  }
+}
+
+.campaign-card__info--page-campaign{
+  @include mq('md'){
+    padding-bottom: rem(3);
   }
 }
 
@@ -91,6 +107,12 @@ flex-grow: 1;
   }
 }
 
+.campaign-card__body--page-campaign{
+  @include mq('md'){
+    padding-top: rem(23);
+  }
+}
+
 .campaign-card__price-title{
   font-size: rem(14);
   text-align: center;
@@ -119,6 +141,12 @@ flex-grow: 1;
   }
 }
 
+.campaign-card__price-regular--page-campaign{
+  @include mq('md'){
+    margin-top: rem(16);
+  }
+
+}
 
 .campaign-card__price-discount{
   font-size: rem(32);
@@ -131,36 +159,42 @@ flex-grow: 1;
   }
 }
 
-.campaign-card__pc{
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
+.campaign-card__price-discount--page-campaign{
+  margin-top: rem(2);
+  margin-left: rem(19);
+  @include mq('md'){
+    margin-top: rem(3);
+    margin-left: rem(41);
+    line-height: 1;
+  }
 }
 
 .campaign-card__title--campaign-card-pc{
-  font-size: rem(24);
-  font-weight: $normal;
+  @include mq('md'){
+    font-size: rem(24);
+    font-weight: $normal;
+  }
 }
 
 .campaign-card__text{
-  margin-top: rem(24);
+  margin-top: rem(20);
 }
 
 .campaign-card__time{
-  margin-top: rem(32);
+  margin-top: rem(29);
   font-family: $fourth-font-family;color: $accent;
   font-weight: $bold;
   text-align: center;
 }
 
 .campaign-card__info-text{
-  margin-top: rem(7);
+  margin-top: rem(3);
   font-size: rem(14);
   color: $accent;
   text-align: center;
 }
 
 .campaign-card__button{
-  margin-top: rem(16);
+  margin-top: rem(14);
   text-align: center;
 }
