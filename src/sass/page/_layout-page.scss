@@ -1,9 +1,9 @@
 @use "global" as *;
 
 // ----------------------------------------
-// layout-page-campaign.scss
+// layout-page.scss
 // ----------------------------------------
-.layout-page-campaign{
+.layout-page{
   margin-top: rem(51);
   @include mq('md'){
     margin-top: rem(150);

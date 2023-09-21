@@ -246,4 +246,12 @@ $(window).on('load', function () {
 	GethashID (hashName);//設定したタブの読み込み
 });
 
+
+$(".gallery__item img").click(function() {
+    $(".modal-window-image").html($(this).prop('outerHTML'));
+    $(".modal-window-image").fadeIn(100);
+  });
+  $(".modal-window-image, .modal-window-image img").click(function() {
+    $(".modal-window-image").fadeOut(100);
+  });
 });
