@@ -1,0 +1,9 @@
+@use "global" as *;
+
+// ----------------------------------------
+// sidebar.scss
+// ----------------------------------------
+
+.sidebar__contents + .sidebar__contents{
+    margin-top: rem(82);
+}

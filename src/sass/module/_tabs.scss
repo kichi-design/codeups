@@ -1,18 +1,20 @@
 @use "global" as *;
 
 // ----------------------------------------
-//  page-campaign-tabs".scss
+//  tabs".scss
 // ----------------------------------------
 // ----------------------------------------
 // タブメニュー
 // ----------------------------------------
-.page-campaign-tabs{
+.tabs{
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     column-gap: rem(21);
     row-gap: rem(16);
     width: 100%;
     justify-content: center;
+    z-index: 10;
     @include mq('md'){
         max-width: 100%;
         gap: rem(32);
@@ -20,7 +22,7 @@
     }
 }
 
-.page-campaign-tabs__item{
+.tabs__item{
     // width: calc(50% - rem(10));
     width: clamp(rem(162), rem(-25.504) + 50vw, rem(358));
     text-align: center;
@@ -31,7 +33,7 @@
 }
 
 
-.page-campaign-tabs__item a{
+.tabs__item a{
     display: inline-block;
     font-size: rem(14);
     color: $accent;
@@ -39,11 +41,36 @@
     padding-bottom: rem(6);
     width: 100%;
     border: solid 1px $accent;
+    background-color: $white;
 }
 
-.page-campaign-tabs__item.active{
-    &.page-campaign-tabs__item a{
+.tabs__item.active{
+    &.tabs__item a{
         color: $white;
         background-color: $accent;
+    }
+}
+
+//インフォメーションページ
+.tabs--page-information{
+    @include mq('md'){
+        gap: rem(90);
+    }
+}
+
+.tabs__item--information{
+    @include mq('md'){
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+.tabs__item--information a{
+    @include mq('md'){
+        font-size: rem(24);
+        padding-top: rem(29);
+        padding-right: rem(30);
+        padding-bottom: rem(26);
+        padding-left: rem(102);
     }
 }

@@ -1,0 +1,34 @@
+@use "global" as *;
+
+// ----------------------------------------
+// sidebar-header.scss
+// ----------------------------------------
+.sidebar-header__title{
+    font-size: rem(24);
+    font-weight: $regular;
+    padding-top: rem(7);
+    padding-bottom: rem(6);
+    padding-left: rem(74);
+    position: relative;
+    border-left: 8px solid $accent;
+}
+
+// ----------------------------------------
+// サイドバータイトルのアイコン
+
+.sidebar-header__title::before{
+    @include mq('md'){
+        position: absolute;
+        content: '';
+        display: inline-block;
+        width: rem(50);
+        height: rem(50);
+        top: 50%;
+        transform: translateY(-50%);
+        left: rem(16);
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url('../images/common/side-header.svg');
+    }
+}

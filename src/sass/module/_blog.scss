@@ -64,41 +64,6 @@
   flex-wrap: wrap;
 }
 
-.blog-card{
-  // aタグはインライン要素なので高さがない→block要素に変更
-  display: block;
-  margin-right: rem(6);
-  margin-left: rem(6);
-  @include mq('md'){
-    margin-right: 0;
-    margin-left: 0;
-    // max-width: calc(33.33333% - rem(40) * 2 / 3);
-    // １行あたりの横幅＝全体の横幅ー余白の合計値÷行数
-    max-width: calc((100% - rem(40) * 2) / 3);
-  }
-}
-
-.blog-card + .blog-card{
-  margin-top: rem(40);
-  @include mq('md'){
-    margin-top: 0;
-    margin-left: rem(40);
-  }
-}
-
-// 4個目、７個目・・・margin-leftが付かなようにする
-.blog-card:nth-child(3n + 1){
-  @include mq('md'){
-    margin-left: 0;
-  }
-}
-
-// ２行目からはmargin-topが付くようにする
-.blog-card:nth-child(n + 4){
-  @include mq('md'){
-    margin-top: rem(25);
-  }
-}
 
 .blog__button{
   margin-top: rem(40);

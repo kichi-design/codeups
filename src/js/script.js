@@ -197,7 +197,7 @@ jQuery(function ($) { // この中であればWordpressでも「$」が使用可
     });
     });
 // ----------------------------------------
-// タブメニュー
+// タブメニュー　キャンペーン
 // ----------------------------------------
 // 自分で追加した部分（初めにallを表示させるため）
 $(window).on('load', function () {
@@ -216,14 +216,14 @@ $('#all').addClass("active");
 function GethashID (hashIDName){
 	if(hashIDName){
 		//タブ設定
-		$('.page-campaign-tabs li').find('a').each(function() { //タブ内のaタグ全てを取得
+		$('.tabs li').find('a').each(function() { //タブ内のaタグ全てを取得
 			var idName = $(this).attr('href'); //タブ内のaタグのリンク名（例）#lunchの値を取得	
 			if(idName == hashIDName){ //リンク元の指定されたURLのハッシュタグ（例）http://example.com/#lunch←この#の値とタブ内のリンク名（例）#lunchが同じかをチェック
 				var parentElm = $(this).parent(); //タブ内のaタグの親要素（li）を取得
-				$('.page-campaign-tabs li').removeClass("active"); //タブ内のliについているactiveクラスを取り除き
+				$('.tabs li').removeClass("active"); //タブ内のliについているactiveクラスを取り除き
 				$(parentElm).addClass("active"); //リンク元の指定されたURLのハッシュタグとタブ内のリンク名が同じであれば、liにactiveクラスを追加
 				//表示させるエリア設定
-				$(".page-campaign-area").removeClass("is-active"); //もともとついているis-activeクラスを取り除き
+				$(".tab-area").removeClass("is-active"); //もともとついているis-activeクラスを取り除き
 				$(hashIDName).addClass("is-active"); //表示させたいエリアのタブリンク名をクリックしたら、表示エリアにis-activeクラスを追加	
 			}
 		});
@@ -231,7 +231,7 @@ function GethashID (hashIDName){
 }
 
 //タブをクリックしたら
-$('.page-campaign-tabs a').on('click', function() {
+$('.tabs a').on('click', function() {
 	var idName = $(this).attr('href'); //タブ内のリンク名を取得	
 	GethashID (idName);//設定したタブの読み込みと
 	return false;//aタグを無効にする
@@ -240,18 +240,77 @@ $('.page-campaign-tabs a').on('click', function() {
 
 // 上記の動きをページが読み込まれたらすぐに動かす
 $(window).on('load', function () {
-    $('.page-campaign-tabs li:first-of-type').addClass("active"); //最初のliにactiveクラスを追加
-    $('.page-campaign-area:first-of-type').addClass("is-active"); //最初の.areaにis-activeクラスを追加
+    $('.tabs li:first-of-type').addClass("active"); //最初のliにactiveクラスを追加
+    $('.tab-area:first-of-type').addClass("is-active"); //最初の.areaにis-activeクラスを追加
 	var hashName = location.hash; //リンク元の指定されたURLのハッシュタグを取得
 	GethashID (hashName);//設定したタブの読み込み
 });
 
 
 $(".gallery__item img").click(function() {
-    $(".modal-window-image").html($(this).prop('outerHTML'));
-    $(".modal-window-image").fadeIn(100);
-  });
-  $(".modal-window-image, .modal-window-image img").click(function() {
-    $(".modal-window-image").fadeOut(100);
-  });
+        $(".modal-window-image").html($(this).prop('outerHTML'));
+        $(".modal-window-image").fadeIn(100);
+    });
+    $(".modal-window-image, .modal-window-image img").click(function() {
+        $(".modal-window-image").fadeOut(100);
+    });
+});
+
+// ----------------------------------------
+// タブメニュー インフォメーション
+// ----------------------------------------
+// 自分で追加した部分（初めにallを表示させるため）
+$(window).on('load', function () {
+    // 関連するコンテンツを表示する
+    $('#license-course').addClass("is-active");
+    var hashName = location.hash;
+    GethashID(hashName);
+});
+
+// 最初のタブをアクティブにする
+$('#license-course').addClass("active");
+
+// ここまで自分で追加した部分
+
+//任意のタブにURLからリンクするための設定
+function GethashID (hashIDName){
+	if(hashIDName){
+		//タブ設定
+		$('.tabs-information li').find('a').each(function() { //タブ内のaタグ全てを取得
+			var idName = $(this).attr('href'); //タブ内のaタグのリンク名（例）#lunchの値を取得	
+			if(idName == hashIDName){ //リンク元の指定されたURLのハッシュタグ（例）http://example.com/#lunch←この#の値とタブ内のリンク名（例）#lunchが同じかをチェック
+				var parentElm = $(this).parent(); //タブ内のaタグの親要素（li）を取得
+				$('.tabs-information li').removeClass("active"); //タブ内のliについているactiveクラスを取り除き
+				$(parentElm).addClass("active"); //リンク元の指定されたURLのハッシュタグとタブ内のリンク名が同じであれば、liにactiveクラスを追加
+				//表示させるエリア設定
+				$(".tab-information-area").removeClass("is-active"); //もともとついているis-activeクラスを取り除き
+				$(hashIDName).addClass("is-active"); //表示させたいエリアのタブリンク名をクリックしたら、表示エリアにis-activeクラスを追加	
+			}
+		});
+	}
+}
+
+//タブをクリックしたら
+$('.tabs-information a').on('click', function() {
+	var idName = $(this).attr('href'); //タブ内のリンク名を取得	
+	GethashID (idName);//設定したタブの読み込みと
+	return false;//aタグを無効にする
+});
+
+
+// 上記の動きをページが読み込まれたらすぐに動かす
+$(window).on('load', function () {
+    $('.tabs-information li:first-of-type').addClass("active"); //最初のliにactiveクラスを追加
+    $('.tab-information-area:first-of-type').addClass("is-active"); //最初の.areaにis-activeクラスを追加
+	var hashName = location.hash; //リンク元の指定されたURLのハッシュタグを取得
+	GethashID (hashName);//設定したタブの読み込み
+});
+
+
+$(".gallery__item img").click(function() {
+        $(".modal-window-image").html($(this).prop('outerHTML'));
+        $(".modal-window-image").fadeIn(100);
+    });
+    $(".modal-window-image, .modal-window-image img").click(function() {
+        $(".modal-window-image").fadeOut(100);
 });

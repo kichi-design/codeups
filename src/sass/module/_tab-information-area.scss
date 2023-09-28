@@ -1,0 +1,98 @@
+@use "global" as *;
+
+// ----------------------------------------
+// tab-information-area.scss
+// ----------------------------------------
+// ----------------------------------------
+// タブメニュー
+// ----------------------------------------
+/*エリアの表示非表示と形状*/
+.tab-information-area {
+	display: none;/*はじめは非表示*/
+	opacity: 0;/*透過0*/
+	background: #fff;
+    margin-top: rem(16);
+    @include mq('md'){
+        margin-top: rem(25);
+    }
+}
+
+/*tab-information-areaにis-activeというクラスがついた時の形状*/
+.tab-information-area.is-active {
+    display: block;/*表示*/
+    animation-name: displayAnime;/*ふわっと表示させるためのアニメーション*/
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes displayAnime{
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.tab-information-area__items{
+    display: grid;
+    // grid-template-columns: clamp(rem(280), rem(-26.128) + 81.633vw, rem(600));
+    // grid-template-columns: rem(280);
+    row-gap: rem(35);
+    grid-template-columns: 1fr;
+    justify-content: center;
+    @include mq('md'){
+        column-gap: rem(40);
+        row-gap: rem(76);
+
+    }
+}
+
+.tab-information-area__container{
+    padding-top: rem(14);
+    padding-right: rem(24);
+    padding-bottom: rem(24);
+    padding-left: rem(24);
+    border: solid 1px $accent;
+    @include mq('md'){
+        display: flex;
+        align-items: center;
+        }
+}
+
+.tab-information-area__body{
+    width: 100%;
+    @include mq('md'){
+        width: calc(492 / 1032 * 100%);
+    }
+}
+
+.tab-information-area__title{
+    font-size: rem(24);
+    font-weight: $bold;
+    line-height: 1;
+    margin-top: rem(8);
+    padding-bottom: rem(8);
+    border-bottom: solid 1px $accent;
+}
+
+.tab-information-area__text{
+    color: #000;
+    margin-top: rem(8);
+}
+
+.tab-information-area__image{
+    margin-top: rem(8);
+    aspect-ratio: 297 / 189;
+    @include mq('md'){
+        aspect-ratio: 492 / 313;
+        max-width: rem(492);
+        margin-left: rem(48);
+        }
+}
+
+.tab-information-area__image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
