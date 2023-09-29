@@ -58,3 +58,18 @@
 .pagination__item:last-child{
     margin-left: rem(34);
 }
+
+
+.pagination--detail{
+    @include mq('md'){
+        margin-left: rem(-22);
+    }
+}
+
+.pagination__item--detail:first-child{
+    margin-right: rem(40);
+}
+
+.pagination__item--detail:last-child{
+    margin-left: rem(41);
+}

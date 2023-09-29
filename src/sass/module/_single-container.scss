@@ -1,0 +1,15 @@
+@use "global" as *;
+
+// ----------------------------------------
+// single-container.scss
+// ----------------------------------------
+.single-container{
+    width: 100%;
+    max-width: rem(600);
+    margin-left: auto;
+    margin-right: auto;
+    @include mq('md'){
+        display: flex;
+        max-width: 100%;
+    }
+}

@@ -1,13 +1,13 @@
 @use "global" as *;
 
 // ----------------------------------------
-// page-blog.scss
+// page-single.scss
 // ----------------------------------------
-.page-blog{
+.page-single{
     position: relative;
 }
 
-.page-blog::before{
+.page-single::before{
     position: absolute;
     content: '';
     display: inline-block;
@@ -26,5 +26,12 @@
         aspect-ratio: 301 / 138;
         top: rem(-71);
         left: calc(50% - min(48%, rem(620)));
+    }
+}
+
+.page-single--detail::before{
+    top: rem(-18);
+    @include mq('md'){
+        top: rem(-71);
     }
 }
