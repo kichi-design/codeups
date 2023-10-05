@@ -1,0 +1,124 @@
+@use "global" as *;
+
+// ----------------------------------------
+// price-table.scss
+// ----------------------------------------
+
+.price-table{
+    margin-inline: auto;
+    @include mq('md'){
+        display: grid;
+        grid-template-columns: 0.4fr 1fr;
+        max-width: rem(700);
+        width: 100%;
+    }
+}
+
+.price-table__head{
+    background-color: $accent;
+    text-align: center;
+    @include mq('md'){
+        padding-top: rem(41);
+        padding-bottom: rem(113);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+}
+
+.price-table__title{
+    display: inline-block;
+    position: relative;
+    color: $white;
+    font-weight: $bold;
+    font-size: rem(16);
+    line-height: 1.5;
+    text-align: center;
+    padding-top: rem(8);
+    padding-bottom: rem(7);
+    padding-left: rem(32);
+    @include mq('md'){
+        padding-left: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}
+
+.price-table__title::before{
+        content: '';
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        left: rem(0);
+        transform: translateY(-50%);
+        background-image: url('../images/common/price-whale.svg');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: rem(24);
+        height: rem(24);
+        @include mq('md'){
+            width: rem(64);
+            height: rem(64);
+            left: 50%;
+            top: 129%;
+            transform: translateX(-50%);
+        }
+}
+
+.price-table__item:first-of-type{
+    border-top: solid 1px $accent;
+}
+
+.price-table__item{
+    display: grid;
+    grid-template-rows: rem(59);
+    grid-template-columns: 1fr 0.44166fr;
+    border-bottom: solid 1px $accent;
+    border-left: solid 1px $accent;
+    border-right: solid 1px $accent;
+    @include mq('md'){
+        grid-template-columns: 1fr 0.47647fr;
+        grid-template-rows: rem(58);
+        }
+}
+
+.price-table__course{
+    display: inline-block;
+    padding-top: rem(7);
+    padding-bottom: rem(6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.5;
+    text-align: center;
+    @include mq('md'){
+        padding-left: rem(15);
+        justify-content: flex-start;
+        padding-top: rem(18);
+        padding-bottom: rem(18);
+        }
+
+}
+
+.price-table__price{
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    // justify-content: center;
+    border-left: solid 1px $accent;
+    padding-top: rem(7);
+    padding-bottom: rem(6);
+    padding-left: rem(16);
+    padding-right: rem(16);
+    justify-content: flex-end;
+    @include mq('md'){
+        padding-left: 0;
+        padding-top: rem(18);
+        padding-bottom: rem(18);
+        }
+
+}
+
+

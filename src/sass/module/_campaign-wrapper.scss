@@ -1,0 +1,14 @@
+@use "global" as *;
+
+// ----------------------------------------
+// campaign-wrapper.scss
+// ----------------------------------------
+
+.campaign-wrapper{
+  //テキストが増えた時の値段の下つけのため。.campaign-cardにも  height: 100%;
+  height: 100%;
+  // スライド下のboxshadowが消えるのを防ぐ
+  padding-bottom: rem(5);
+  @include mq('md'){
+  }
+}

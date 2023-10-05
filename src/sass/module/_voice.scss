@@ -94,7 +94,7 @@
 // ２行目からはmargin-topが付くようにする
 .voice-card:nth-child(n + 3){
         @include mq('md'){
-        margin-top: rem(25);
+        margin-top: rem(80);
     }
 }
 

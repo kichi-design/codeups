@@ -260,15 +260,15 @@ $(".gallery__item img").click(function() {
 // タブメニュー インフォメーション
 // ----------------------------------------
 // 自分で追加した部分（初めにallを表示させるため）
-$(window).on('load', function () {
-    // 関連するコンテンツを表示する
-    $('#license-course').addClass("is-active");
-    var hashName = location.hash;
-    GethashID(hashName);
-});
+// $(window).on('load', function () {
+//     // 関連するコンテンツを表示する
+//     $('#license-course').addClass("is-active");
+//     var hashName = location.hash;
+//     GethashID(hashName);
+// });
 
 // 最初のタブをアクティブにする
-$('#license-course').addClass("active");
+// $('#license-course').addClass("active");
 
 // ここまで自分で追加した部分
 
@@ -313,4 +313,9 @@ $(".gallery__item img").click(function() {
     });
     $(".modal-window-image, .modal-window-image img").click(function() {
         $(".modal-window-image").fadeOut(100);
+});
+
+jQuery('.faq-item__question-wrapper').click(function() {
+    jQuery(this).next().slideToggle();
+    jQuery(this).children('.faq-item__icon').toggleClass( 'is-open' );
 });
