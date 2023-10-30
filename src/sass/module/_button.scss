@@ -95,3 +95,16 @@
     transform: scale(1, 1);
   }
 }
+
+.button.button--contact-form span::after{
+  right: rem(56);
+}
+
+.button.button--contact-form span::before{
+  right: rem(56);
+}
+
+.button--contact-form span{
+  letter-spacing: -0.03em;
+  text-indent: -0.03em;
+}

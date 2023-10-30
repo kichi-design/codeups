@@ -5,6 +5,8 @@
 // ----------------------------------------
 .sub-mv-header{
     position: absolute;
+    width: 100%;
+    text-align: center;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -14,6 +16,7 @@
 }
 
 .sub-mv-header__title{
+    width: 100%;
     font-size: rem(40);
     color: $white;
     font-family: $fourth-font-family;

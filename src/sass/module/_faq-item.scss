@@ -29,8 +29,8 @@
         font-size: rem(20);
         padding-top: rem(25);
         padding-right: rem(40);
-        padding-bottom: rem(23);
-        padding-left: rem(40);    
+        padding-bottom: rem(25);
+        padding-left: rem(40);
     }
 }
 
@@ -87,13 +87,13 @@
     padding-left: rem(15);
     margin-top: rem(16);
     @include mq('md'){
-        padding-top: rem(40);
+        padding-top: rem(39);
         padding-right: rem(40);
-        padding-bottom: rem(40);
+        padding-bottom: rem(39);
         padding-left: rem(40);
     }
 }
 
 .faq-item__answer{
-    line-height: 1.43;
+    line-height: 1.437;
 }

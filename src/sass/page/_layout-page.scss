@@ -6,6 +6,13 @@
 .layout-page{
   margin-top: rem(51);
   @include mq('md'){
-    margin-top: rem(150);
+      margin-top: rem(150);
+    }
   }
+
+  .layout-page--sitemap{
+    margin-top: rem(39);
+    @include mq('md'){
+      margin-top: rem(137);
+    }
   }

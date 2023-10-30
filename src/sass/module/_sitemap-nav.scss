@@ -1,0 +1,91 @@
+@use "global" as *;
+
+// ----------------------------------------
+// sitemap-nav.scss
+// ----------------------------------------
+
+.sitemap-nav{
+  @include mq('md'){
+    display: flex;
+  }
+}
+
+.sitemap-nav + .sitemap-nav{
+  margin-left: rem(29);
+  @include mq('md'){
+    margin-left: rem(144);
+  }
+}
+
+.sitemap-nav__items:nth-child(n + 2){
+  @include mq('md'){
+    margin-left: rem(144);
+  }
+}
+
+.sitemap-nav__item a{
+  display: block;
+  width: 100%;
+  padding-top: rem(9);
+  padding-bottom: rem(9);
+  padding-left: rem(22);
+  font-size: rem(16);
+  color: $black;
+  font-weight: $bold;
+  position: relative;
+}
+
+.sitemap-nav__title:before{
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: rem(12);
+  left: 0;
+  background-image: url('../images/common/sitemap-hitode.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: rem(18);
+  height: rem(18);
+}
+
+@media (hover: hover){
+  .sitemap-nav__item a:hover{
+    opacity: 0.7;
+  }
+
+  .sitemap-nav__subitem a:hover{
+    opacity: 0.7;
+  }
+}
+
+.sitemap-nav__subitem a{
+  display: block;
+  color: $black;
+  // text-align: center;
+  padding-top: rem(9);
+  padding-bottom: rem(9);
+  padding-left: rem(22);
+}
+// ----------------------------------------
+// 余白の調整
+// ----------------------------------------
+
+.sitemap-nav__item--faq{
+  margin-top: rem(16);
+  @include mq('md'){
+    margin-top: 0;
+  }
+}
+
+.sitemap-nav__item--information{
+  margin-top: rem(16);
+  @include mq('md'){
+    margin-top: 0;
+  }
+}
+
+.sitemap-nav__item--adjustment{
+  margin-top: rem(16);
+}
+
