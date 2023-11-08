@@ -61,7 +61,7 @@
   font-family: $second-font-family;
   font-size: rem(12);
   color: $white;
-  // white-space: nowrap;
+  white-space: nowrap;
   margin-top: rem(22);
   text-align: center;
   @include mq('md'){
