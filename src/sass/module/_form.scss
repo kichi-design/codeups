@@ -285,6 +285,12 @@ button,
 			height: rem(22);
 		}
 	}
+	&:checked + span {
+		&::after {
+			/*チェックマークじゃない場合は以下を変更する*/
+			margin-left: 0.5em;
+		}
+	}
 }
 
 /* エラー時のスタイル */

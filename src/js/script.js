@@ -319,3 +319,110 @@ jQuery('.faq-item__question-wrapper').click(function() {
     jQuery(this).next().slideToggle();
     jQuery(this).children('.faq-item__icon').toggleClass( 'is-open' );
 });
+
+
+
+
+// ----------------------------------------
+// formエラー
+// ----------------------------------------
+    // document.querySelector('.button--contact-form').addEventListener('click', function() {
+    //     const form = document.getElementById('form');
+    //     let isValid = true;
+    
+    //     form.querySelectorAll('[required]').forEach(function(input) {
+    //     if (input.type !== 'checkbox' && input.type !== 'radio') {
+    //         if (!input.value) {
+    //         input.classList.add('error');
+    //         isValid = false;
+    //         } else {
+    //         input.classList.remove('error');
+    //         }
+    //     } else if (input.type === 'checkbox' || input.type === 'radio') {
+    //         const inputName = input.getAttribute('name');
+    //         const checked = form.querySelector(`input[name="${inputName}"]:checked`);
+    //         if (!checked) {
+    //         isValid = false;
+    //         const checkboxGroup = form.querySelector(`input[name="${inputName}"]`);
+    //         if (checkboxGroup) {
+    //             checkboxGroup.classList.add('error');
+    //         }
+    //         } else {
+    //         const checkboxGroup = form.querySelector(`input[name="${inputName}"]`);
+    //         if (checkboxGroup) {
+    //             checkboxGroup.classList.remove('error');
+    //         }
+    //         }
+    //     }
+    //     });
+    
+    //     const errorDiv = document.querySelector('.js-error');
+    //     if (!isValid) {
+    //     errorDiv.style.display = 'block';
+        
+    //     // ヘッダーの高さを取得
+    //     const headerHeight = document.querySelector('header').offsetHeight;
+    //     const errorDivPosition = errorDiv.getBoundingClientRect().top + window.scrollY - headerHeight;
+    //     window.scrollTo({ top: errorDivPosition, behavior: 'smooth' });
+    //     } else {
+    //     errorDiv.style.display = 'none';
+    //     }
+    // });
+    
+    // // フォームの送信をキャンセル
+    // document.getElementById('form').addEventListener('submit', function(event) {
+    //     event.preventDefault();
+    // });
+
+
+    document.querySelector('.button--contact-form').addEventListener('click', function() {
+    const form = document.getElementById('form');
+    let isValid = true;
+
+    form.querySelectorAll('[required]').forEach(function(input) {
+        if (input.type !== 'checkbox' && input.type !== 'radio') {
+        if (!input.value) {
+            input.classList.add('error');
+            isValid = false;
+        } else {
+            input.classList.remove('error');
+        }
+        } else if (input.type === 'checkbox' || input.type === 'radio') {
+        const inputName = input.getAttribute('name');
+        const checked = form.querySelector(`input[name="${inputName}"]:checked`);
+        if (!checked) {
+            isValid = false;
+            const checkboxGroup = form.querySelector(`input[name="${inputName}"]`);
+            if (checkboxGroup) {
+            checkboxGroup.classList.add('error');
+            }
+        } else {
+            const checkboxGroup = form.querySelector(`input[name="${inputName}"]`);
+            if (checkboxGroup) {
+            checkboxGroup.classList.remove('error');
+            }
+        }
+        }
+    });
+
+    const errorDiv = document.querySelector('.js-error');
+    const breadcrumbDiv = document.querySelector('.js-error-breadcrumb');
+
+    if (!isValid) {
+        errorDiv.style.display = 'block';
+        breadcrumbDiv.style.display = 'inline-block'; // 表示スタイルをinline-blockに変更
+        
+        // ヘッダーの高さを取得
+        const headerHeight = document.querySelector('header').offsetHeight;
+        const errorDivPosition = errorDiv.getBoundingClientRect().top + window.scrollY - headerHeight;
+        window.scrollTo({ top: errorDivPosition, behavior: 'smooth' });
+    } else {
+        errorDiv.style.display = 'none';
+        breadcrumbDiv.style.display = 'none';
+    }
+    });
+
+    // フォームの送信をキャンセル
+    document.getElementById('form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    });
