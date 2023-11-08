@@ -24,7 +24,7 @@
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    top: rem(-24);
+    top: rem(-20);
     left: calc(50% - max(45.5%, rem(172)));
     @include mq('md'){
         width: rem(301);

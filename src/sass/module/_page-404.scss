@@ -1,0 +1,60 @@
+@use "global" as *;
+.page-404{
+    position: relative;
+}
+
+.page-404::before{
+    content: "";
+    width: rem(329);
+    height: rem(294);
+    aspect-ratio: 329 / 294;
+    display: inline-block;
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url('../images/common/404-kujira.svg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    @include mq('md'){
+        width: rem(665);
+        height: rem(594);
+        aspect-ratio: 665 / 594;
+        top: 53%;
+        left: 37%;
+        transform: translate(-50%, -50%);
+        }
+}
+
+.page-404__title{
+    text-align: center;
+    color: $white;
+    font-family: $fourth-font-family;
+    font-size: rem(80);
+    letter-spacing: 0.5em;
+    text-indent: 0.5em;
+    font-weight: $regular;
+    @include mq('md'){
+        font-size: rem(160);
+        }
+}
+
+.page-404__text{
+    text-align: center;
+    color: $white;
+    font-family: $fourth-font-family;
+    font-size: rem(16);
+    margin-top: rem(-15);
+    @include mq('md'){
+        margin-top: 0;
+        }
+}
+
+.page-404__button{
+    text-align: center;
+    margin-top: rem(40);
+    @include mq('md'){
+        margin-top: rem(80);
+        }
+}

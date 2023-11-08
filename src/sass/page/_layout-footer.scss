@@ -23,3 +23,10 @@
     margin-top: rem(120);
   }
 }
+
+.layout-footer--404{
+  margin-top: rem(42);
+  @include mq('md'){
+    margin-top: rem(150);
+  }
+}

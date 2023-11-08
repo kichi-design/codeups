@@ -108,3 +108,35 @@
   letter-spacing: -0.03em;
   text-indent: -0.03em;
 }
+
+// ----------------------------------------
+// 白背景
+// ----------------------------------------
+
+.button--white{
+  color: $accent;
+  background-color: $white;
+  border: solid 1px $white;
+}
+
+.button--white::before{
+  border: solid 1px $white;
+}
+
+.button--white::after {
+  background-color: $accent;
+}
+
+.button--white span::after{
+  background-image: url('../images/common/more-accent.svg');
+}
+
+.button--white span::before{
+  background-image: url('../images/common/more.svg');
+}
+
+@media (hover: hover) {
+  .button--white:hover {
+    color: $white;
+  }
+}

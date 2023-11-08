@@ -83,10 +83,10 @@
     border: solid 1px $accent;
     padding-top: rem(24);
     padding-right: rem(16);
-    padding-bottom: rem(24);
+    padding-bottom: rem(22);
     padding-left: rem(15);
-    margin-top: rem(16);
     @include mq('md'){
+        margin-top: rem(16);
         padding-top: rem(39);
         padding-right: rem(40);
         padding-bottom: rem(39);

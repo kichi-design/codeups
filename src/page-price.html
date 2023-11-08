@@ -37,70 +37,72 @@
 </head>
 <body>
   <header class="header js-header">
-      <div class="header__inner">
-        <div class="header__title">
-          <a href="#" class="header__logo">
-            <img src="./assets/images/common/CodeUps.svg" alt="ロゴ" decoding="async">
-          </a>
-        </div>
-        <button class="header__hamburger js-hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        <nav class="header__sp-nav sp-nav js-drawer-menu">
-          <div class="inner sp-nav__inner">
-            <div class="sp-nav__container">
-              <ul class="sp-nav__items">
-                <li class="sp-nav__item sp-subnav"><a href="#">キャンペーン</a>
-                  <ul class="sp-subnav__items">
-                    <li class="sp-subnav__item"><a href="#">ライセンス取得</a></li>
-                    <li class="sp-subnav__item"><a href="#">貸切体験ダイビング</a></li>
-                    <li class="sp-subnav__item"><a href="#">ナイトダイビング</a></li>
-                  </ul>
-                </li>
-                <li class="sp-nav__item sp-nav__item--about"><a href="#">私たちについて</a></li>
-                <li class="sp-nav__item sp-nav__item--information sp-subnav"><a href="#">ダイビング情報</a>
-                  <ul class="sp-subnav__items">
-                    <li class="sp-subnav__item"><a href="#">ライセンス講習</a></li>
-                    <li class="sp-subnav__item"><a href="#">体験ダイビング</a></li>
-                    <li class="sp-subnav__item"><a href="#">ファンダイビング</a></li>
-                  </ul>
-                </li>
-                <li class="sp-nav__item sp-nav__item--blog"><a href="#">ブログ</a></li>
-              </ul>
-              <ul class="sp-nav__items">
-                <li class="sp-nav__item"><a href="#">お客様の声</a></li>
-                <li class="sp-nav__item sp-nav__item--price sp-subnav"><a href="#">料金一覧</a>
-                  <ul class="sp-subnav__items">
-                    <li class="sp-subnav__item"><a href="#">ライセンス講習</a></li>
-                    <li class="sp-subnav__item"><a href="#">体験ダイビング</a></li>
-                    <li class="sp-subnav__item"><a href="#">ファンダイビング</a></li>
-                  </ul>
-                </li>
-                <li class="sp-nav__item sp-nav__item--faq"><a href="#">よくある質問</a></li>
-                <li class="sp-nav__item sp-nav__item--policy"><a href="#">プライバシー<br>ポリシー</a></li>
-                <li class="sp-nav__item sp-nav__item--terms"><a href="#">利用規約</a></li>
-                <li class="sp-nav__item sp-nav__item--contact"><a href="#">お問合せ</a></li>
-              </ul>
-            </div>
+    <div class="header__inner">
+      <h1 class="header__title">
+        <a href="index.html" class="header__logo">
+          <img src="./assets/images/common/CodeUps.svg" alt="ロゴ" decoding="async">
+        </a>
+      </h1>
+      <button class="header__hamburger js-hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <!-- スマホナビ -->
+      <nav class="header__sp-nav sp-nav js-drawer-menu">
+        <div class="inner sp-nav__inner">
+          <div class="sp-nav__container">
+            <ul class="sp-nav__items">
+              <li class="sp-nav__item sp-subnav"><a href="page-campaign.html">キャンペーン</a>
+                <ul class="sp-subnav__items">
+                  <li class="sp-subnav__item"><a href="#">ライセンス取得</a></li>
+                  <li class="sp-subnav__item"><a href="#">貸切体験ダイビング</a></li>
+                  <li class="sp-subnav__item"><a href="#">ナイトダイビング</a></li>
+                </ul>
+              </li>
+              <li class="sp-nav__item sp-nav__item--about"><a href="page-about.html">私たちについて</a></li>
+              <li class="sp-nav__item sp-nav__item--information sp-subnav"><a href="page-information.html">ダイビング情報</a>
+                <ul class="sp-subnav__items">
+                  <li class="sp-subnav__item"><a href="#">ライセンス講習</a></li>
+                  <li class="sp-subnav__item"><a href="#">体験ダイビング</a></li>
+                  <li class="sp-subnav__item"><a href="#">ファンダイビング</a></li>
+                </ul>
+              </li>
+              <li class="sp-nav__item sp-nav__item--blog"><a href="page-blog.html">ブログ</a></li>
+            </ul>
+            <ul class="sp-nav__items">
+              <li class="sp-nav__item"><a href="page-voice.html">お客様の声</a></li>
+              <li class="sp-nav__item sp-nav__item--price sp-subnav"><a href="page-price.html">料金一覧</a>
+                <ul class="sp-subnav__items">
+                  <li class="sp-subnav__item"><a href="#">ライセンス講習</a></li>
+                  <li class="sp-subnav__item"><a href="#">体験ダイビング</a></li>
+                  <li class="sp-subnav__item"><a href="#">ファンダイビング</a></li>
+                </ul>
+              </li>
+              <li class="sp-nav__item sp-nav__item--faq"><a href="page-faq.html">よくある質問</a></li>
+              <li class="sp-nav__item sp-nav__item--policy"><a href="page-privacypolicy.html">プライバシー<br>ポリシー</a></li>
+              <li class="sp-nav__item sp-nav__item--terms"><a href="src/page-terms.html">利用規約</a></li>
+              <li class="sp-nav__item sp-nav__item--contact"><a href="page-contact.html">お問合せ</a></li>
+            </ul>
           </div>
-        </nav>
-        <nav class="header__pc-nav pc-nav">
-          <ul class="pc-nav__items">
-            <li class="pc-nav__item"><a href="#">Campaign<span>キャンペーン</span></a></li>
-            <li class="pc-nav__item"><a href="#">About us<span>私たちについて</span></a></li>
-            <li class="pc-nav__item"><a href="#">Information<span>ダイビング情報</span></a></li>
-            <li class="pc-nav__item"><a href="#">Blog<span>ブログ</span></a></li>
-            <li class="pc-nav__item"><a href="#">Voice<span>お客様の声</span></a></li>
-            <li class="pc-nav__item"><a href="#">Price<span>料金一覧</span></a></li>
-            <li class="pc-nav__item"><a href="#">FAQ<span>よくある質問</span></a></li>
-            <li class="pc-nav__item"><a href="#">Contact<span>お問合せ</span></a></li>
-          </ul>
-        </nav>
-      </div>
-  </header>
-  <main>
+        </div>
+      </nav>
+      <!-- PCナビ -->
+      <nav class="header__pc-nav pc-nav">
+        <ul class="pc-nav__items">
+          <li class="pc-nav__item"><a href="page-campaign.html">Campaign<span>キャンペーン</span></a></li>
+          <li class="pc-nav__item"><a href="page-about.html">About us<span>私たちについて</span></a></li>
+          <li class="pc-nav__item"><a href="page-information.html">Information<span>ダイビング情報</span></a></li>
+          <li class="pc-nav__item"><a href="page-blog.html">Blog<span>ブログ</span></a></li>
+          <li class="pc-nav__item"><a href="page-voice.html">Voice<span>お客様の声</span></a></li>
+          <li class="pc-nav__item"><a href="page-price.html">Price<span>料金一覧</span></a></li>
+          <li class="pc-nav__item"><a href="page-faq.html">FAQ<span>よくある質問</span></a></li>
+          <li class="pc-nav__item"><a href="page-contact.html">Contact<span>お問合せ</span></a></li>
+        </ul>
+      </nav>
+    </div>
+</header>
+<main>
 
 <!-- sub-mv -->
     <div class="sub-mv">
@@ -251,7 +253,7 @@
   <footer class="footer layout-footer">
     <div class="inner footer-inner">
       <div class="footer__title">
-        <a href="#" class="footer__logo">
+        <a href="index.html" class="footer__logo">
           <img src="./assets/images/common/CodeUps.svg" alt="ロゴ" decoding="async">
         </a>
         <div class="footer__sns footer-sns">
@@ -266,42 +268,42 @@
       <div class="footer__nav footer-nav">
         <div class="footer-nav__container">
           <ul class="footer-nav__items">
-            <li class="footer-nav__item sp-subnav"><a href="#">キャンペーン</a>
+            <li class="footer-nav__item sp-subnav"><a class="footer-nav__title" href="page-campaign.html">キャンペーン</a>
               <ul class="sp-subnav__items">
-                <li class="sp-subnav__item"><a href="#">ライセンス取得</a></li>
+                <li class="sp-subnav__item"><a href="#license-course">ライセンス取得</a></li>
                 <li class="sp-subnav__item"><a href="#">貸切体験ダイビング</a></li>
                 <li class="sp-subnav__item"><a href="#">ナイトダイビング</a></li>
               </ul>
             </li>
-            <li class="footer-nav__item footer-nav__item--adjustment"><a href="#">私たちについて</a></li>
+            <li class="footer-nav__item footer-nav__item--adjustment"><a class="footer-nav__title" href="page-about.html">私たちについて</a></li>
           </ul>
           <ul class="footer-nav__items">
-            <li class="footer-nav__item footer-nav__item--information sp-subnav"><a href="#">ダイビング情報</a>
+            <li class="footer-nav__item footer-nav__item--information sp-subnav"><a class="footer-nav__title" href="page-information.html">ダイビング情報</a>
               <ul class="sp-subnav__items">
                 <li class="sp-subnav__item"><a href="#">ライセンス講習</a></li>
                 <li class="sp-subnav__item"><a href="#">体験ダイビング</a></li>
                 <li class="sp-subnav__item"><a href="#">ファンダイビング</a></li>
               </ul>
             </li>
-            <li class="footer-nav__item footer-nav__item--adjustment"><a href="#">ブログ</a></li>
+            <li class="footer-nav__item footer-nav__item--adjustment"><a class="footer-nav__title" href="page-blog.html">ブログ</a></li>
           </ul>
         </div>
         <div class="footer-nav__container">
           <ul class="footer-nav__items">
-            <li class="footer-nav__item"><a href="#">お客様の声</a></li>
-            <li class="footer-nav__item footer-nav__item--adjustment sp-subnav"><a href="#">料金一覧</a>
+            <li class="footer-nav__item"><a class="footer-nav__title" href="page-voice.html">お客様の声</a></li>
+            <li class="footer-nav__item footer-nav__item--adjustment sp-subnav"><a class="footer-nav__title" href="page-price.html">料金一覧</a>
               <ul class="sp-subnav__items">
                 <li class="sp-subnav__item"><a href="#">ライセンス講習</a></li>
-                <li class="sp-subnav__item"><a href="#">体験ダイビング</a></li>
+                <li class="sp-subnav__item"><a  href="#">体験ダイビング</a></li>
                 <li class="sp-subnav__item"><a href="#">ファンダイビング</a></li>
               </ul>
             </li>
           </ul>
           <ul class="footer-nav__items">
-            <li class="footer-nav__item footer-nav__item--faq"><a href="#">よくある質問</a></li>
-            <li class="footer-nav__item footer-nav__item--adjustment"><a href="#">プライバシー<br class="display__sp">ポリシー</a></li>
-            <li class="footer-nav__item footer-nav__item--adjustment"><a href="#">利用規約</a></li>
-            <li class="footer-nav__item footer-nav__item--adjustment"><a href="#">お問い合わせ</a></li>
+            <li class="footer-nav__item footer-nav__item--faq"><a class="footer-nav__title" href="page-faq.html">よくある質問</a></li>
+            <li class="footer-nav__item footer-nav__item--adjustment"><a class="footer-nav__title" href="page-privacypolicy.html">プライバシー<br class="display__sp">ポリシー</a></li>
+            <li class="footer-nav__item footer-nav__item--adjustment"><a class="footer-nav__title" href="page-terms.html">利用規約</a></li>
+            <li class="footer-nav__item footer-nav__item--adjustment"><a class="footer-nav__title" href="page-contact.html">お問い合わせ</a></li>
           </ul>
         </div>
       </div>

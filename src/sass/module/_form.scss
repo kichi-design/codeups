@@ -163,6 +163,7 @@ button,
 	z-index: 1;
 }
 
+
 [type="radio"] {
 	display: none;
 
@@ -266,6 +267,26 @@ button,
 		}
 	}
 }
+
+// ----------------------------------------
+// 個人情報同意のチェックボックス
+// ----------------------------------------
+.contact-form__agreement [type="checkbox"]{
+	+ span {
+		line-height: 1.57;
+		padding: rem(20) 0 0 rem(30);
+		font-size: rem(14);
+		@include mq('md'){
+			padding: 0 0 0 rem(36);
+		}
+
+		&::before {
+			width: rem(22);
+			height: rem(22);
+		}
+	}
+}
+
 /* エラー時のスタイル */
 [type="checkbox"].error {
 	+ span::before {

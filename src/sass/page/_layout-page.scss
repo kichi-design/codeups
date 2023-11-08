@@ -16,3 +16,10 @@
       margin-top: rem(137);
     }
   }
+
+  .layout-page--404{
+    margin-top: rem(39);
+    @include mq('md'){
+      margin-top: rem(94);
+    }
+  }
