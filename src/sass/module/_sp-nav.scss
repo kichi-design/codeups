@@ -35,7 +35,7 @@
   position: relative;
 }
 
-.sp-nav__item a:before{
+.sp-nav__title:before{
   content: '';
   display: inline-block;
   position: absolute;
@@ -48,6 +48,19 @@
   width: rem(18);
   height: rem(18);
 }
+// .sp-nav__item a:before{
+//   content: '';
+//   display: inline-block;
+//   position: absolute;
+//   top: rem(12);
+//   left: 0;
+//   background-image: url('../images/common/hitode.png');
+//   background-size: cover;
+//   background-position: center;
+//   background-repeat: no-repeat;
+//   width: rem(18);
+//   height: rem(18);
+// }
 
 // ----------------------------------------
 // 余白の調整
