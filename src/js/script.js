@@ -67,66 +67,28 @@ jQuery(function ($) { // この中であればWordpressでも「$」が使用可
 // ----------------------------------------
 // メインビューアニメーションの表示設定
 // ----------------------------------------
-// １
-    // $(window).on('load',function(){
-    //     $(".fv-animation").delay(2500).fadeOut('slow');//ローディング画面を1.5秒（1500ms）待機してからフェードアウト
-    // });
 
-// 2
-    // var splash_text = $.cookie('accessdate'); //キーが入っていれば年月日を取得
-    // var myD = new Date();//日付データを取得
-    // var myYear = String(myD.getFullYear());//年
-    // var myMonth = String(myD.getMonth() + 1);//月
-    // var myDate = String(myD.getDate());//日
-
-    // if (splash_text != myYear + myMonth + myDate) {//cookieデータとアクセスした日付を比較↓
-    //     $(".fv-animation").css("display", "block");//１回目はローディングを表示
-    //     setTimeout(function () {
-    //         $(".fv-animation").delay(2500).fadeOut('slow');//ローディング画面を1.5秒（1500ms）待機してからフェードアウト
-    //     });
-    // }else{
-    //     $(".fv-animation").css("display", "none");//同日2回目のアクセスでローディング画面非表示
-    // }
-
-// 3
     var splash_text = $.cookie('accessdate'); // Cookieからアクセス日付を取得
+
+if (!splash_text) { // Cookieが存在しない場合（初回アクセス）
     var myD = new Date(); // 現在の日付データを取得
     var myYear = myD.getFullYear().toString(); // 年を文字列として取得
     var myMonth = (myD.getMonth() + 1).toString().padStart(2, '0'); // 月を文字列として取得（2桁で表示）
     var myDate = myD.getDate().toString().padStart(2, '0'); // 日を文字列として取得（2桁で表示）
     var currentDate = myYear + myMonth + myDate; // 現在の年月日を結合
 
-    if (splash_text !== currentDate) { // Cookieの値と現在の年月日を比較
-        $(".fv-animation").css("display", "block"); // ローディングを表示
-        setTimeout(function () {
-            $(".fv-animation").delay(2500).fadeOut('slow'); // ローディング画面を1.5秒待機してからフェードアウト
-        }, 0); // ゼロミリ秒遅延で実行（次のイベントループまで待たない）
-    } else {
-        $(".fv-animation").css("display", "none"); // 同日2回目のアクセスでローディング画面非表示
-    }
-
-// 4
-    // var splash_text = $.cookie('accessdate'); // Cookieからアクセス日付を取得
-
-    // if (!splash_text) { // Cookieが存在しない場合（初回アクセス）
-    //     var myD = new Date(); // 現在の日付データを取得
-    //     var myYear = myD.getFullYear().toString(); // 年を文字列として取得
-    //     var myMonth = (myD.getMonth() + 1).toString().padStart(2, '0'); // 月を文字列として取得（2桁で表示）
-    //     var myDate = myD.getDate().toString().padStart(2, '0'); // 日を文字列として取得（2桁で表示）
-    //     var currentDate = myYear + myMonth + myDate; // 現在の年月日を結合
-
-    //     $.cookie('accessdate', currentDate); // Cookieにアクセス日付をセット
-    //     $(".fv-animation").css("display", "block"); // ローディングを表示
-
-    //     setTimeout(function () {
-    //         $(".fv-animation").delay(2500).fadeOut('slow'); // ローディング画面を1.5秒待機してからフェードアウト
-    //     }, 0); // ゼロミリ秒遅延で実行（次のイベントループまで待たない）
-    // } else {
-    //     $(".fv-animation").css("display", "none"); // 同日2回目のアクセスでローディング画面非表示
-    // }
+    // Cookieにアクセス日付をセット
+    $.cookie('accessdate', currentDate, { expires: 1 }); // 1日間有効
+    $(".fv-animation").css("display", "block"); // ローディングを表示
+    setTimeout(function () {
+        $(".fv-animation").delay(2500).fadeOut('slow'); // ローディング画面を1.5秒待機してからフェードアウト
+    }, 0); // ゼロミリ秒遅延で実行（次のイベントループまで待たない）
+} else {
+    $(".fv-animation").css("display", "none"); // Cookieが存在する場合はローディング画面非表示
+}
 
 // ----------------------------------------
-// ボタンの表示設定
+// ページトップのボタン
 // ----------------------------------------
     var topBtn = $('.pagetop');
     topBtn.hide();
@@ -157,9 +119,7 @@ jQuery(function ($) { // この中であればWordpressでも「$」が使用可
         });
     }
 
-// ----------------------------------------
 // ボタンをクリックしたらスクロールして上に戻る
-// ----------------------------------------
     topBtn.click(function () {
         $('body,html').animate({
         scrollTop: 0
@@ -259,19 +219,6 @@ $(".gallery__item img").click(function() {
 // ----------------------------------------
 // タブメニュー インフォメーション
 // ----------------------------------------
-// 自分で追加した部分（初めにallを表示させるため）
-// $(window).on('load', function () {
-//     // 関連するコンテンツを表示する
-//     $('#license-course').addClass("is-active");
-//     var hashName = location.hash;
-//     GethashID(hashName);
-// });
-
-// 最初のタブをアクティブにする
-// $('#license-course').addClass("active");
-
-// ここまで自分で追加した部分
-
 //任意のタブにURLからリンクするための設定
 function GethashID (hashIDName){
 	if(hashIDName){
