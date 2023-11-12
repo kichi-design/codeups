@@ -120,13 +120,11 @@
 @keyframes fadeUpAnime-right{
     from {
     opacity: 0;
-    transform: translateY(calc(100% + rem(80)));
-    scale: 0.1;
+    transform: translateY(calc(100% + rem(80))) scale(0.1);
     }
 
     to {
     opacity: 1;
-    transform: translateY(0);
-    scale: 1.0;
+    transform: translateY(0) scale(1.0);
     }
 }

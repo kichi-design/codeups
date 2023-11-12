@@ -26,6 +26,11 @@
     }
 }
 
+.page-about-gallery__inner{
+    max-width: rem(600);
+
+}
+
 .page-about-gallery__container{
     margin-top: rem(40);
     @include mq('md'){
