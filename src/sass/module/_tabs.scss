@@ -23,8 +23,7 @@
 }
 
 .tabs__item{
-    // width: calc(50% - rem(10));
-    width: clamp(rem(162), rem(-25.504) + 50vw, rem(358));
+    width: calc((100% - rem(21)) / 2);
     text-align: center;
     @include mq('md'){
         width: 100%;
