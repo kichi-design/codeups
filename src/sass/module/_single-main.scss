@@ -1,97 +1,86 @@
 @use "global" as *;
 
-// ----------------------------------------
-// single-main.scss
-// ----------------------------------------
 
-.single-main{
+.single-main {
     max-width: rem(600);
-    margin-right: rem(6);
-    margin-left: rem(6);
-    @include mq('md'){
+    margin-right: rem(0);
+    margin-left: rem(0);
+
+    @include mq('md') {
+        margin-top: rem(-7);
         margin-right: 0;
         margin-left: 0;
-        width: calc(706 / 1080 * 100%);
         max-width: 100%;
     }
 }
 
-.single-main--detail{
-    margin-right: rem(0);
-    margin-left: rem(0);
-    @include mq('md'){
-        margin-top: rem(-7);
-        width: calc(700 / 1080 * 100%);
-    }
-}
-
-.single-main__cards{
-    @include mq('md'){
-        display: flex;
-        flex-wrap: wrap;
-    }
-}
-
-.single-main__image img{
+.single-body img {
     aspect-ratio: 345 / 231;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    @include mq('md'){
+    
+    @include mq('md') {
         aspect-ratio: 700 / 468;
+        max-width: rem(700);
+        width: 100%;
     }
 }
 
-.single-main__date{
+.single-body time {
     font-size: rem(14);
     line-height: calc(18 /14);
     font-family: $second-font-family;
 }
 
-.single-main__title{
+.single-body h2 {
     font-size: rem(24);
     margin-top: rem(8);
     font-weight: $normal;
     border-bottom: solid 1px $accent;
     padding-bottom: rem(3);
-    @include mq('md'){
+
+    @include mq('md') {
         font-size: rem(32);
         margin-top: rem(6);
         padding-bottom: 0;
     }
 }
 
-.single-main__image{
+.single-body img {
     margin-top: rem(24);
-    @include mq('md'){
+
+    @include mq('md') {
         margin-top: rem(40);
     }
 }
 
-.single-main__text{
+.single-body p {
     margin-top: rem(24);
-    @include mq('md'){
+
+    @include mq('md') {
         margin-top: rem(40);
     }
 }
 
-.single-main__items{
+.single-body ul {
     margin-top: rem(24);
-    @include mq('md'){
+
+    @include mq('md') {
         margin-top: rem(40);
     }
 }
 
-.single-main__item{
+.single-body li {
     padding-left: rem(27);
     position: relative;
 }
 
-.single-main__item + .single-main__item{
+.single-body li + .single-body li {
     margin-top: rem(3);
 }
 
-.single-main__item::before{
+.single-body li::before {
     content: '';
     display: inline-block;
     position: absolute;
@@ -104,11 +93,4 @@
     background-repeat: no-repeat;
     width: rem(18);
     height: rem(18);
-}
-
-.single-main__pagination{
-    margin-top: rem(40);
-    @include mq('md'){
-        margin-top: rem(80);
-    }
 }

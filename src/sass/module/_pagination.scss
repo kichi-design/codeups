@@ -1,21 +1,12 @@
 @use "global" as *;
 
-// ----------------------------------------
-// pagination.scss
-// ----------------------------------------
-.page-campaign__pagination{
-    margin-top: rem(83);
-    @include mq('md'){
-        margin-top: rem(75);
-    }
-}
-
 .pagination {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-left: rem(7);
 }
+
 .pagination__link {
     display: flex;
     justify-content: center;
@@ -32,7 +23,7 @@
     transition: all 0.15s linear;
 }
 
-.pagination__link-icon{
+.pagination__link-icon {
     border: none;
 }
 
@@ -46,30 +37,31 @@
     background: $accent;
     color: #fff;
 }
-.pagination > * + * {
+
+.pagination>*+* {
     margin-left: rem(6);
     margin-right: rem(6);
 }
 
-.pagination__item:first-child{
+.pagination__item:first-child {
     margin-right: rem(34);
 }
 
-.pagination__item:last-child{
+.pagination__item:last-child {
     margin-left: rem(34);
 }
 
 
-.pagination--detail{
-    @include mq('md'){
+.pagination--detail {
+    @include mq('md') {
         margin-left: rem(-22);
     }
 }
 
-.pagination__item--detail:first-child{
+.pagination__item--detail:first-child {
     margin-right: rem(40);
 }
 
-.pagination__item--detail:last-child{
+.pagination__item--detail:last-child {
     margin-left: rem(41);
 }

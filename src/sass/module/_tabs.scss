@@ -6,7 +6,7 @@
 // ----------------------------------------
 // タブメニュー
 // ----------------------------------------
-.tabs{
+.tabs {
     position: relative;
     display: flex;
     flex-wrap: wrap;
@@ -15,24 +15,27 @@
     width: 100%;
     justify-content: center;
     z-index: 10;
-    @include mq('md'){
+
+    @include mq('md') {
         max-width: 100%;
         gap: rem(32);
         justify-content: flex-start;
     }
 }
 
-.tabs__item{
+.tabs__item {
     width: calc((100% - rem(21)) / 2);
     text-align: center;
-    @include mq('md'){
+
+    @include mq('md') {
         width: 100%;
         max-width: rem(162);
-        }
+        transition: all 0.3s;
+    }
 }
 
 
-.tabs__item a{
+.tabs__item a {
     display: inline-block;
     font-size: rem(14);
     color: $accent;
@@ -43,29 +46,36 @@
     background-color: $white;
 }
 
-.tabs__item.active{
-    &.tabs__item a{
+.tabs__item.active {
+    &.tabs__item a {
+        color: $white;
+        background-color: $accent;
+    }
+}
+
+.tabs__item:hover {
+    &.tabs__item a {
         color: $white;
         background-color: $accent;
     }
 }
 
 //インフォメーションページ
-.tabs--page-information{
-    @include mq('md'){
+.tabs--page-information {
+    @include mq('md') {
         gap: rem(90);
     }
 }
 
-.tabs__item--information{
-    @include mq('md'){
+.tabs__item--information {
+    @include mq('md') {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
     }
 }
 
-.tabs__item--information a{
-    @include mq('md'){
+.tabs__item--information a {
+    @include mq('md') {
         font-size: rem(24);
         padding-top: rem(29);
         padding-right: rem(30);
