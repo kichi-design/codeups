@@ -12,6 +12,17 @@
         max-width: 100%;
     }
 }
+.page-price__inner {
+    margin-inline: auto;
+
+    @include mq('md') {
+        max-width: rem(700);
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+}
 
 .page-price::before{
     position: absolute;

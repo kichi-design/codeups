@@ -1,19 +1,28 @@
 @use "global" as *;
 
-// ----------------------------------------
-// page-contact.scss
-// ----------------------------------------
-.page-contact{
+.page-contact {
     position: relative;
     max-width: rem(600);
     margin-left: auto;
     margin-right: auto;
-    @include mq('md'){
+
+    @include mq('md') {
         max-width: 100%;
     }
 }
 
-.page-contact::before{
+.page-contact__inner {
+    margin-inline: auto;
+
+    @include mq('md') {
+        max-width: rem(700);
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+.page-contact::before {
     position: absolute;
     content: '';
     display: inline-block;
@@ -26,7 +35,8 @@
     background-repeat: no-repeat;
     top: rem(-24);
     left: calc(50% - max(45.5%, rem(172)));
-    @include mq('md'){
+
+    @include mq('md') {
         width: rem(301);
         height: rem(138);
         aspect-ratio: 301 / 138;
@@ -35,12 +45,12 @@
     }
 }
 
-.page-contact__content{
-    @include mq('md'){
-        max-width: rem(700);
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-    
-    }
-}
+// .page-contact__content{
+//     @include mq('md'){
+//         max-width: rem(700);
+//         width: 100%;
+//         margin-left: auto;
+//         margin-right: auto;
+
+//     }
+// }

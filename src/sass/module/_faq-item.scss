@@ -1,17 +1,13 @@
 @use "global" as *;
 
-// ----------------------------------------
-// faq-item.scss
-// ----------------------------------------
-
-.faq-item{
-    @include mq('md'){
-        max-width: rem(700);
-        width: 100%;
-        margin-right: auto;
-        margin-left: auto;
-    }
-}
+// .faq-item{
+//     @include mq('md'){
+//         max-width: rem(700);
+//         width: 100%;
+//         margin-right: auto;
+//         margin-left: auto;
+//     }
+// }
 
 .faq-item__question-wrapper{
     position: relative;
