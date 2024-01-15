@@ -351,4 +351,57 @@ jQuery(function ($) { // この中であればWordpressでも「$」が使用可
             event.preventDefault();
         });
     }
+
+
+    // ダイビング情報ページ　フッターリンクからタブ先へ遷移
+    document.addEventListener("DOMContentLoaded", function () {
+        // URLからsearchParamsを取得
+        var urlSearchParams = new URLSearchParams(window.location.search);
+
+        // searchParamsからidを取得
+        var idParam = urlSearchParams.get("id");
+
+        // idParamが存在する場合は、対応するタブを表示
+        if (idParam) {
+            showTabById(idParam);
+        }
+
+        // クリックイベントをフッターメニューに対してリッスン
+        var tabLinks = document.querySelectorAll(".tab-link");
+        tabLinks.forEach(function (tabLink) {
+            tabLink.addEventListener("click", function (event) {
+                event.preventDefault();
+
+                // クリックされたリンクのhrefと対応するidを取得
+                var href = tabLink.getAttribute("href");
+                var targetId = href.substring(1);
+
+                // 対応するタブの表示・非表示を切り替え
+                showTabById(targetId);
+
+                // URLを更新（履歴に追加）することで、ブラウザのバックやリロードに対応
+                history.pushState(null, null, window.location.pathname + "?id=" + targetId);
+            });
+        });
+
+        // すべてのタブを非表示にする関数
+        function hideAllTabs() {
+            var allTabs = document.querySelectorAll(".tab-content");
+            allTabs.forEach(function (tab) {
+                tab.classList.remove("active-tab");
+            });
+        }
+
+        // idに対応するタブを表示する関数
+        function showTabById(id) {
+            hideAllTabs();
+            var targetTab = document.getElementById(id);
+            if (targetTab) {
+                targetTab.classList.add("active-tab");
+            }
+        }
+    });
+
+
+
 });
