@@ -44,6 +44,7 @@
     width: 100%;
     border: solid 1px $accent;
     background-color: $white;
+    transition: 0.3s background-color;
 }
 
 .tabs__item.active {

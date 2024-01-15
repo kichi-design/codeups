@@ -53,6 +53,7 @@
         padding-bottom: rem(25);
         padding-left: rem(72);
         position: relative;
+        transition: 0.3s background-color;
     }
 }
 
@@ -98,12 +99,12 @@
 }
 
 .tabs-information__item:nth-child(2).is-active a::before {
-    background-image: url('../images/common/info-tab-license.svg');
+    background-image: url('../images/common/info-tab-fun-white.svg');
     left: rem(17);
 }
 
 .tabs-information__item:nth-child(3).is-active a::before {
-    background-image: url('../images/common/info-tab-license.svg');
+    background-image: url('../images/common/info-tab-experience-white.svg');
 }
 
 .tabs-information__item.is-active {
@@ -132,12 +133,12 @@
 
 .tabs-information__item:hover {
     &.tabs-information__item:nth-child(2) a::before {
-        background-image: url('../images/common/info-tab-license.svg');
+        background-image: url('../images/common/info-tab-fun-white.svg');
     }
 }
 
 .tabs-information__item:hover {
     &.tabs-information__item:nth-child(3) a::before {
-        background-image: url('../images/common/info-tab-license.svg');
+        background-image: url('../images/common/info-tab-experience-white.svg');
     }
 }
