@@ -26,6 +26,7 @@
   aspect-ratio: 301 / 201;
   max-width: rem(301);
   position: relative;
+  overflow: hidden;
 }
 
 .blog-card__image img {

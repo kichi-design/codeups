@@ -179,112 +179,24 @@ jQuery(function ($) { // この中であればWordpressでも「$」が使用可
     });
 
     // ----------------------------------------
-    // タブメニュー　キャンペーン
-    // ----------------------------------------
-    // 自分で追加した部分（初めにallを表示させるため）
-    // $(window).on('load', function () {
-    //     // 関連するコンテンツを表示する
-    //     $('#all').addClass("is-active");
-    //     var hashName = location.hash;
-    //     GethashID(hashName);
-    // });
-
-    // // 最初のタブをアクティブにする
-    // $('#all').addClass("active");
-
-    // // ここまで自分で追加した部分
-
-    // //任意のタブにURLからリンクするための設定
-    // function GethashID (hashIDName){
-    // 	if(hashIDName){
-    // 		//タブ設定
-    // 		$('.tabs li').find('a').each(function() { //タブ内のaタグ全てを取得
-    // 			var idName = $(this).attr('href'); //タブ内のaタグのリンク名（例）#lunchの値を取得	
-    // 			if(idName == hashIDName){ //リンク元の指定されたURLのハッシュタグ（例）http://example.com/#lunch←この#の値とタブ内のリンク名（例）#lunchが同じかをチェック
-    // 				var parentElm = $(this).parent(); //タブ内のaタグの親要素（li）を取得
-    // 				$('.tabs li').removeClass("active"); //タブ内のliについているactiveクラスを取り除き
-    // 				$(parentElm).addClass("active"); //リンク元の指定されたURLのハッシュタグとタブ内のリンク名が同じであれば、liにactiveクラスを追加
-    // 				//表示させるエリア設定
-    // 				$(".tab-area").removeClass("is-active"); //もともとついているis-activeクラスを取り除き
-    // 				$(hashIDName).addClass("is-active"); //表示させたいエリアのタブリンク名をクリックしたら、表示エリアにis-activeクラスを追加	
-    // 			}
-    // 		});
-    // 	}
-    // }
-
-    // //タブをクリックしたら
-    // $('.tabs a').on('click', function() {
-    // 	var idName = $(this).attr('href'); //タブ内のリンク名を取得	
-    // 	GethashID (idName);//設定したタブの読み込みと
-    // 	return false;//aタグを無効にする
-    // });
-
-
-    // 上記の動きをページが読み込まれたらすぐに動かす
-    // $(window).on('load', function () {
-    //     $('.tabs li:first-of-type').addClass("active"); //最初のliにactiveクラスを追加
-    //     $('.tab-area:first-of-type').addClass("is-active"); //最初の.areaにis-activeクラスを追加
-    // 	var hashName = location.hash; //リンク元の指定されたURLのハッシュタグを取得
-    // 	GethashID (hashName);//設定したタブの読み込み
-    // });
-
-
-    // ----------------------------------------
     // タブメニュー インフォメーション
     // ----------------------------------------
-    // 任意のタブにURLからリンクするための設定
-    // function GethashID(hashIDName) {
-    //     if (hashIDName) {
-    //         //タブ設定
-    //         $('.tabs-information li').find('a').each(function () { //タブ内のaタグ全てを取得
-    //             var idName = $(this).attr('href'); //タブ内のaタグのリンク名（例）#lunchの値を取得	
-    //             if (idName == hashIDName) { //リンク元の指定されたURLのハッシュタグ（例）http://example.com/#lunch←この#の値とタブ内のリンク名（例）#lunchが同じかをチェック
-    //                 var parentElm = $(this).parent(); //タブ内のaタグの親要素（li）を取得
-    //                 $('.tabs-information li').removeClass("active"); //タブ内のliについているactiveクラスを取り除き
-    //                 $(parentElm).addClass("active"); //リンク元の指定されたURLのハッシュタグとタブ内のリンク名が同じであれば、liにactiveクラスを追加
-    //                 //表示させるエリア設定
-    //                 $(".tab-information-area").removeClass("is-active"); //もともとついているis-activeクラスを取り除き
-    //                 $(hashIDName).addClass("is-active"); //表示させたいエリアのタブリンク名をクリックしたら、表示エリアにis-activeクラスを追加	
-    //             }
-    //         });
-    //     }
-    // }
+    // $(document).ready(function () {
+    //     // 最初のタブとエリアにis-activeクラスを追加
+    //     var initialTab = $('.tabs-information__item:first-of-type a').attr('href');
+    //     $(initialTab).addClass('is-active');
+    //     $('.tabs-information__item:first-of-type').addClass('is-active');
 
-    // //タブをクリックしたら
-    // $('.tabs-information a').on('click', function () {
-    //     var idName = $(this).attr('href'); //タブ内のリンク名を取得	
-    //     GethashID(idName);//設定したタブの読み込みと
-    //     return false;//aタグを無効にする
+    //     // タブをクリックしたときの処理
+    //     $('.tabs-information a').on('click', function () {
+    //         var idName = $(this).attr('href');
+    //         $('.tab-information-area').removeClass('is-active');
+    //         $(idName).addClass('is-active');
+    //         $('.tabs-information__item').removeClass('is-active');
+    //         $(this).parent().addClass('is-active');
+    //         return false;
+    //     });
     // });
-
-
-    // // 上記の動きをページが読み込まれたらすぐに動かす
-    // $(window).on('load', function () {
-    //     $('.tabs-information li:first-of-type').addClass("active"); //最初のliにactiveクラスを追加
-    //     $('.tab-information-area:first-of-type').addClass("is-active"); //最初の.areaにis-activeクラスを追加
-    //     var hashName = location.hash; //リンク元の指定されたURLのハッシュタグを取得
-    //     GethashID(hashName);//設定したタブの読み込み
-    // });
-
-    // ----------------------------------------
-    // タブメニュー インフォメーション
-    // ----------------------------------------
-    $(document).ready(function () {
-        // 最初のタブとエリアにis-activeクラスを追加
-        var initialTab = $('.tabs-information__item:first-of-type a').attr('href');
-        $(initialTab).addClass('is-active');
-        $('.tabs-information__item:first-of-type').addClass('is-active');
-
-        // タブをクリックしたときの処理
-        $('.tabs-information a').on('click', function () {
-            var idName = $(this).attr('href');
-            $('.tab-information-area').removeClass('is-active');
-            $(idName).addClass('is-active');
-            $('.tabs-information__item').removeClass('is-active');
-            $(this).parent().addClass('is-active');
-            return false;
-        });
-    });
     // ----------------------------------------
     // formエラー
     // ----------------------------------------
@@ -352,54 +264,56 @@ jQuery(function ($) { // この中であればWordpressでも「$」が使用可
         });
     }
 
-
+    // ----------------------------------------
+    // タブメニュー インフォメーション
     // ダイビング情報ページ　フッターリンクからタブ先へ遷移
-    document.addEventListener("DOMContentLoaded", function () {
-        // URLからsearchParamsを取得
-        var urlSearchParams = new URLSearchParams(window.location.search);
+    // ----------------------------------------
+    $(function () {
+        // URLからクエリパラメータを取得
+        var urlParams = new URLSearchParams(window.location.search);
+        var tabParam = urlParams.get('id');
 
-        // searchParamsからidを取得
-        var idParam = urlSearchParams.get("id");
+        // ページ内のタブとメニューの要素を取得
+        var $tabs = $('.tabs-information__item');
+        var $tabContents = $('.tab-information-area');
 
-        // idParamが存在する場合は、対応するタブを表示
-        if (idParam) {
-            showTabById(idParam);
-        }
+        // クエリパラメータがある場合
+        if (tabParam) {
+            // タブの非表示・非アクティブ化
+            $tabs.removeClass('is-active');
+            $tabContents.removeClass('is-active');
 
-        // クリックイベントをフッターメニューに対してリッスン
-        var tabLinks = document.querySelectorAll(".tab-link");
-        tabLinks.forEach(function (tabLink) {
-            tabLink.addEventListener("click", function (event) {
-                event.preventDefault();
+            // クエリパラメータに対応するタブが存在するか確認
+            var $matchingTab = $tabs.has('a[href="#' + tabParam + '"]');
+            if ($matchingTab.length > 0) {
+                // タブをアクティブにする
+                $matchingTab.addClass('is-active');
 
-                // クリックされたリンクのhrefと対応するidを取得
-                var href = tabLink.getAttribute("href");
-                var targetId = href.substring(1);
-
-                // 対応するタブの表示・非表示を切り替え
-                showTabById(targetId);
-
-                // URLを更新（履歴に追加）することで、ブラウザのバックやリロードに対応
-                history.pushState(null, null, window.location.pathname + "?id=" + targetId);
-            });
-        });
-
-        // すべてのタブを非表示にする関数
-        function hideAllTabs() {
-            var allTabs = document.querySelectorAll(".tab-content");
-            allTabs.forEach(function (tab) {
-                tab.classList.remove("active-tab");
-            });
-        }
-
-        // idに対応するタブを表示する関数
-        function showTabById(id) {
-            hideAllTabs();
-            var targetTab = document.getElementById(id);
-            if (targetTab) {
-                targetTab.classList.add("active-tab");
+                // クエリパラメータに対応するタブのコンテンツを表示
+                $('#' + tabParam).addClass('is-active');
             }
+        } else {
+            // クエリパラメータがない場合はデフォルトの処理を行う
+            // ここでは最初のタブを表示
+            $tabs.first().addClass('is-active');
+            $tabContents.first().addClass('is-active');
         }
+
+        // タブをクリックしたときの処理
+        $tabs.find('a').on('click', function (event) {
+            event.preventDefault();
+            var tabId = $(this).attr('href').substring(1);
+
+            // タブの非表示・非アクティブ化
+            $tabs.removeClass('is-active');
+            $tabContents.removeClass('is-active');
+
+            // クリックされたタブをアクティブにする
+            $(this).parent().addClass('is-active');
+
+            // クリックされたタブに対応するコンテンツを表示
+            $('#' + tabId).addClass('is-active');
+        });
     });
 
 
