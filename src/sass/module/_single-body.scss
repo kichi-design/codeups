@@ -53,7 +53,7 @@
     }
 }
 
-.single-body p {
+.single-body__content p {
     margin-top: rem(24);
 
     @include mq('md') {
@@ -61,7 +61,7 @@
     }
 }
 
-.single-body ul {
+.single-body__content ul {
     margin-top: rem(24);
 
     @include mq('md') {
@@ -69,16 +69,16 @@
     }
 }
 
-.single-body li {
+.single-body__content li {
     padding-left: rem(27);
     position: relative;
 }
 
-.single-body li+.single-body li {
+.single-body__content li+.single-body__content li {
     margin-top: rem(3);
 }
 
-.single-body li::before {
+.single-body__content li::before {
     content: '';
     display: inline-block;
     position: absolute;
