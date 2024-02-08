@@ -1,0 +1,39 @@
+@use "global" as *;
+
+// ----------------------------------------
+// page-about-gallery.scss
+// ----------------------------------------
+.page-about-gallery{
+    position: relative;
+}
+
+.page-about-gallery::before{
+    display: none;
+    @include mq('md'){
+        position: absolute;
+        content: '';
+        display: inline-block;
+        width: rem(301);
+        height: rem(138);
+        aspect-ratio: 301 / 138;
+        background-image: url('../images/common/gallery-fish.png');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index: 10;
+        top: rem(-80);
+        right: calc(50% - min(48%, rem(640)));
+    }
+}
+
+.page-about-gallery__inner{
+    max-width: rem(600);
+
+}
+
+.page-about-gallery__container{
+    margin-top: rem(40);
+    @include mq('md'){
+        margin-top: rem(80);
+        }
+}

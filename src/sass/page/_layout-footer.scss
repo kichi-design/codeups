@@ -1,0 +1,32 @@
+@use "global" as *;
+
+// ----------------------------------------
+// layout-footer.scss
+// ----------------------------------------
+.layout-footer{
+  margin-top: rem(103);
+  @include mq('md'){
+    margin-top: rem(160);
+  }
+}
+
+.layout-footer--contact{
+  margin-top: rem(148);
+  @include mq('md'){
+    margin-top: rem(163);
+  }
+}
+
+.layout-footer--thanks{
+  margin-top: rem(139);
+  @include mq('md'){
+    margin-top: rem(120);
+  }
+}
+
+.layout-footer--404{
+  margin-top: rem(42);
+  @include mq('md'){
+    margin-top: rem(150);
+  }
+}

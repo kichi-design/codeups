@@ -1,0 +1,84 @@
+@use "global" as *;
+
+.blog {
+  position: relative;
+}
+
+.blog::after {
+  display: none;
+
+  @include mq('md') {
+    content: '';
+    position: absolute;
+    display: inline-block;
+    width: rem(375);
+    height: rem(121);
+    aspect-ratio: 375 / 121;
+    background-image: url('../images/common/fish-blog.svg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    top: rem(25);
+    left: calc(50% - min(rem(620), 48%));
+    z-index: 10;
+  }
+}
+
+.blog__inner {
+  max-width: rem(600);
+}
+
+.blog::before {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  background-image: url(../images/common/blog1.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+
+  @include mq('md') {
+    height: auto;
+    max-height: rem(500);
+    aspect-ratio: 1440 / 500;
+  }
+}
+
+.blog__items {
+  margin-top: rem(28);
+
+  @include mq('md') {
+    margin-top: rem(80);
+  }
+}
+
+.blog-cards {
+  display: grid;
+  row-gap: rem(40);
+
+  @include mq('md') {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: rem(40);
+    row-gap: rem(80);
+  }
+}
+
+.blog-cards--2col {
+  @include mq('md') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.blog__button {
+  margin-top: rem(40);
+  text-align: center;
+
+  @include mq('md') {
+    margin-top: rem(80);
+  }
+}

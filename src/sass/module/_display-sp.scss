@@ -1,0 +1,18 @@
+@use "global" as *;
+
+// ----------------------------------------
+// display.scss *表示非表示
+// ----------------------------------------
+.display__sp{
+  display: block;
+  @include mq('md'){
+    display: none;
+  }
+}
+
+.display__pc{
+  display: none;
+  @include mq('md'){
+    display: block;
+  }
+}

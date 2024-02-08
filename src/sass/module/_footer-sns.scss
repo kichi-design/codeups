@@ -1,0 +1,38 @@
+@use "global" as *;
+
+// ----------------------------------------
+// footer-sns.scss
+// ----------------------------------------
+.footer-sns{
+  display: flex;
+}
+
+.footer-sns__facebook img{
+  max-width: rem(24);
+  width: 100%;
+  @include mq('md'){
+    max-width: rem(32);
+  }
+}
+
+.footer-sns__instagram img{
+  max-width: rem(24);
+  width: 100%;
+  @include mq('md'){
+    max-width: rem(32);
+  }
+}
+
+.footer-sns__facebook{
+  padding-left: 0;
+  padding-right: rem(8);
+  @include mq('md'){
+    padding-left: rem(8);
+    padding-right: rem(8);
+  }
+}
+
+.footer-sns__instagram{
+  padding-left: rem(8);
+  padding-right: rem(8);
+}

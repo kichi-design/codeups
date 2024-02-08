@@ -1,0 +1,54 @@
+@use "global" as *;
+
+// ----------------------------------------
+// campaign.scss
+// ----------------------------------------
+// swiperの右側をはみ出させるために
+// ↓ .swiperのoverflow: hidden; を visible。
+// ↓ 親要素に overflow: hidden;
+// 親要素にinner幅を超える記述
+
+.campaign{
+  overflow: hidden;
+}
+
+campaign__swiper{
+  overflow: visible;
+}
+
+.campaign__inner{
+  max-width: rem(600);
+}
+
+.campaign__items{
+  position: relative;
+  margin-top: rem(28);
+  // swiperの右側をはみ出させるために
+  // .swiperのoverflow: hidden; を visible
+  // 親要素に overflow: hidden;
+  // ↓ inner幅を超える記述
+  margin-right: calc(50% - 50vw);
+  width: 100vw;
+  @include mq('md'){
+  margin-top: rem(41);
+  }
+}
+
+.campaign__wrapper{
+  //テキストが増えた時の値段の下つけのため。.campaign-cardにも  height: 100%;
+  height: 100%;
+  // スライド下のboxshadowが消えるのを防ぐ
+  padding-bottom: rem(5);
+  @include mq('md'){
+  }
+}
+
+.campaign__button{
+  text-align: center;
+  margin-top: rem(35);
+  // ボタンの装飾下線が消えていたので追加※他のボタンは大丈夫だったけど。。
+  padding-bottom: rem(3);
+  @include mq('md'){
+  margin-top: rem(75);
+  }
+}

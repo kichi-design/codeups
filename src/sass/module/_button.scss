@@ -1,0 +1,142 @@
+@use "global" as *;
+
+// ----------------------------------------
+// button.scss
+// ----------------------------------------
+.button{
+  position: relative;
+  display: inline-block;
+  font-size: rem(14);
+  color: $white;
+  background-color: $accent;
+  border: solid 1px $accent;
+  font-family: $second-font-family;
+  padding-top: rem(16);
+  padding-right: rem(88);
+  padding-bottom: rem(16);
+  padding-left: rem(40);
+  z-index: 1;
+}
+
+.button::before{
+  content: '';
+  position: absolute;
+  display: inline-block;
+  border: solid 1px $accent;
+  width: 100%;
+  height: 100%;
+  top: rem(4);
+  left: rem(4);
+  z-index: -2;
+}
+
+.button::after {
+  display: inline-block;
+  background-color: $white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: 100%;
+  transform: scale(0, 1);
+  transform-origin: left top;
+  transition: .2s cubic-bezier(0.45, 0, 0.55, 1);
+  z-index: -1;
+}
+
+.button span::after{
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 47%;
+  // top: 50%;
+  transform: translateY(-50%);
+  right: rem(40);
+  width: rem(40);
+  height: rem(6);
+  background-image: url('../images/common/more.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 1;
+}
+
+.button span::before{
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: rem(40);
+  width: rem(40);
+  height: rem(6);
+  background-image: url('../images/common/more-accent.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  z-index: 1;
+}
+
+@media (hover: hover) {
+  .button:hover {
+    color: $accent;
+
+    &.button span::before{
+        opacity: 1;
+      }
+    &.button span::after{
+        opacity: 0;
+      }
+  }
+
+  .button:hover::after {
+    transform: scale(1, 1);
+  }
+}
+
+.button.button--contact-form span::after{
+  right: rem(56);
+}
+
+.button.button--contact-form span::before{
+  right: rem(56);
+}
+
+.button--contact-form span{
+  letter-spacing: -0.03em;
+  text-indent: -0.03em;
+}
+
+// ----------------------------------------
+// 白背景
+// ----------------------------------------
+
+.button--white{
+  color: $accent;
+  background-color: $white;
+  border: solid 1px $white;
+}
+
+.button--white::before{
+  border: solid 1px $white;
+}
+
+.button--white::after {
+  background-color: $accent;
+}
+
+.button--white span::after{
+  background-image: url('../images/common/more-accent.svg');
+}
+
+.button--white span::before{
+  background-image: url('../images/common/more.svg');
+}
+
+@media (hover: hover) {
+  .button--white:hover {
+    color: $white;
+  }
+}

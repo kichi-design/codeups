@@ -1,0 +1,43 @@
+@use "global" as *;
+
+// ----------------------------------------
+// price-card.scss
+// ----------------------------------------
+.price-card__title{
+    font-size: rem(16);
+    font-weight: $bold;
+    padding-bottom: rem(4);
+    border-bottom: solid 1px $accent;
+    @include mq('md'){
+        padding-bottom: rem(4);
+    }
+}
+
+.price-card__text{
+    display: flex;
+    margin-top: rem(8);
+}
+
+.price-card__text + .price-card__text{
+    margin-top: rem(11);
+    @include mq('md'){
+        margin-top: rem(8);
+    }
+}
+
+.price-card__text dt{
+    font-size: rem(14);
+    font-weight: $regular;
+    @include mq('md'){
+        font-size: rem(16);
+    }
+}
+.price-card__text dd{
+    font-size: rem(14);
+    padding-left: rem(30);
+    margin-left: auto;
+    @include mq('md'){
+        font-size: rem(16);
+    }
+}
+

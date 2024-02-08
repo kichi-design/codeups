@@ -1,0 +1,95 @@
+@use "global" as *;
+
+// 日付、タイトル、アイキャッチ画像
+// 動的な部分ではなく固定的な部分。管理画面から入力された情報を自動的に反映させる
+.single-body__image {
+    aspect-ratio: 345 / 231;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    @include mq('md') {
+        aspect-ratio: 700 / 468;
+        // max-width: rem(700);
+        width: 100%;
+    }
+}
+
+.single-body__time {
+    font-size: rem(14);
+    line-height: calc(18 /14);
+    font-family: $second-font-family;
+}
+
+
+.single-body__title {
+    font-size: rem(24);
+    margin-top: rem(8);
+    font-weight: $normal;
+    border-bottom: solid 1px $accent;
+    padding-bottom: rem(3);
+
+    @include mq('md') {
+        font-size: rem(32);
+        margin-top: rem(6);
+        padding-bottom: 0;
+    }
+}
+
+// ここからが動的な部分
+.single-body__content img {
+    aspect-ratio: 345 / 231;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin-top: rem(24);
+
+
+    @include mq('md') {
+        aspect-ratio: 700 / 468;
+        // max-width: rem(700);
+        width: 100%;
+        margin-top: rem(40);
+
+    }
+}
+
+.single-body__content p {
+    margin-top: rem(24);
+
+    @include mq('md') {
+        margin-top: rem(40);
+    }
+}
+
+.single-body__content ul {
+    margin-top: rem(24);
+
+    @include mq('md') {
+        margin-top: rem(40);
+    }
+}
+
+.single-body__content li {
+    padding-left: rem(27);
+    position: relative;
+}
+
+.single-body__content li+.single-body__content li {
+    margin-top: rem(3);
+}
+
+.single-body__content li::before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    background-image: url('../images/common/single-hitode.svg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: rem(18);
+    height: rem(18);
+}

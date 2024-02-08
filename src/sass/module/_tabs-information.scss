@@ -1,0 +1,144 @@
+@use "global" as *;
+
+// ----------------------------------------
+//  tabs-information".scss
+// ----------------------------------------
+// ----------------------------------------
+// タブメニュー
+// ----------------------------------------
+.tabs-information {
+    position: relative;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: rem(19);
+    width: 100%;
+
+    @include mq('md') {
+        gap: rem(90);
+        justify-content: flex-start;
+
+    }
+}
+
+.tabs-information__item {
+    text-align: center;
+
+    @include mq('md') {
+        width: 100%;
+    }
+}
+
+.tabs-information__item.is-active {
+    &.tabs-information__item a {
+        background-color: #408F95;
+        box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.25);
+        color: #fff;
+        transition: 0.3s;
+    }
+}
+
+.tabs-information__item a {
+    display: inline-block;
+    font-size: rem(14);
+    color: $accent;
+    padding-top: rem(9);
+    padding-bottom: rem(7);
+    width: 100%;
+    background-color: #DDF0F1;
+
+    @include mq('md') {
+        font-size: rem(24);
+        padding-top: rem(26);
+        padding-bottom: rem(25);
+        padding-left: rem(72);
+        position: relative;
+        transition: 0.3s background-color;
+    }
+}
+
+// ----------------------------------------
+// タブメニューのアイコン
+
+
+.tabs-information__item a::before {
+    @include mq('md') {
+        position: absolute;
+        content: '';
+        display: inline-block;
+        width: rem(64);
+        height: rem(64);
+        top: 50%;
+        transform: translateY(-50%);
+        left: rem(29);
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+}
+
+.tabs-information__item:nth-child(1) a::before {
+    background-image: url('../images/common/info-tab-license-green.svg');
+}
+
+.tabs-information__item:nth-child(2) a::before {
+    background-image: url('../images/common/info-tab-fun.svg');
+    left: rem(17);
+}
+
+.tabs-information__item:nth-child(3) a::before {
+    background-image: url('../images/common/info-tab-experience.svg');
+}
+
+// ----------------------------------------
+// タブメニューをアクティブにした時
+
+
+.tabs-information__item:nth-child(1).is-active a::before {
+    background-image: url('../images/common/info-tab-license.svg');
+}
+
+.tabs-information__item:nth-child(2).is-active a::before {
+    background-image: url('../images/common/info-tab-fun-white.svg');
+    left: rem(17);
+}
+
+.tabs-information__item:nth-child(3).is-active a::before {
+    background-image: url('../images/common/info-tab-experience-white.svg');
+}
+
+.tabs-information__item.is-active {
+    &.tabs-information__item a {
+        color: $white;
+        background-color: $accent;
+        box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.25);
+    }
+}
+
+// ----------------------------------------
+// タブメニューをホバーした時
+
+.tabs-information__item:hover a {
+    background-color: $accent;
+    color: $white;
+    transition: .3s;
+    box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.25);
+}
+
+.tabs-information__item:hover {
+    &.tabs-information__item:nth-child(1) a::before {
+        background-image: url('../images/common/info-tab-license.svg');
+    }
+}
+
+.tabs-information__item:hover {
+    &.tabs-information__item:nth-child(2) a::before {
+        background-image: url('../images/common/info-tab-fun-white.svg');
+    }
+}
+
+.tabs-information__item:hover {
+    &.tabs-information__item:nth-child(3) a::before {
+        background-image: url('../images/common/info-tab-experience-white.svg');
+    }
+}

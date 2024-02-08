@@ -1,0 +1,15 @@
+@use "global" as *;
+
+
+.single-main {
+    max-width: rem(600);
+    margin-right: rem(0);
+    margin-left: rem(0);
+
+    @include mq('md') {
+        margin-top: rem(-7);
+        margin-right: 0;
+        margin-left: 0;
+        max-width: 100%;
+    }
+}

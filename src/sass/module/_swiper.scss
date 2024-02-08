@@ -1,0 +1,58 @@
+@use "global" as *;
+
+// ----------------------------------------
+// swiper.scss
+// ----------------------------------------
+
+// テキストが増えたときに、カードの高さを揃える為に必要。 .campaign__itemにも記述。
+.swiper-slide{
+    height: auto;
+}
+
+/* 前へ次への矢印カスタマイズ */
+.swiper-button-prev,
+.swiper-button-next {
+    display: none;
+    @include mq('md'){
+        display: flex;
+        height: 80px;
+        width: 80px;
+        position: absolute;
+    }
+}
+
+.swiper-button-prev{
+    top: rem(-83);
+    left: min(rem(840), calc(50% + rem(120)));
+    // left: calc(50% + rem(120));
+    // right: calc(50% - rem(120));
+
+}
+
+.swiper-button-next{
+    top: rem(-83);
+    left: min(rem(1000), calc(50% + rem(280)));
+    // left: calc(50% + rem(280));
+
+}
+
+/* 前へ次への矢印カスタマイズ */
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    background-repeat: no-repeat;
+    background-size: contain;
+    content: "";
+    height: rem(80);
+    margin: auto;
+    width: rem(80);
+}
+
+/* 前への矢印カスタマイズ */
+.swiper-button-prev::after {
+    background-image: url('../images/common/campaign-left.svg');
+}
+
+/* 次への矢印カスタマイズ */
+.swiper-button-next::after {
+    background-image: url('../images/common/campaign-right.svg');
+}

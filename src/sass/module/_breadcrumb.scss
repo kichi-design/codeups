@@ -1,0 +1,21 @@
+@use "global" as *;
+
+// ----------------------------------------
+// breadcrumb.scss
+// ----------------------------------------
+.breadcrumb {
+  font-size: rem(14);
+}
+
+.breadcrumb--404 {
+  color: $white;
+  margin-top: rem(88);
+
+  @include mq('md') {
+    margin-top: rem(98);
+  }
+}
+
+.breadcrumb__error {
+  display: none;
+}

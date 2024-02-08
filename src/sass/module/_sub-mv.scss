@@ -1,0 +1,30 @@
+@use "global" as *;
+
+// ----------------------------------------
+// sub-mv.scss
+// ----------------------------------------
+.sub-mv{
+    position: relative;
+    width: 100%;
+    height: rem(460);
+    @include mq('md'){
+        height: rem(548);
+        }
+}
+
+.sub-mv__image{
+    height: rem(460);
+    @include mq('md'){
+        height: rem(548);
+        }
+
+}
+
+.sub-mv__image img{
+    object-fit: cover;
+    width: 100%;
+    height: rem(460);
+    @include mq('md'){
+        height: rem(548);
+        }
+}

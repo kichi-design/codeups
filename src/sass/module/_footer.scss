@@ -1,0 +1,71 @@
+@use "global" as *;
+
+// ----------------------------------------
+// footer.scss
+// ----------------------------------------
+.footer{
+  background-color: $accent;
+  padding-top: rem(48);
+  padding-bottom: rem(56);
+  @include mq('md'){
+    padding-top: rem(80);
+    padding-bottom: rem(80);
+  }
+
+}
+
+.footer-inner{
+  max-width: rem(373);
+}
+
+.footer__title{
+
+  @include mq('md'){
+    display: flex;
+  }
+}
+
+.footer__logo{
+  display: inline-block;
+  @include mq('md'){
+    max-width: rem(200);
+    width: 100%;
+
+  }
+}
+
+.footer__logo img{
+  max-width: rem(120);
+  width: 100%;
+  @include mq('md'){
+    max-width: rem(200);
+  }
+}
+
+.footer__sns{
+  margin-top: rem(12);
+  @include mq('md'){
+    margin-left: rem(32);
+    margin-top: rem(38);
+  }
+}
+
+.footer__nav{
+  margin-top: rem(27);
+  @include mq('md'){
+    margin-top: rem(13);
+  }
+}
+
+.footer__copyright{
+  font-family: $second-font-family;
+  font-size: rem(12);
+  color: $white;
+  white-space: nowrap;
+  margin-top: rem(22);
+  text-align: center;
+  @include mq('md'){
+    margin-top: rem(66);
+    font-size: rem(14);
+  }
+}

@@ -1,0 +1,26 @@
+@use "global" as *;
+
+// ----------------------------------------
+// sub-mv-header.scss
+// ----------------------------------------
+.sub-mv-header{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    @include mq('md'){
+        margin-top: rem(50);
+        }
+}
+
+.sub-mv-header__title{
+    width: 100%;
+    font-size: rem(40);
+    color: $white;
+    font-family: $fourth-font-family;
+    @include mq('md'){
+        font-size: rem(80);
+    }
+}

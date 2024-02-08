@@ -1,0 +1,135 @@
+@use "global" as *;
+
+// ----------------------------------------
+// header.scss
+// ----------------------------------------
+.header{
+    z-index: 1000;
+}
+
+.header__hamburger{
+    z-index: 1000;
+    margin-left: auto;
+    padding-left: 0;
+    padding-right: 0;
+    @include mq('md'){
+        display: none;
+    }
+}
+
+.header__hamburger span{
+    position: relative;
+    display: block;
+    height: rem(1);
+    width: rem(32);
+    background-color: $white;
+    transition: ease .5s;
+}
+
+.header__hamburger span:nth-child(1){
+    top: 0;
+}
+
+.header__hamburger span:nth-child(2){
+    margin-top: rem(12);
+    margin-bottom: rem(12);
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.header__hamburger span:nth-child(3){
+    top: 0;
+}
+
+// ----------------------------------------
+// is-open時の動き
+// ----------------------------------------
+body.is-open{
+    height: 100%;
+    overflow: hidden;
+}
+
+.header__hamburger.is-open span{
+    width: rem(40);
+}
+
+.header__hamburger.is-open span:nth-child(1){
+    top: rem(13);
+    right: rem(-4);
+    transform: rotate(37deg);
+}
+
+.header__hamburger.is-open span:nth-child(2){
+    transform: translateY(-50%);
+    opacity: 0;
+}
+
+.header__hamburger.is-open span:nth-child(3){
+    top: rem(-13);
+    right: rem(-4);
+    transform: rotate(-37deg);
+}
+
+// ----------------------------------------
+// headerのデザイン
+// ----------------------------------------
+.header{
+    background-color: rgba(13,41,54,0.68);
+    height: rem(80);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    @include mq('md'){
+        height: rem(90);
+    }
+}
+
+.header__inner{
+    display: flex;
+    height: inherit;
+    padding-left: rem(15);
+    padding-right: rem(15);
+    @include mq('md'){
+        padding-left: rem(40);
+        padding-right: rem(20);
+        align-items: center;
+    }
+}
+
+.header__title{
+    width: rem(102);
+    height: inherit;
+    margin-right: auto;
+    z-index: 1000;
+    @include mq('md'){
+        width: rem(133);
+    }
+}
+
+.header__logo{
+    width: auto;
+    height: inherit;
+    display: flex;
+    align-items: center;
+}
+
+// ----------------------------------------
+// スマホのドロワーメニュー（全体を覆うやつ）
+// ----------------------------------------
+.header__sp-nav{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 900;
+    background-color: $accent;
+
+    // 余白調整
+    padding-top: rem(92);
+    // padding-bottom: rem(114);
+}
