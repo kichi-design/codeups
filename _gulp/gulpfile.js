@@ -161,9 +161,9 @@ const jsBabel = () => {
 // ブラウザーシンク
 const browserSyncOption = {
   notify: false,
-  server: "../dist/",
+  // server: "../dist/",
   //WordPressの場合は↓を有効にする。その場合、↑(server)はコメントアウトする。
-  // proxy: "codeups-new.local", // ローカルサーバーのURL（WordPress）
+  proxy: "codeups-new.local", // ローカルサーバーのURL（WordPress）
 };
 const browserSyncFunc = () => {
   browserSync.init(browserSyncOption);
