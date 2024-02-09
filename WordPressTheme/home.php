@@ -43,38 +43,16 @@
         </div>
         <!-- ページネーション -->
         <div class="blog-column__pagination">
-            <ul class="pagination">
-            <li class="pagination__item">
-                <a class="pagination__link pagination__link-icon" href="#">
-                <img class="Pagination__icon" src="<?php echo get_theme_file_uri(); ?>/assets/images/common/pagination-prev.svg" alt="前への矢印"
-                    decoding="async">
-                </a>
-            </li>
-            <li class="pagination__item">
-                <a class="pagination__link is-active" href="#"><span>1</span></a>
-            </li>
-            <li class="pagination__item">
-                <a class="pagination__link" href="#"><span>2</span></a>
-            </li>
-            <li class="pagination__item">
-                <a class="pagination__link" href="#"><span>3</span></a>
-            </li>
-            <li class="pagination__item">
-                <a class="pagination__link" href="#"><span>4</span></a>
-            </li>
-            <li class="pagination__item u-desktop">
-                <a class="pagination__link" href="#"><span>5</span></a>
-            </li>
-            <li class="pagination__item u-desktop">
-                <a class="pagination__link" href="#"><span>6</span></a>
-            </li>
-            <li class="pagination__item">
-                <a class="pagination__link pagination__link-icon" href="#">
-                <img class="Pagination__icon" src="<?php echo get_theme_file_uri(); ?>/assets/images/common/pagination-next.svg" alt="次への矢印"
-                    decoding="async">
-                </a>
-            </li>
-            </ul>
+            <div class="wp-pagenavi">
+                <a class="previouspostslink first" rel="prev" href="#"></a>
+                <span class="current">1</span>
+                <a class="page" href="#">2</a>
+                <a class="page" href="#">3</a>
+                <a class="page" href="#">4</a>
+                <a class="page" href="#">5</a>
+                <a class="page" href="#">6</a>
+                <a class="nextpostslink last" rel="prev" href="#"></a>
+            </div>
         </div>
         </div>
         <!-- ２カラムのサイドバー -->

@@ -2316,65 +2316,6 @@ body.is-open {
 	z-index: -1;
 }
 
-.pagination {
-	align-items: center;
-	display: flex;
-	justify-content: center;
-	margin-left: 0.4375rem;
-}
-
-.pagination__link {
-	align-items: center;
-	background: #fff;
-	border: solid 1px #408F95;
-	color: #408F95;
-	display: flex;
-	flex-wrap: wrap;
-	font-family: "Lato", sans-serif;
-	font-size: 1rem;
-	font-weight: 700;
-	height: 2.375rem;
-	justify-content: center;
-	transition: all 0.15s linear;
-	width: 2.375rem;
-}
-
-.pagination__link-icon {
-	border: none;
-}
-
-.pagination__link.is-active {
-	background: #408F95;
-	color: #fff;
-	pointer-events: none;
-}
-
-.pagination__link:not(.is-active):hover {
-	background: #408F95;
-	color: #fff;
-}
-
-.pagination > * + * {
-	margin-left: 0.375rem;
-	margin-right: 0.375rem;
-}
-
-.pagination__item:first-child {
-	margin-right: 2.125rem;
-}
-
-.pagination__item:last-child {
-	margin-left: 2.125rem;
-}
-
-.pagination__item--detail:first-child {
-	margin-right: 2.5rem;
-}
-
-.pagination__item--detail:last-child {
-	margin-left: 2.5625rem;
-}
-
 .pc-nav {
 	display: none;
 	height: inherit;
@@ -3441,6 +3382,65 @@ body.is-open {
 	text-align: center;
 }
 
+.wp-pagenavi {
+	display: flex;
+	gap: 0.75rem;
+	justify-content: center;
+}
+
+.wp-pagenavi a,
+.wp-pagenavi span {
+	align-items: center;
+	background-color: #fff;
+	border: 1px solid #408F95;
+	color: #408F95;
+	display: inline-flex;
+	font-family: "Lato", sans-serif;
+	font-size: 1rem;
+	font-weight: 700;
+	height: 2.375rem;
+	justify-content: center;
+	transition: 0.3s ease;
+	width: 2.375rem;
+}
+
+.wp-pagenavi a:hover {
+	background-color: #408F95;
+	color: #fff;
+	opacity: 1;
+}
+
+.wp-pagenavi span.current {
+	background-color: #408F95;
+	color: #fff;
+}
+
+.wp-pagenavi .page:nth-child(n+6) {
+	display: none;
+}
+
+.wp-pagenavi .previouspostslink {
+	margin-right: 1.875rem;
+	position: relative;
+}
+
+.wp-pagenavi .nextpostslink {
+	margin-left: 1.875rem;
+	position: relative;
+}
+
+.wp-pagenavi .previouspostslink:hover::before {
+	border-bottom: 1px solid #fff;
+	border-left: 1px solid #fff;
+	color: #fff;
+}
+
+.wp-pagenavi .nextpostslink:hover::before {
+	border-bottom: 1px solid #fff;
+	border-right: 1px solid #fff;
+	color: #fff;
+}
+
 @media (hover: hover) {
 
 .button:hover {
@@ -4485,10 +4485,6 @@ textarea {
 	width: 5rem;
 }
 
-.pagination--detail {
-	margin-left: -1.375rem;
-}
-
 .pc-nav {
 	display: block;
 }
@@ -4949,6 +4945,10 @@ textarea {
 
 .voice__button {
 	margin-top: 5.0625rem;
+}
+
+.wp-pagenavi .page:nth-child(n+6) {
+	display: inline-flex;
 }
 
 }

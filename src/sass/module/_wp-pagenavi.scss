@@ -1,0 +1,66 @@
+@use "global" as *;
+
+.wp-pagenavi {
+    display: flex;
+    justify-content: center;
+    gap: rem(12);
+}
+
+.wp-pagenavi a,
+.wp-pagenavi span {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: rem(38);
+    height: rem(38);
+    background-color: $white;
+    color: $accent;
+    font-family: $fourth-font-family;
+    font-weight: $bold;
+    font-size: rem(16);
+    border: 1px solid $accent;
+    transition: 0.3s ease;
+}
+
+.wp-pagenavi a:hover {
+    background-color: $accent;
+    color: $white;
+    opacity: 1;
+}
+
+// 現在のページに該当
+.wp-pagenavi span.current {
+    background-color: $accent;
+    color: $white;
+}
+
+.wp-pagenavi .page:nth-child(n+6) {
+    display: none;
+    @include mq(md){
+        display: inline-flex;
+    }
+    }
+
+.wp-pagenavi .previouspostslink {
+    margin-right: rem(30);
+    position: relative;
+}
+
+.wp-pagenavi .nextpostslink {
+    margin-left: rem(30);
+    position: relative;
+}
+
+
+.wp-pagenavi .previouspostslink:hover::before {
+    border-left: 1px solid $white;
+    border-bottom: 1px solid $white;
+    color: $white;
+}
+
+
+.wp-pagenavi .nextpostslink:hover::before {
+    border-right: 1px solid $white;
+    border-bottom: 1px solid $white;
+    color: $white;
+}
