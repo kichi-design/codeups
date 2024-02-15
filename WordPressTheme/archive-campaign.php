@@ -38,7 +38,18 @@
                     <div class="campaign-card__wrapper campaign-card__wrapper--page-campaign">
                     <div class="campaign-card__info campaign-card__info--page-campaign">
 
+                    <!-- 単数選択の場合 -->
                     <?php
+                    // カスタムフィールド 'campaign_5' から選択されたタームを取得
+                    $selected_term = get_field('campaign_5');
+
+                    // タームが存在する場合、その名前を表示
+                    if ($selected_term) {
+                        echo '<div class="campaign-card__tag">' . esc_html($selected_term->name) . '</div>';
+                    }
+                    ?>
+                    
+                    <!-- 複数選択の場合<?php
                     // カスタムフィールド 'campaign_5' から選択された全てのタームを取得
                     $selected_terms = get_field('campaign_5');
                     // タームが存在する場合、それらの名前を表示
@@ -47,7 +58,7 @@
                             echo '<div class="campaign-card__tag">' . esc_html($term->name) . '</div>';
                         }
                     }
-                    ?>
+                    ?> -->
 
 
                     <h3 class="campaign-card__title campaign-card__title--campaign-card-pc"><?php the_title(); ?></h3>
