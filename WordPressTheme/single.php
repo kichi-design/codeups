@@ -13,11 +13,7 @@
 </div>
 
 <!-- パンくず -->
-<div class="breadcrumb layout-breadcrumb">
-    <div class="inner">
-    <div>TOP&gt;ブログ一覧</div>
-    </div>
-</div>
+<?php get_template_part('parts/breadcrumb') ?>
 
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 <section class="page-single page-single--detail layout-single">
@@ -39,21 +35,8 @@
             </div>
             </div>
             <!-- ページネーション -->
-            <div class="blog-column__pagination single-main__pagination blog-column__pagination--single">
-            <ul class="pagination pagination--detail">
-                <li class="pagination__item pagination__item--detail">
-                <a class="pagination__link pagination__link-icon" href="#">
-                    <img class="Pagination__icon" src="<?php echo get_theme_file_uri(); ?>/assets/images/common/pagination-prev.svg" alt="前への矢印"
-                    decoding="async">
-                </a>
-                </li>
-                <li class="pagination__item pagination__item--detail">
-                <a class="pagination__link pagination__link-icon" href="#">
-                    <img class="Pagination__icon" src="<?php echo get_theme_file_uri(); ?>/assets/images/common/pagination-next.svg" alt="次への矢印"
-                    decoding="async">
-                </a>
-                </li>
-            </ul>
+            <div class="blog-column__pagination">
+            <?php wp_pagenavi(); ?>
             </div>
         </div>
         </div>

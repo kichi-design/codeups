@@ -12,12 +12,8 @@
     </div>
 </div>
 
-<!-- page-campaign -->
-<div class="breadcrumb layout-breadcrumb">
-    <div class="inner">
-    <div>TOP&gt;ダイビング情報</div>
-    </div>
-</div>
+<!-- パンくず -->
+<?php get_template_part('parts/breadcrumb') ?>
 
 <section class="page-information layout-page">
     <div class="inner">

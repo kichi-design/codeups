@@ -12,12 +12,8 @@
     </div>
 </div>
 
-<!-- page-campaign -->
-<div class="breadcrumb layout-breadcrumb">
-    <div class="inner">
-    <div>TOP&gt;私たちについて</div>
-    </div>
-</div>
+<!-- パンくず -->
+<?php get_template_part('parts/breadcrumb') ?>
 
 <div class="page-about layout-page">
     <div class="inner">

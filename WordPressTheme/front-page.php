@@ -134,7 +134,7 @@
         <div class="swiper-button-prev"></div>
         </div>
         <div class="campaign__button">
-        <a href="page-campaign.html" class="button">
+        <a href="http://codeups-new.local/campaign/" class="button">
             <span>View more</span>
         </a>
         </div>

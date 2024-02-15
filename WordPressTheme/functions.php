@@ -43,3 +43,25 @@ function my_setup() {
 	);
 }
 add_action( 'after_setup_theme', 'my_setup' );
+
+//アーカイブの表示件数変更
+function change_posts_per_page($query) {
+    if ( is_admin() || ! $query->is_main_query() )
+        return;
+    if ( $query->is_archive('campaign') ) { //カスタム投稿タイプを指定
+        $query->set( 'posts_per_page', '-1' ); //表示件数を指定 -1にする全部表示
+    }
+}
+add_action( 'pre_get_posts', 'change_posts_per_page' );
+
+//アーカイブの表示件数変更 複数
+// function change_posts_per_page($query) {
+//     if ( is_admin() || ! $query->is_main_query() )
+//         return;
+//     if ( $query->is_archive(array('works','recruit')) ) { //カスタム投稿タイプを指定
+//         $query->set( 'posts_per_page', '6' ); //表示件数を指定 -1にする全部表示
+//     }
+// }
+// add_action( 'pre_get_posts', 'change_posts_per_page' );
+
+

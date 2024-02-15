@@ -12,12 +12,8 @@
     </div>
 </div>
 
-<!-- page-Voice -->
-<div class="breadcrumb layout-breadcrumb">
-    <div class="inner">
-    <div>TOP&gt;お客様の声</div>
-    </div>
-</div>
+<!-- パンくず -->
+<?php get_template_part('parts/breadcrumb') ?>
 
 <section class="page-voice layout-page">
     <div class="inner">

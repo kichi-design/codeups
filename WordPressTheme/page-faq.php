@@ -12,12 +12,8 @@
     </div>
 </div>
 
-<!-- page-faq -->
-<div class="breadcrumb layout-breadcrumb">
-    <div class="inner">
-    <div>TOP&gt;よくある質問</div>
-    </div>
-</div>
+<!-- パンくず -->
+<?php get_template_part('parts/breadcrumb') ?>
 
 <div class="page-faq layout-page-faq">
     <div class="page-faq__inner inner">

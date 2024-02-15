@@ -12,12 +12,8 @@
     </div>
 </div>
 
-<!-- page-contact -->
-<div class="breadcrumb layout-breadcrumb">
-    <div class="inner">
-    <p>TOP&gt;お問い合わせ<span class="breadcrumb__error js-error-breadcrumb">&gt;お問い合わせエラー</span></p>
-    </div>
-</div>
+<!-- パンくず -->
+<?php get_template_part('parts/breadcrumb') ?>
 
 <div class="page-contact layout-page">
     <div class="page-contact__inner inner">

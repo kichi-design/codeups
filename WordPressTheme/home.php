@@ -13,47 +13,34 @@
 </div>
 
 <!-- パンくず -->
-<div class="breadcrumb layout-breadcrumb">
-    <div class="inner">
-    <div>TOP&gt;ブログ一覧</div>
-    </div>
-</div>
+<?php get_template_part('parts/breadcrumb') ?>
 
 <section class="page-blog layout-page">
     <div class="inner">
     <!-- ２カラム -->
     <div class="page-blog__container blog-column">
-        <div class="blog-column__main">
         <!-- ２カラムのメイン -->
-        <div class="blog-column__cards blog-cards blog-cards--2col">
-            <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-                <a href="<?php the_permalink(); ?>" class="blog-cards__item blog-card">
-                    <div class="blog-card__image">
-                        <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/blog-card1.jpg" alt="珊瑚" decoding="async">
-                    </div>
-                    <div class="blog-card__body">
-                        <time class="blog-card__date" datetime="<?php the_time( 'c' );?>"><?php the_time('Y.m.d'); ?></time>
-                        <h3 class="blog-card__title"><?php the_title(); ?></h3>
-                        <div class="blog-card__text">
-                        ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br>ここにテキストが入ります。ここにテキストが入ります。ここにテキスト
+        <div class="blog-column__main">
+            <div class="blog-column__cards blog-cards blog-cards--2col">
+                <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+                    <a href="<?php the_permalink(); ?>" class="blog-cards__item blog-card">
+                        <div class="blog-card__image">
+                            <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/blog-card1.jpg" alt="珊瑚" decoding="async">
                         </div>
-                    </div>
-                </a>
-            <?php endwhile; endif; ?>
-        </div>
-        <!-- ページネーション -->
-        <div class="blog-column__pagination">
-            <div class="wp-pagenavi">
-                <a class="previouspostslink first" rel="prev" href="#"></a>
-                <span class="current">1</span>
-                <a class="page" href="#">2</a>
-                <a class="page" href="#">3</a>
-                <a class="page" href="#">4</a>
-                <a class="page" href="#">5</a>
-                <a class="page" href="#">6</a>
-                <a class="nextpostslink last" rel="prev" href="#"></a>
+                        <div class="blog-card__body">
+                            <time class="blog-card__date" datetime="<?php the_time( 'c' );?>"><?php the_time('Y.m.d'); ?></time>
+                            <h3 class="blog-card__title"><?php the_title(); ?></h3>
+                            <div class="blog-card__text">
+                            ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br>ここにテキストが入ります。ここにテキストが入ります。ここにテキスト
+                            </div>
+                        </div>
+                    </a>
+                <?php endwhile; endif; ?>
             </div>
-        </div>
+            <!-- ページネーション -->
+            <div class="blog-column__pagination">
+            <?php wp_pagenavi(); ?>
+            </div>
         </div>
         <!-- ２カラムのサイドバー -->
         <aside class="blog-column__sidebar sidebar">
