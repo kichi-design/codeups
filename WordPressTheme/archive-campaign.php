@@ -17,50 +17,73 @@
 
 <section class="page-campaign layout-page">
     <div class="inner">
-    <ul class="page-campaign__tab tabs">
-        <li class="tabs__item active"><a href="#">ALL</a></li>
-        <li class="tabs__item"><a href="#">ライセンス講習</a></li>
-        <li class="tabs__item"><a href="#">ファンダイビング</a></li>
-        <li class="tabs__item"><a href="#">体験ダイビング</a></li>
-    </ul>
+        <ul class="page-campaign__tab tabs">
+            <li class="tabs__item"><a href="<?php echo esc_url(get_post_type_archive_link('campaign')); ?>">ALL</a></li>
+            <?php
+            // カスタムタクソノミー 'campaign_category' のタームを取得
+            $terms = get_terms([
+                'taxonomy' => 'campaign_category',
+                'hide_empty' => false, // 空のタームを含む
+            ]);
 
-    <div class="page-campaign__area tab-area">
-        <ul class="tab-area__items">
-            <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-            <li class="tab-area__item">
-                <div class="tab-area__wrapper campaign-wrapper">
-                <div class="campaign-wrapper__item campaign-card">
-                    <div class="campaign-card__image">
-                        <?php if(get_the_post_thumbnail()): ?>
-                        <img src="<?php the_post_thumbnail_url("full"); ?>" alt="<?php the_title(); ?>のアイキャッチ画像" decoding="async">
-                        <?php endif; ?>
-                    </div>
-                    <div class="campaign-card__wrapper campaign-card__wrapper--page-campaign">
+            // 各タームに対するリンクを生成
+            foreach ($terms as $term) {
+                echo '<li class="tabs__item"><a href="' . esc_url(add_query_arg('term', $term->slug, get_post_type_archive_link('campaign'))) . '">' . esc_html($term->name) . '</a></li>';
+            }
+            ?>
+        </ul>
+
+        <div class="page-campaign__area tab-area">
+            <ul class="tab-area__items">
+                <?php
+                // 選択されたタームに基づいてコンテンツを表示
+                $selected_term_slug = get_query_var('term', '');
+
+                if (!empty($selected_term_slug)) {
+                    $args = [
+                        'post_type' => 'campaign',
+                        'tax_query' => [
+                            [
+                                'taxonomy' => 'campaign_category',
+                                'field'    => 'slug',
+                                'terms'    => $selected_term_slug,
+                            ],
+                        ],
+                    ];
+                } else {
+                    // タームが選択されていない場合は、全ての投稿を表示
+                    $args = [
+                        'post_type' => 'campaign',
+                        'posts_per_page' => -1,
+                    ];
+                }
+
+                $query = new WP_Query($args);
+
+                if ($query->have_posts()) : 
+                    while ($query->have_posts()) : $query->the_post();
+                        ?>
+                        <li class="tab-area__item">
+                            <div class="tab-area__wrapper campaign-wrapper">
+                                <div class="campaign-wrapper__item campaign-card">
+                                    <div class="campaign-card__image">
+                                        <?php if(get_the_post_thumbnail()): ?>
+                                        <img src="<?php the_post_thumbnail_url("full"); ?>" alt="<?php the_title(); ?>のアイキャッチ画像" decoding="async">
+                                        <?php endif; ?>
+                                    </div>
+                                    <div class="campaign-card__wrapper campaign-card__wrapper--page-campaign">
                     <div class="campaign-card__info campaign-card__info--page-campaign">
-
-                    <!-- 単数選択の場合 -->
                     <?php
-                    // カスタムフィールド 'campaign_5' から選択されたタームを取得
-                    $selected_term = get_field('campaign_5');
+                    // タクソノミが選択された投稿に関連するタームを取得
+                    $terms = get_the_terms(get_the_ID(), 'campaign_category');
 
-                    // タームが存在する場合、その名前を表示
-                    if ($selected_term) {
-                        echo '<div class="campaign-card__tag">' . esc_html($selected_term->name) . '</div>';
-                    }
-                    ?>
-                    
-                    <!-- 複数選択の場合<?php
-                    // カスタムフィールド 'campaign_5' から選択された全てのタームを取得
-                    $selected_terms = get_field('campaign_5');
-                    // タームが存在する場合、それらの名前を表示
-                    if ($selected_terms) {
-                        foreach ($selected_terms as $term) {
+                    // タームが存在する場合、その名前を使用してHTMLを生成し、ブラウザに表示
+                    if ($terms && !is_wp_error($terms)) {
+                        foreach ($terms as $term) {
                             echo '<div class="campaign-card__tag">' . esc_html($term->name) . '</div>';
                         }
                     }
-                    ?> -->
-
-
+                    ?>
                     <h3 class="campaign-card__title campaign-card__title--campaign-card-pc"><?php the_title(); ?></h3>
                     </div>
                     <div class="campaign-card__body campaign-card__body--page-campaign">
@@ -82,29 +105,42 @@
                         <?php if(get_field( 'campaign_3' )): ?>
                         <p class="campaign-card__time"><?php the_field('campaign_3'); ?></p>
                         <?php endif; ?>
-                        <?php if(get_field( 'campaign_4' )): ?>
+                        <p class="campaign-card__info-text">ご予約・お問い合わせはコチラ</p>
+                        <div class="campaign-card__button">
+                            <a href="#" class="button">
+                                <span>Contact us</span>
+                            </a>
+                        </div>
+
+                        <!-- <?php if(get_field( 'campaign_4' )): ?>
                         <p class="campaign-card__info-text">ご予約・お問い合わせはコチラ</p>
                         <div class="campaign-card__button">
                             <a href="<?php echo esc_url(get_field('campaign_4')); ?>" class="button" target="_blank">
                                 <span>Contact us</span>
                             </a>
                         </div>
-                        <?php endif; ?>
+                        <?php endif; ?> -->
                         </div>
                     </div>
                     </div>
-                </div>
-                </div>
-            </li>
-            <?php endwhile; endif; ?>
-        </ul>
-    </div>
 
+                                </div>
+                            </div>
+                        </li>
+                        <?php
+                    endwhile;
+                else :
+                    echo '<li>該当する投稿が見つかりません。</li>';
+                endif;
+
+                wp_reset_postdata();
+                ?>
+            </ul>
+        </div>
         <!-- ページネーション -->
         <div class="blog-column__pagination">
         <?php wp_pagenavi(); ?>
         </div>
-        </div>
+    </div>
 </section>
-
 <?php get_footer(); ?>

@@ -5,27 +5,34 @@
 <div class="fv">
     <!-- Swiper -->
     <div class="swiper fv__swiper js-fv-swiper">
-    <div class="fv__header">
-        <h2 class="fv__title">DIVING</h2>
-        <p class="fv__subtitle">into the ocean</p>
-    </div>
-    <div class="swiper-wrapper">
-        <div class="swiper-slide">
-        <div class="fv__img">
-            <img class="fv__img-01" src="<?php echo get_theme_file_uri(); ?>/assets/images/common/fv01.jpg" alt="海亀" decoding="async">
+        <div class="fv__header">
+            <h2 class="fv__title">DIVING</h2>
+            <p class="fv__subtitle">into the ocean</p>
         </div>
+        <div class="swiper-wrapper">
+        <?php
+        $fv_slider_list = SCF::get('fv-slider');
+        if ( is_array( $fv_slider_list ) ) {
+            $count = 0; // カウンターの初期化
+            foreach ( $fv_slider_list as $fv_slider_list_field ) {
+                if ( $count >= 4 ) break; // 4枚表示したらループを抜ける
+                
+                $image_id = $fv_slider_list_field['fvsliderimage']; // 画像フィールドから画像のIDを取得
+                $image_url = wp_get_attachment_image_src( $image_id, 'full' ); // 画像のURLを取得
+                if ( !empty($image_url) ) {
+                    ?>
+                    <div class="swiper-slide">
+                        <div class="fv__img">
+                            <img class="fv__img-01" src="<?php echo esc_url( $image_url[0] ); ?>" alt="スライダー画像" />
+                        </div>
+                    </div>
+                    <?php
+                }
+                $count++; // カウンターをインクリメント
+            }
+        }
+        ?>
         </div>
-        <div class="swiper-slide">
-        <div class="fv__img">
-            <img class="fv__img-02" src="<?php echo get_theme_file_uri(); ?>/assets/images/common/fv02.jpg" alt="船" decoding="async">
-        </div>
-        </div>
-        <div class="swiper-slide">
-        <div class="fv__img">
-            <img class="fv__img-03" src="<?php echo get_theme_file_uri(); ?>/assets/images/common/fv03.jpg" alt="砂浜" decoding="async">
-        </div>
-        </div>
-    </div>
     </div>
 </div>
 
@@ -321,73 +328,86 @@
         <div class="price__item price-card">
             <h3 class="price-card__title">ライセンス講習</h3>
             <dl class="price-card__body">
-                <div class="price-card__text">
-                <dt>オープンウォーターダイバーコース</dt>
-                <dd>¥50,000</dd>
-                </div>
-                <div class="price-card__text">
-                <dt>アドバンスドオープンウォーターコース</dt>
-                <dd>¥60,000</dd>
-                </div>
-                <div class="price-card__text">
-                <dt>レスキュー＋EFRコース</dt>
-                <dd>¥70,000</dd>
-                </div>
+            <?php
+            // 特定の投稿やページのIDを指定します。
+            $post_id = 219; // ここには、値を取得したい投稿やページのIDを実際のものに置き換えてください。
+
+            $prices_license = SCF::get('price-license', $post_id); // 第二引数に$post_idを渡して特定の投稿のカスタムフィールド値を取得
+            if ( is_array( $prices_license ) ) {
+                foreach ( $prices_license as $price_license_field ) {
+            ?>
+                    <div class="price-card__text">
+                        <dt><?php echo esc_html( $price_license_field['license-course'] ); ?></dt>
+                        <dd><?php echo esc_html( $price_license_field['license-text'] ); ?></dd>
+                    </div>
+            <?php
+                }
+            }
+            ?>
             </dl>
         </div>
         <div class="price__item price-card">
             <h3 class="price-card__title">体験ダイビング</h3>
             <dl class="price-card__body">
-                <div class="price-card__text">
-                <dt>ビーチ体験ダイビング(半日)</dt>
-                <dd>¥7,000</dd>
-                </div>
-                <div class="price-card__text">
-                <dt>ビーチ体験ダイビング(1日)</dt>
-                <dd>¥14,000</dd>
-                </div>
-                <div class="price-card__text">
-                <dt>ボート体験ダイビング(半日)</dt>
-                <dd>¥10,000</dd>
-                </div>
-                <div class="price-card__text">
-                <dt>ボート体験ダイビング(1日)</dt>
-                <dd>¥18,000</dd>
-                </div>
+            <?php
+            // 特定の投稿やページのIDを指定します。
+            $post_id = 219; // ここには、値を取得したい投稿やページのIDを実際のものに置き換えてください。
+
+            $prices_trial = SCF::get('price-trial', $post_id); // 第二引数に$post_idを渡して特定の投稿のカスタムフィールド値を取得
+            if ( is_array( $prices_trial ) ) {
+                foreach ( $prices_trial as $price_trial_field ) {
+            ?>
+                    <div class="price-card__text">
+                        <dt><?php echo esc_html( $price_trial_field['trial-course'] ); ?></dt>
+                        <dd><?php echo esc_html( $price_trial_field['trial-text'] ); ?></dd>
+                    </div>
+            <?php
+                }
+            }
+            ?>
             </dl>
         </div>
         <div class="price__item price-card">
             <h3 class="price-card__title">ファンダイビング</h3>
             <dl class="price-card__body">
-                <div class="price-card__text">
-                <dt>ビーチダイビング(2ダイブ)</dt>
-                <dd>¥14,000</dd>
-                </div>
-                <div class="price-card__text">
-                <dt>ボートダイビング(2ダイブ)</dt>
-                <dd>¥18,000</dd>
-                </div>
-                <div class="price-card__text">
-                <dt>スペシャルダイビング(2ダイブ)</dt>
-                <dd>¥24,000</dd>
-                </div>
-                <div class="price-card__text">
-                <dt>ナイトダイビング(1ダイブ)</dt>
-                <dd>¥10,000</dd>
-                </div>
+            <?php
+            // 特定の投稿やページのIDを指定します。
+            $post_id = 219; // ここには、値を取得したい投稿やページのIDを実際のものに置き換えてください。
+
+            $prices_fun = SCF::get('price-fun', $post_id); // 第二引数に$post_idを渡して特定の投稿のカスタムフィールド値を取得
+            if ( is_array( $prices_fun ) ) {
+                foreach ( $prices_fun as $price_fun_field ) {
+            ?>
+                    <div class="price-card__text">
+                        <dt><?php echo esc_html( $price_fun_field['fun-course'] ); ?></dt>
+                        <dd><?php echo esc_html( $price_fun_field['fun-text'] ); ?></dd>
+                    </div>
+            <?php
+                }
+            }
+            ?>
             </dl>
         </div>
         <div class="price__item price-card">
             <h3 class="price-card__title">スペシャルダイビング</h3>
             <dl class="price-card__body">
-                <div class="price-card__text">
-                <dt>貸切ダイビング(2ダイブ)</dt>
-                <dd>¥24,000</dd>
-                </div>
-                <div class="price-card__text">
-                <dt>1日ダイビング(3ダイブ)</dt>
-                <dd>¥32,000</dd>
-                </div>
+            <?php
+            // 特定の投稿やページのIDを指定します。
+            $post_id = 219; // ここには、値を取得したい投稿やページのIDを実際のものに置き換えてください。
+
+            $prices_special = SCF::get('price-special', $post_id); // 第二引数に$post_idを渡して特定の投稿のカスタムフィールド値を取得
+            if ( is_array( $prices_special ) ) {
+                foreach ( $prices_special as $price_special_field ) {
+            ?>
+                    <div class="price-card__text">
+                        <dt><?php echo esc_html( $price_special_field['special-course'] ); ?></dt>
+                        <dd><?php echo esc_html( $price_special_field['special-text'] ); ?></dd>
+                    </div>
+
+            <?php
+                }
+            }
+            ?>
             </dl>
         </div>
         </div>

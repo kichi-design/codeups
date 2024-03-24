@@ -932,7 +932,7 @@ campaign__swiper {
 	color: #fff;
 	padding-bottom: 1rem;
 	padding-left: 1rem;
-	padding-right: 1rem;
+	padding-right: 3.25rem;
 	padding-top: 0.9375rem;
 }
 
@@ -1597,12 +1597,13 @@ textarea {
 .gallery__item {
 	aspect-ratio: 345/219;
 	grid-column: span 2;
-	width: 100%;
 }
 
 .gallery__item img {
 	cursor: pointer;
 	width: 100%;
+	height: 100%;
+    object-fit: cover;
 }
 
 .gallery__item:nth-of-type(6n + 1),
@@ -1615,6 +1616,9 @@ textarea {
 	-o-object-fit: cover;
 	object-fit: cover;
 	width: 100%;
+	height: 100%;
+    object-fit: cover;
+
 }
 
 .modal-window-image {
@@ -3924,7 +3928,7 @@ html {
 	font-size: 1.25rem;
 	padding-bottom: 1.5625rem;
 	padding-left: 2.5rem;
-	padding-right: 2.5rem;
+	padding-right: 7rem;
 	padding-top: 1.5625rem;
 }
 

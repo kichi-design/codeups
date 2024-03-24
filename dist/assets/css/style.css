@@ -932,7 +932,7 @@ campaign__swiper {
 	color: #fff;
 	padding-bottom: 1rem;
 	padding-left: 1rem;
-	padding-right: 1rem;
+	padding-right: 3.25rem;
 	padding-top: 0.9375rem;
 }
 
@@ -1597,11 +1597,13 @@ textarea {
 .gallery__item {
 	aspect-ratio: 345/219;
 	grid-column: span 2;
-	width: 100%;
 }
 
 .gallery__item img {
+	-o-object-fit: cover;
 	cursor: pointer;
+	height: 100%;
+	object-fit: cover;
 	width: 100%;
 }
 
@@ -3373,6 +3375,10 @@ body.is-open {
 	margin-top: 2.8125rem;
 }
 
+.voice-card {
+	width: 100%;
+}
+
 .voice-card + .voice-card {
 	margin-top: 2.5rem;
 }
@@ -3924,7 +3930,7 @@ html {
 	font-size: 1.25rem;
 	padding-bottom: 1.5625rem;
 	padding-left: 2.5rem;
-	padding-right: 2.5rem;
+	padding-right: 7rem;
 	padding-top: 1.5625rem;
 }
 

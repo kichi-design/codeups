@@ -321,4 +321,37 @@ jQuery(function ($) {
       $('#' + tabId).addClass('is-active');
     });
   });
+
+
+  // ----------------------------------------
+  // ブラウザ上でタブごとにタームが切り替わる JS使用した場合
+  // ----------------------------------------
+  // jQuery(document).ready(function ($) {
+  //   $('.tabs__item').click(function (e) {
+  //     e.preventDefault();
+  //     $('.tabs__item').removeClass('active');
+  //     $(this).addClass('active');
+
+  //     var selectedTab = $(this).text();
+  //     $('.tab-area__item').hide();
+
+  //     if (selectedTab === "ALL") {
+  //       $('.tab-area__item').show();
+  //     } else {
+  //       $('.tab-area__item').each(function () {
+  //         if ($(this).find('.campaign-card__tag').text() === selectedTab) {
+  //           $(this).show();
+  //         }
+  //       });
+  //     }
+  //   });
+  // });
+
+
+
+
+
 });
+
+
+

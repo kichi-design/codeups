@@ -18,111 +18,29 @@
 <div class="page-faq layout-page-faq">
     <div class="page-faq__inner inner">
     <div class="page-faq__items">
-        <div class="page-faq__item faq-item">
-        <div class="faq-item__question-wrapper">
-            <p class="faq-item__question">ここに質問が入ります。
-            </p>
-            <div class="faq-item__icon is-open">
-            <div class="faq-item__bar1"></div>
-            <div class="faq-item__bar2"></div>
+        <?php
+        $faq_list = SCF::get('faq');
+        if ( is_array( $faq_list ) ) {
+        foreach ( $faq_list as $faq_list_field ) {
+            ?>
+            <div class="page-faq__item faq-item">
+                <div class="faq-item__question-wrapper">
+                    <p class="faq-item__question"><?php echo esc_html( $faq_list_field['faq-title'] ); ?></p>
+                    <div class="faq-item__icon is-open">
+                    <div class="faq-item__bar1"></div>
+                    <div class="faq-item__bar2"></div>
+                    </div>
+                </div>
+                <div class="faq-item__answer-wrapper">
+                    <p class="faq-item__answer">
+                    <?php echo esc_html( $faq_list_field['faq-text'] ); ?>
+                    </p>
+                </div>
             </div>
-        </div>
-        <div class="faq-item__answer-wrapper">
-            <p class="faq-item__answer">
-            ここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入ります
-            </p>
-        </div>
-        </div>
-        <div class="page-faq__item faq-item">
-        <div class="faq-item__question-wrapper">
-            <p class="faq-item__question">ここに質問が入ります。
-            </p>
-            <div class="faq-item__icon is-open">
-            <div class="faq-item__bar1"></div>
-            <div class="faq-item__bar2"></div>
-            </div>
-        </div>
-        <div class="faq-item__answer-wrapper">
-            <p class="faq-item__answer">
-            ここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入ります
-            </p>
-        </div>
-        </div>
-        <div class="page-faq__item faq-item">
-        <div class="faq-item__question-wrapper">
-            <p class="faq-item__question">ここに質問が入ります。
-            </p>
-            <div class="faq-item__icon is-open">
-            <div class="faq-item__bar1"></div>
-            <div class="faq-item__bar2"></div>
-            </div>
-        </div>
-        <div class="faq-item__answer-wrapper">
-            <p class="faq-item__answer">
-            ここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入ります
-            </p>
-        </div>
-        </div>
-        <div class="page-faq__item faq-item">
-        <div class="faq-item__question-wrapper">
-            <p class="faq-item__question">ここに質問が入ります。
-            </p>
-            <div class="faq-item__icon is-open">
-            <div class="faq-item__bar1"></div>
-            <div class="faq-item__bar2"></div>
-            </div>
-        </div>
-        <div class="faq-item__answer-wrapper">
-            <p class="faq-item__answer">
-            ここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入ります
-            </p>
-        </div>
-        </div>
-        <div class="page-faq__item faq-item">
-        <div class="faq-item__question-wrapper">
-            <p class="faq-item__question">ここに質問が入ります。
-            </p>
-            <div class="faq-item__icon is-open">
-            <div class="faq-item__bar1"></div>
-            <div class="faq-item__bar2"></div>
-            </div>
-        </div>
-        <div class="faq-item__answer-wrapper">
-            <p class="faq-item__answer">
-            ここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入ります
-            </p>
-        </div>
-        </div>
-        <div class="page-faq__item faq-item">
-        <div class="faq-item__question-wrapper">
-            <p class="faq-item__question">ここに質問が入ります。
-            </p>
-            <div class="faq-item__icon is-open">
-            <div class="faq-item__bar1"></div>
-            <div class="faq-item__bar2"></div>
-            </div>
-        </div>
-        <div class="faq-item__answer-wrapper">
-            <p class="faq-item__answer">
-            ここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入ります
-            </p>
-        </div>
-        </div>
-        <div class="page-faq__item faq-item">
-        <div class="faq-item__question-wrapper">
-            <p class="faq-item__question">ここに質問が入ります。
-            </p>
-            <div class="faq-item__icon is-open">
-            <div class="faq-item__bar1"></div>
-            <div class="faq-item__bar2"></div>
-            </div>
-        </div>
-        <div class="faq-item__answer-wrapper">
-            <p class="faq-item__answer">
-            ここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入りますここに質問の答えが入ります
-            </p>
-        </div>
-        </div>
+        <?php
+            }
+        }
+        ?>
     </div>
     </div>
 </div>

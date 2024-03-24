@@ -18,13 +18,13 @@
 .faq-item__question{
     color: $white;
     padding-top: rem(15);
-    padding-right: rem(16);
+    padding-right: rem(52);
     padding-bottom: rem(16);
     padding-left: rem(16);
     @include mq('md'){
         font-size: rem(20);
         padding-top: rem(25);
-        padding-right: rem(40);
+        padding-right: rem(112);
         padding-bottom: rem(25);
         padding-left: rem(40);
     }

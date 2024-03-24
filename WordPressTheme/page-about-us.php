@@ -47,24 +47,29 @@
     </div>
     <div class="modal-window-image"></div>
     <div class="page-about-gallery__container gallery">
+
+
+
+    <?php
+$gallerys = SCF::get('about_us_gallery');
+foreach ($gallerys as $gallery) {
+    $gallery_picture = wp_get_attachment_image_src($gallery['gallery_picture'], 'medium');
+    if ($gallery_picture) {
+        $gallery_picture_url = esc_url($gallery_picture[0]);
+?>
         <div class="gallery__item">
-        <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/gallery1.jpg" alt="サンゴ" decoding="async">
+            <img src="<?php echo $gallery_picture_url; ?>" decoding="async" alt="">
         </div>
-        <div class="gallery__item">
-        <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/gallery2.jpg" alt="海と船" decoding="async">
-        </div>
-        <div class="gallery__item">
-        <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/gallery3.jpg" alt="魚" decoding="async">
-        </div>
-        <div class="gallery__item">
-        <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/gallery4.jpg" alt="魚" decoding="async">
-        </div>
-        <div class="gallery__item">
-        <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/gallery5.jpg" alt="魚" decoding="async">
-        </div>
-        <div class="gallery__item">
-        <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/gallery6.jpg" alt="魚" decoding="async">
-        </div>
+<?php
+    }
+}
+?>
+
+
+        
+
+
+
     </div>
     </div>
 </section>

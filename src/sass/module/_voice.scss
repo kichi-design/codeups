@@ -69,6 +69,7 @@
 }
 
 .voice-card{
+    width: 100%;
     @include mq('md'){
        // max-width: calc(33.33333% - rem(40) * 1 / 2);
         // １行あたりの横幅＝全体の横幅ー余白の合計値÷行数

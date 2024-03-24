@@ -22,18 +22,21 @@
         <h2 class="price-table__title">ライセンス講習</h2>
         </div>
         <dl class="price-table__items">
-        <div class="price-table__item">
-            <dt class="price-table__course">オープンウォーター<br class="u-mobile">ダイバーコース</dt>
-            <dd class="price-table__price">¥50,000</dd>
-        </div>
-        <div class="price-table__item">
-            <dt class="price-table__course">アドバンスド<br class="u-mobile">オープンウォーターコース</dt>
-            <dd class="price-table__price">¥60,000</dd>
-        </div>
-        <div class="price-table__item">
-            <dt class="price-table__course">レスキュー＋EFRコース</dt>
-            <dd class="price-table__price">¥70,000</dd>
-        </div>
+        <?php
+            $prices_license = SCF::get('price-license');
+            if ( is_array( $prices_license ) ) {
+            foreach ( $prices_license as $price_license_field ) {
+        ?>
+            <div class="price-table__item">
+                <dt class="price-table__course"><?php echo esc_html( $price_license_field['license-course'] ); ?></dt>
+                <dd class="price-table__price"><?php echo esc_html( $price_license_field['license-text'] ); ?></dd>
+            </div>
+        <?php
+            }
+        }
+        ?>
+
+
         </dl>
     </div>
     <div class="page-price__table price-table">
@@ -41,22 +44,19 @@
         <h2 class="price-table__title">体験ダイビング</h2>
         </div>
         <dl class="price-table__items">
-        <div class="price-table__item">
-            <dt class="price-table__course">ビーチ体験ダイビング<br class="u-mobile">(半日)</dt>
-            <dd class="price-table__price">¥7,000</dd>
-        </div>
-        <div class="price-table__item">
-            <dt class="price-table__course">ビーチ体験ダイビング<br class="u-mobile">(1日)</dt>
-            <dd class="price-table__price">¥14,000</dd>
-        </div>
-        <div class="price-table__item">
-            <dt class="price-table__course">ボート体験ダイビング<br class="u-mobile">(半日)</dt>
-            <dd class="price-table__price">¥10,000</dd>
-        </div>
-        <div class="price-table__item">
-            <dt class="price-table__course">ボート体験ダイビング<br class="u-mobile">(1日)</dt>
-            <dd class="price-table__price">¥18,000</dd>
-        </div>
+        <?php
+            $prices_trial = SCF::get('price-trial');
+            if ( is_array( $prices_trial ) ) {
+            foreach ( $prices_trial as $price_trial_field ) {
+        ?>
+            <div class="price-table__item">
+                <dt class="price-table__course"><?php echo esc_html( $price_trial_field['trial-course'] ); ?></dt>
+                <dd class="price-table__price"><?php echo esc_html( $price_trial_field['trial-text'] ); ?></dd>
+            </div>
+        <?php
+            }
+        }
+        ?>
         </dl>
     </div>
     <div class="page-price__table price-table">
@@ -64,22 +64,19 @@
         <h2 class="price-table__title">ファンダイビング</h2>
         </div>
         <dl class="price-table__items">
-        <div class="price-table__item">
-            <dt class="price-table__course">ビーチダイビング<br class="u-mobile">(2ダイブ)</dt>
-            <dd class="price-table__price">¥14,000</dd>
-        </div>
-        <div class="price-table__item">
-            <dt class="price-table__course">ボートダイビング<br class="u-mobile">(2ダイブ)</dt>
-            <dd class="price-table__price">¥18,000</dd>
-        </div>
-        <div class="price-table__item">
-            <dt class="price-table__course">スペシャルダイビング<br class="u-mobile">(2ダイブ)</dt>
-            <dd class="price-table__price">¥24,000</dd>
-        </div>
-        <div class="price-table__item">
-            <dt class="price-table__course">ナイトダイビング<br class="u-mobile">(1ダイブ)</dt>
-            <dd class="price-table__price">¥10,000</dd>
-        </div>
+        <?php
+            $prices_fun = SCF::get('price-fun');
+            if ( is_array( $prices_fun ) ) {
+            foreach ( $prices_fun as $price_fun_field ) {
+        ?>
+            <div class="price-table__item">
+                <dt class="price-table__course"><?php echo esc_html( $price_fun_field['fun-course'] ); ?></dt>
+                <dd class="price-table__price"><?php echo esc_html( $price_fun_field['fun-text'] ); ?></dd>
+            </div>
+        <?php
+            }
+        }
+        ?>
         </dl>
     </div>
     <div class="page-price__table price-table">
@@ -87,18 +84,19 @@
         <h2 class="price-table__title">スペシャルダイビング</h2>
         </div>
         <dl class="price-table__items">
-        <div class="price-table__item">
-            <dt class="price-table__course">貸切ダイビング<br class="u-mobile">(2ダイブ)</dt>
-            <dd class="price-table__price">¥24,000</dd>
-        </div>
-        <div class="price-table__item">
-            <dt class="price-table__course">1日ダイビング<br class="u-mobile">(3ダイブ)</dt>
-            <dd class="price-table__price">¥32,000</dd>
-        </div>
-        <div class="price-table__item">
-            <dt class="price-table__course">ナイトダイビング<br class="u-mobile">(2ダイブ)</dt>
-            <dd class="price-table__price">¥14,000</dd>
-        </div>
+        <?php
+            $prices_special = SCF::get('price-special');
+            if ( is_array( $prices_special ) ) {
+            foreach ( $prices_special as $price_special_field ) {
+        ?>
+            <div class="price-table__item">
+                <dt class="price-table__course"><?php echo esc_html( $price_special_field['special-course'] ); ?></dt>
+                <dd class="price-table__price"><?php echo esc_html( $price_special_field['special-text'] ); ?></dd>
+            </div>
+        <?php
+            }
+        }
+        ?>
         </dl>
     </div>
     </div>
