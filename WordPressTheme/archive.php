@@ -15,37 +15,38 @@
 <!-- パンくず -->
 <?php get_template_part('parts/breadcrumb') ?>
 
-<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-<section class="page-single page-single--detail layout-single">
+<section class="page-blog layout-page">
     <div class="inner">
-    <div class="page-single__container blog-column">
-        <div class="blog-column__main">
+    <!-- ２カラム -->
+    <div class="page-blog__container blog-column">
         <!-- ２カラムのメイン -->
-        <div class="blog-column__single single-main">
-            <div class="single-main__body single-body">
-            <time class="single-body__time" datetime="<?php the_time( 'c' );?>"><?php the_time('Y.m.d'); ?></time>
-            <h2 class="single-body__title"><?php the_title(); ?></h2>
-            <?php if(get_the_post_thumbnail()): ?>
-            <img class="single-body__image" src="<?php the_post_thumbnail_url("full"); ?>" alt="<?php the_title(); ?>のアイキャッチ画像" decoding="async">
-            <?php else: ?>
-            <img class="single-body__image" src="<?php echo get_theme_file_uri(); ?>/assets/images/common/no-image.jpg" alt="<?php the_title(); ?>のアイキャッチ画像" decoding="async">
-            <?php endif; ?>
-            <div class="single-body__content">
-            <?php the_content(); ?>
-            </div>
+        <div class="blog-column__main">
+            <div class="blog-column__cards blog-cards blog-cards--2col">
+                <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+                    <a href="<?php the_permalink(); ?>" class="blog-cards__item blog-card">
+                    <div class="blog-card__image">
+                        <?php if (has_post_thumbnail()): ?>
+                            <img src="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>" alt="<?php echo esc_attr(get_the_title()); ?>" decoding="async">
+                        <?php else: ?>
+                            <!-- アイキャッチ画像が設定されていない場合のデフォルト画像 -->
+                            <img src="<?php echo esc_url(get_theme_file_uri()); ?>/assets/images/common/default-image.jpg" alt="デフォルト画像" decoding="async">
+                        <?php endif; ?>
+                    </div>
+
+                        <div class="blog-card__body">
+                            <time class="blog-card__date" datetime="<?php the_time( 'c' );?>"><?php the_time('Y.m.d'); ?></time>
+                            <h3 class="blog-card__title"><?php the_title(); ?></h3>
+                            <div class="blog-card__text">
+                            ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br>ここにテキストが入ります。ここにテキストが入ります。ここにテキスト
+                            </div>
+                        </div>
+                    </a>
+                <?php endwhile; endif; ?>
             </div>
             <!-- ページネーション -->
             <div class="blog-column__pagination">
-            <div class="wp-pagenavi">
-                <?php if (get_previous_post()): ?>
-                    <a class="previouspostslink" href="<?php echo get_permalink(get_previous_post()->ID); ?>" rel="prev" aria-label="Previous post: <?php echo get_the_title(get_previous_post()); ?>">＜</a>
-                <?php endif; ?>
-                <?php if (get_next_post()): ?>
-                    <a class="nextpostslink" href="<?php echo get_permalink(get_next_post()->ID); ?>" rel="next" aria-label="Next post: <?php echo get_the_title(get_next_post()); ?>">＞</a>
-                <?php endif; ?>
+            <?php wp_pagenavi(); ?>
             </div>
-            </div>
-        </div>
         </div>
         <!-- ２カラムのサイドバー -->
         <aside class="blog-column__sidebar sidebar">
@@ -200,10 +201,9 @@
     </div>
 
         </aside>
-
     </div>
     </div>
 </section>
-<?php endwhile; endif; ?>
+
 
 <?php get_footer(); ?>

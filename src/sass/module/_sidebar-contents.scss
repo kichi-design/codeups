@@ -16,12 +16,18 @@
 .sidebar-contents__popular-image{
     aspect-ratio: 121 / 90;
     max-width: rem(121);
+    overflow: hidden;
 }
 
 .sidebar-contents__popular-image img{
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.sidebar-contents__popular-image:hover img{
+    transform: scale(1.2);
 }
 
 .sidebar-contents__popular-head{

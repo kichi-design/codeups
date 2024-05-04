@@ -38,33 +38,43 @@
         }
 }
 
-.page-privacypolicy__item{
-    margin-top: rem(32);
+.page-privacypolicy__inner h2{
+    font-size: rem(24);
+    line-height: 2;
+    font-weight: $normal;
+        @include mq('md'){
+            font-size: rem(32);
+        }
 }
 
-.page-privacypolicy__description{
+.page-privacypolicy__inner h3{
     line-height: 2;
     margin-top: rem(40);
+    font-weight: $regular;
+    font-size: rem(16);
 }
 
-.page-privacypolicy__title{
-    font-size: rem(24);
-    @include mq('md'){
-        font-size: rem(32);
-        font-weight: $normal;
-    }
-}
 
-.privacypolicy-item{
-    line-height: 2;
-}
-.privacypolicy-item__title{
-    line-height: 2;
-}
-.privacypolicy-item__description{
+.page-privacypolicy__inner ol{
     line-height: 2;
     list-style-type: number;
     padding-left: rem(23);
 }
+
+.page-privacypolicy__inner ol:first-of-type{
+    margin-top: rem(40);
+    @include mq('md'){
+        margin-top: rem(70);
+    }
+}
+
+.page-privacypolicy__inner p{
+    line-height: 2;
+    margin-top: rem(40);
+    @include mq('md'){
+        margin-top: rem(70);
+    }
+}
+
 
 

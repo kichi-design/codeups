@@ -14,11 +14,12 @@
 
 <!-- パンくず -->
 <?php get_template_part('parts/breadcrumb') ?>
-
-<section class="page-campaign layout-page">
+<!-- IDはタブ切り替え時にページの特定の位置に移動させるため -->
+<section class="page-campaign layout-page" id="campaign-tabs">
     <div class="inner">
         <ul class="page-campaign__tab tabs">
-            <li class="tabs__item"><a href="<?php echo esc_url(get_post_type_archive_link('campaign')); ?>">ALL</a></li>
+        <li class="tabs__item <?php if(empty(get_query_var('term'))) echo 'active'; ?>"><a href="<?php echo esc_url(get_post_type_archive_link('campaign') . '#campaign-tabs'); ?>">ALL</a></li>
+
             <?php
             // カスタムタクソノミー 'campaign_category' のタームを取得
             $terms = get_terms([
@@ -27,8 +28,11 @@
             ]);
 
             // 各タームに対するリンクを生成
+            $selected_term_slug = get_query_var('term', '');
             foreach ($terms as $term) {
-                echo '<li class="tabs__item"><a href="' . esc_url(add_query_arg('term', $term->slug, get_post_type_archive_link('campaign'))) . '">' . esc_html($term->name) . '</a></li>';
+                // 選択されたタームに基づいて `active` クラスを付与
+                $active_class = $term->slug == $selected_term_slug ? 'active' : '';
+                echo '<li class="tabs__item ' . $active_class . '"><a href="' . esc_url(add_query_arg('term', $term->slug, get_post_type_archive_link('campaign') . '#campaign-tabs')) . '">' . esc_html($term->name) . '</a></li>';
             }
             ?>
         </ul>

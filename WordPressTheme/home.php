@@ -24,14 +24,20 @@
             <div class="blog-column__cards blog-cards blog-cards--2col">
                 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
                     <a href="<?php the_permalink(); ?>" class="blog-cards__item blog-card">
-                        <div class="blog-card__image">
-                            <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/blog-card1.jpg" alt="珊瑚" decoding="async">
-                        </div>
+                    <div class="blog-card__image">
+                        <?php if (has_post_thumbnail()): ?>
+                            <img src="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>" alt="<?php echo esc_attr(get_the_title()); ?>" decoding="async">
+                        <?php else: ?>
+                            <!-- アイキャッチ画像が設定されていない場合のデフォルト画像 -->
+                            <img src="<?php echo esc_url(get_theme_file_uri()); ?>/assets/images/common/default-image.jpg" alt="デフォルト画像" decoding="async">
+                        <?php endif; ?>
+                    </div>
+
                         <div class="blog-card__body">
                             <time class="blog-card__date" datetime="<?php the_time( 'c' );?>"><?php the_time('Y.m.d'); ?></time>
                             <h3 class="blog-card__title"><?php the_title(); ?></h3>
                             <div class="blog-card__text">
-                            ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br>ここにテキストが入ります。ここにテキストが入ります。ここにテキスト
+                            <?php echo wp_trim_words(get_the_content(), 70, '...'); ?>
                             </div>
                         </div>
                     </a>
@@ -49,7 +55,7 @@
             <div class="sidebar-contents__header sidebar-header">
             <h2 class="sidebar-header__title">人気記事</h2>
             </div>
-            <div class="sidebar-contents__wrapper">
+            <!-- <div class="sidebar-contents__wrapper">
             <div class="sidebar-contents__popular-body">
                 <div class="sidebar-contents__popular-image">
                 <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/blog-card4.jpg" alt="魚" decoding="async">
@@ -59,29 +65,8 @@
                 <h3 class="sidebar-contents__popular-title">ライセンス取得</h3>
                 </div>
             </div>
-            </div>
-            <div class="sidebar-contents__wrapper">
-            <div class="sidebar-contents__popular-body">
-                <div class="sidebar-contents__popular-image">
-                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/blog-card2.jpg" alt="海亀" decoding="async">
-                </div>
-                <div class="sidebar-contents__popular-head">
-                <time class="sidebar-contents__popular-date" datetime="2023-11-17">2023.11/17</time>
-                <h3 class="sidebar-contents__popular-title">ウミガメと泳ぐ</h3>
-                </div>
-            </div>
-            </div>
-            <div class="sidebar-contents__wrapper">
-            <div class="sidebar-contents__popular-body">
-                <div class="sidebar-contents__popular-image">
-                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/blog-card3.jpg" alt="カクレクマノミ" decoding="async">
-                </div>
-                <div class="sidebar-contents__popular-head">
-                <time class="sidebar-contents__popular-date" datetime="2023-11-17">2023.11/17</time>
-                <h3 class="sidebar-contents__popular-title">カクレクマノミ</h3>
-                </div>
-            </div>
-            </div>
+            </div> -->
+            <?php get_top_viewed_posts(); ?>
         </div>
 
         <!-- 口コミ -->
@@ -182,7 +167,7 @@
     </div>
 </div>
         <!-- アーカイブ -->
-        <div class="sidebar__contents sidebar-contents">
+        <!-- <div class="sidebar__contents sidebar-contents">
             <div class="sidebar-contents__header sidebar-header">
             <h2 class="sidebar-header__title">アーカイブ</h2>
             </div>
@@ -193,7 +178,28 @@
             <a href="" class="sidebar-contents__month">1月</a>
             <a href="" class="sidebar-contents__year sidebar-contents__year--right">2022</a>
             </div>
+        </div> -->
+        
+        <div class="sidebar__contents sidebar-contents">
+        <div class="sidebar-contents__header sidebar-header">
+            <h2 class="sidebar-header__title">アーカイブ</h2>
         </div>
+        <div class="sidebar-contents__archive">
+            <?php
+            global $wpdb;
+            $years = $wpdb->get_col("SELECT DISTINCT YEAR(post_date) FROM $wpdb->posts WHERE post_status = 'publish' AND post_type = 'post' ORDER BY post_date DESC");
+
+            foreach($years as $year) : ?>
+                <a href="<?php echo get_year_link($year); ?>" class="sidebar-contents__year"><?php echo $year; ?></a>
+                <?php
+                $months = $wpdb->get_col($wpdb->prepare("SELECT DISTINCT MONTH(post_date) FROM $wpdb->posts WHERE post_status = 'publish' AND post_type = 'post' AND YEAR(post_date) = %d ORDER BY post_date DESC", $year));
+                foreach($months as $month) : ?>
+                    <a href="<?php echo get_month_link($year, $month); ?>" class="sidebar-contents__month"><?php echo date_i18n("F", mktime(0, 0, 0, $month, 1, $year)); ?></a>
+                <?php endforeach; ?>
+            <?php endforeach; ?>
+        </div>
+    </div>
+
         </aside>
     </div>
     </div>

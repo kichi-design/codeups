@@ -1,0 +1,129 @@
+@use "global" as *;
+
+.btn-input {
+  font-family: $second-font-family;
+  font-size: rem(14);
+  display: inline-block;
+  width: rem(202);
+  height: rem(54);
+  background-color: $accent;
+  border: 1px solid $accent;
+  color: $white;
+  letter-spacing: 0;
+  line-height: 1;
+  transition: .3s;
+cursor: pointer;
+  position: relative;
+}
+
+.btn-input::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: $white;
+  transform: scale(0,1);
+  transform-origin: left top;
+  transition: .3s;
+  transition-property: transform;
+  z-index: 10;
+}
+
+.btn-input:hover::before {
+  @include mq(md){
+      transform: scale(1,1);
+  }
+}
+
+.btn-input::after {
+  content: "";
+  position: absolute;
+  display: block;
+  background-color: transparent;
+  border: 1px solid $accent;
+  width: rem(202);
+  height: rem(54);
+  bottom: rem(-5);
+  left: rem(4);
+}
+
+.btn-input span {
+  display: block;
+  height: 105%;
+  width: 105%;
+  position: relative;
+}
+
+.btn-input span input {
+  height: inherit;
+  color: $white;
+}
+
+.btn-input:hover span {
+  z-index: 100;
+  @include mq(md){
+      color: $accent;
+      opacity: 1;
+  }
+}
+
+.btn-input span::before {
+  content: "";
+  position: absolute;
+  display: block;
+  background-color: $white;
+  width: rem(40);
+  height: rem(1);
+  top: 38%;
+  right: rem(67);
+  transform: translateY(-50%);
+  transition: .3s;
+  border-radius: 10px;
+}
+
+.btn-input span:hover::before {
+  @include mq(md){
+      background-color: $accent;
+      opacity: 1;
+  }
+}
+
+.btn-input span::after {
+  content: "";
+  position: absolute;
+  display: block;
+  background-color: $white;
+  width: rem(10);
+  height: rem(1);
+  right: rem(66);
+  top: 32%;
+  transform: rotate(45deg);
+  transition: .3s;
+  border-radius: 10px;
+}
+
+.btn-input span:hover::after {
+  @include mq(md){
+      background-color: $accent;
+      opacity: 1;
+  }
+}
+
+.btn-input input {
+  display: block;
+  height: 110%;
+  width: 105%;
+  padding: rem(4) rem(90) rem(20) rem(11);
+  position: relative;
+}
+
+.btn-input:hover input {
+  z-index: 100;
+  @include mq(md){
+      color: $accent;
+      opacity: 1;
+  }
+}

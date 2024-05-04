@@ -16,90 +16,88 @@
 <?php get_template_part('parts/breadcrumb') ?>
 
 <section class="page-price layout-page">
-    <div class="inner page-price__inner">
-    <div class="page-price__table price-table">
+<div class="inner page-price__inner">
+    <?php
+    // ライセンス講習料金表の表示
+    $license_courses = SCF::get_option_meta('price-option', 'price-license');
+    if (!empty($license_courses)) {
+    ?>
+    <div class="page-price__table price-table" id="license-course">
         <div class="price-table__head">
-        <h2 class="price-table__title">ライセンス講習</h2>
+            <h2 class="price-table__title">ライセンス講習</h2>
         </div>
         <dl class="price-table__items">
-        <?php
-            $prices_license = SCF::get('price-license');
-            if ( is_array( $prices_license ) ) {
-            foreach ( $prices_license as $price_license_field ) {
-        ?>
+            <?php foreach ($license_courses as $course): ?>
             <div class="price-table__item">
-                <dt class="price-table__course"><?php echo esc_html( $price_license_field['license-course'] ); ?></dt>
-                <dd class="price-table__price"><?php echo esc_html( $price_license_field['license-text'] ); ?></dd>
+                <dt class="price-table__course"><?php echo esc_html($course['license-course']); ?></dt>
+                <dd class="price-table__price"><?php echo esc_html($course['license-text']); ?></dd>
             </div>
-        <?php
-            }
-        }
-        ?>
+            <?php endforeach; ?>
+        </dl>
+    </div>
+    <?php } ?>
 
+    <?php
+    // 体験ダイビング料金表の表示
+    $trial_courses = SCF::get_option_meta('price-option', 'price-trial');
+    if (!empty($trial_courses)) {
+    ?>
+    <div class="page-price__table price-table" id="trial-diving">
+        <div class="price-table__head">
+            <h2 class="price-table__title">体験ダイビング</h2>
+        </div>
+        <dl class="price-table__items">
+            <?php foreach ($trial_courses as $course): ?>
+            <div class="price-table__item">
+                <dt class="price-table__course"><?php echo esc_html($course['trial-course']); ?></dt>
+                <dd class="price-table__price"><?php echo esc_html($course['trial-text']); ?></dd>
+            </div>
+            <?php endforeach; ?>
+        </dl>
+    </div>
+    <?php } ?>
 
-        </dl>
-    </div>
-    <div class="page-price__table price-table">
+    <?php
+    // ファンダイビング料金表の表示
+    $fun_courses = SCF::get_option_meta('price-option', 'price-fun');
+    if (!empty($fun_courses)) {
+    ?>
+    <div class="page-price__table price-table" id="fun-diving">
         <div class="price-table__head">
-        <h2 class="price-table__title">体験ダイビング</h2>
+            <h2 class="price-table__title">ファンダイビング</h2>
         </div>
         <dl class="price-table__items">
-        <?php
-            $prices_trial = SCF::get('price-trial');
-            if ( is_array( $prices_trial ) ) {
-            foreach ( $prices_trial as $price_trial_field ) {
-        ?>
+            <?php foreach ($fun_courses as $course): ?>
             <div class="price-table__item">
-                <dt class="price-table__course"><?php echo esc_html( $price_trial_field['trial-course'] ); ?></dt>
-                <dd class="price-table__price"><?php echo esc_html( $price_trial_field['trial-text'] ); ?></dd>
+                <dt class="price-table__course"><?php echo esc_html($course['fun-course']); ?></dt>
+                <dd class="price-table__price"><?php echo esc_html($course['fun-text']); ?></dd>
             </div>
-        <?php
-            }
-        }
-        ?>
+            <?php endforeach; ?>
         </dl>
     </div>
+    <?php } ?>
+
+    <?php
+    // スペシャルダイビング料金表の表示
+    $special_courses = SCF::get_option_meta('price-option', 'price-special');
+    if (!empty($special_courses)) {
+    ?>
     <div class="page-price__table price-table">
         <div class="price-table__head">
-        <h2 class="price-table__title">ファンダイビング</h2>
+            <h2 class="price-table__title">スペシャルダイビング</h2>
         </div>
         <dl class="price-table__items">
-        <?php
-            $prices_fun = SCF::get('price-fun');
-            if ( is_array( $prices_fun ) ) {
-            foreach ( $prices_fun as $price_fun_field ) {
-        ?>
+            <?php foreach ($special_courses as $course): ?>
             <div class="price-table__item">
-                <dt class="price-table__course"><?php echo esc_html( $price_fun_field['fun-course'] ); ?></dt>
-                <dd class="price-table__price"><?php echo esc_html( $price_fun_field['fun-text'] ); ?></dd>
+                <dt class="price-table__course"><?php echo esc_html($course['special-course']); ?></dt>
+                <dd class="price-table__price"><?php echo esc_html($course['special-text']); ?></dd>
             </div>
-        <?php
-            }
-        }
-        ?>
+            <?php endforeach; ?>
         </dl>
     </div>
-    <div class="page-price__table price-table">
-        <div class="price-table__head">
-        <h2 class="price-table__title">スペシャルダイビング</h2>
-        </div>
-        <dl class="price-table__items">
-        <?php
-            $prices_special = SCF::get('price-special');
-            if ( is_array( $prices_special ) ) {
-            foreach ( $prices_special as $price_special_field ) {
-        ?>
-            <div class="price-table__item">
-                <dt class="price-table__course"><?php echo esc_html( $price_special_field['special-course'] ); ?></dt>
-                <dd class="price-table__price"><?php echo esc_html( $price_special_field['special-text'] ); ?></dd>
-            </div>
-        <?php
-            }
-        }
-        ?>
-        </dl>
-    </div>
-    </div>
+    <?php } ?>
+</div>
+
 </section>
 
 <?php get_footer(); ?>

@@ -51,16 +51,19 @@
 
 
     <?php
-$gallerys = SCF::get('about_us_gallery');
-foreach ($gallerys as $gallery) {
-    $gallery_picture = wp_get_attachment_image_src($gallery['gallery_picture'], 'medium');
-    if ($gallery_picture) {
-        $gallery_picture_url = esc_url($gallery_picture[0]);
-?>
-        <div class="gallery__item">
-            <img src="<?php echo $gallery_picture_url; ?>" decoding="async" alt="">
-        </div>
-<?php
+// オプションページからギャラリーデータを取得
+$gallery_images = SCF::get_option_meta('about-us-option', 'about_us_gallery');
+
+// 画像データがある場合、それを表示
+if (!empty($gallery_images)) {
+    foreach ($gallery_images as $image) {
+        $image_id = isset($image['gallery_picture']) ? $image['gallery_picture'] : '';
+        $image_url = wp_get_attachment_image_url($image_id, 'medium');
+        if ($image_url) {
+            echo '<div class="gallery__item">';
+            echo '<img src="' . esc_url($image_url) . '" decoding="async" alt="">';
+            echo '</div>';
+        }
     }
 }
 ?>

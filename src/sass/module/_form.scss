@@ -393,3 +393,75 @@ textarea {
 	display: inline-block;
 	text-align: left;
 }
+
+// ----------------------------------------
+// コンタクトフォーム　同意するボタンをspanタグ使わないで表示
+// ----------------------------------------
+.contact-form__agreement-label {
+line-height: 1.57;
+font-size: rem(14);
+padding: rem(20) 0 0 rem(30);
+position: relative;
+display: inline-block;
+
+@include mq('md') {
+	padding: 0 0 0 rem(36);
+}
+
+&::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	width: rem(22);
+	height: rem(22);
+	background: #fff;
+	border: 1px solid #000; /* 仮の枠線 */
+}
+
+input[type="checkbox"] {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	width: rem(22);
+	height: rem(22);
+	z-index: 2;
+}
+
+&:checked + &::after {
+	content: '';
+	position: absolute;
+	margin-left: rem(2);
+	left: 0; /* チェックマーク位置 */
+	top: 50%;
+	transform: translateY(-50%);
+	width: calc($check-size-agreement * 0.7);
+	height: calc($check-size-agreement * 0.4);
+	background: url('path/to/checkmark.svg') no-repeat center / contain;
+}
+}
+
+/* エラー時のスタイル */
+.contact-form__agreement-label.error::before {
+border-color: #C94800;
+background: rgba(201, 72, 0, 0.20);
+}
+
+// .contact-form__agreement-label input[type="checkbox"]:focus + &::before {
+// box-shadow: 0 0 rem(5) rgba(201, 72, 0, 0.8);
+// }
+
+
+// 送信ボタン　Contactform7
+.wpcf7-spinner{
+	display: none;
+}
+.wpcf7-list-item{
+	display: block;
+    margin-left: 0;
+    text-align: inherit;
+}
+.contact-form__checkbox .wpcf7-list-item{
+	text-align: left;
+}

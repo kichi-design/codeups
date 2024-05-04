@@ -208,67 +208,110 @@ jQuery(function ($) {
   // formエラー
   // ----------------------------------------
 
-  var contactFormButton = document.querySelector('.button--contact-form');
-  if (contactFormButton) {
-    contactFormButton.addEventListener('click', function () {
-      var form = document.getElementById('form');
+  // const contactFormButton = document.querySelector('.button--contact-form');
 
-      // フォームが存在する場合のみ処理を実行
-      if (form) {
+  // if (contactFormButton) {
+  //     contactFormButton.addEventListener('click', function () {
+  //         const form = document.getElementById('form');
+
+  //         // フォームが存在する場合のみ処理を実行
+  //         if (form) {
+  //             let isValid = true;
+
+  //             form.querySelectorAll('[required]').forEach(function (input) {
+  //                 if (input.type !== 'checkbox' && input.type !== 'radio') {
+  //                     if (!input.value) {
+  //                         input.classList.add('error');
+  //                         isValid = false;
+  //                     } else {
+  //                         input.classList.remove('error');
+  //                     }
+  //                 } else if (input.type === 'checkbox' || input.type === 'radio') {
+  //                     const inputName = input.getAttribute('name');
+  //                     const checked = form.querySelector(`input[name="${inputName}"]:checked`);
+  //                     if (!checked) {
+  //                         isValid = false;
+  //                         const checkboxGroup = form.querySelector(`input[name="${inputName}"]`);
+  //                         if (checkboxGroup) {
+  //                             checkboxGroup.classList.add('error');
+  //                         }
+  //                     } else {
+  //                         const checkboxGroup = form.querySelector(`input[name="${inputName}"]`);
+  //                         if (checkboxGroup) {
+  //                             checkboxGroup.classList.remove('error');
+  //                         }
+  //                     }
+  //                 }
+  //             });
+
+  //             const errorDiv = document.querySelector('.js-error');
+  //             const breadcrumbDiv = document.querySelector('.js-error-breadcrumb');
+
+  //             if (!isValid) {
+  //                 errorDiv.style.display = 'block';
+  //                 breadcrumbDiv.style.display = 'inline-block';
+
+  //                 // ヘッダーの高さを取得
+  //                 const headerHeight = document.querySelector('header').offsetHeight;
+  //                 const errorDivPosition = errorDiv.getBoundingClientRect().top + window.scrollY - headerHeight;
+  //                 window.scrollTo({ top: errorDivPosition, behavior: 'smooth' });
+  //             } else {
+  //                 errorDiv.style.display = 'none';
+  //                 breadcrumbDiv.style.display = 'none';
+  //             }
+  //         }
+  //     });
+  // }
+
+  // // フォームの送信をキャンセル
+  // const formElement = document.getElementById('form');
+  // if (formElement) {
+  //     formElement.addEventListener('submit', function (event) {
+  //         event.preventDefault();
+  //     });
+  // }
+  document.addEventListener('DOMContentLoaded', function () {
+    var submitButton = document.querySelector('.contact-form__button [type="submit"]');
+    if (submitButton) {
+      submitButton.addEventListener('click', function (event) {
+        event.preventDefault(); // フォームの自動送信を防ぐ
         var isValid = true;
-        form.querySelectorAll('[required]').forEach(function (input) {
-          if (input.type !== 'checkbox' && input.type !== 'radio') {
+        var formItems = document.querySelectorAll('.contact-form__item');
+        formItems.forEach(function (item) {
+          var input = item.querySelector('input, select, textarea');
+          if (input && input.getAttribute('type') !== 'checkbox' && input.getAttribute('type') !== 'radio') {
+            // テキスト、メール、電話、テキストエリアの検証
             if (!input.value) {
               input.classList.add('error');
               isValid = false;
             } else {
               input.classList.remove('error');
             }
-          } else if (input.type === 'checkbox' || input.type === 'radio') {
-            var inputName = input.getAttribute('name');
-            var checked = form.querySelector("input[name=\"".concat(inputName, "\"]:checked"));
-            if (!checked) {
+          } else if (input && (input.getAttribute('type') === 'checkbox' || input.getAttribute('type') === 'radio')) {
+            // チェックボックスとラジオボタンの検証
+            var name = input.getAttribute('name');
+            if (!document.querySelector("input[name=\"".concat(name, "\"]:checked"))) {
+              var checkboxGroup = item.querySelector('.contact-form__checkbox');
+              checkboxGroup.classList.add('error');
               isValid = false;
-              var checkboxGroup = form.querySelector("input[name=\"".concat(inputName, "\"]"));
-              if (checkboxGroup) {
-                checkboxGroup.classList.add('error');
-              }
             } else {
-              var _checkboxGroup = form.querySelector("input[name=\"".concat(inputName, "\"]"));
-              if (_checkboxGroup) {
-                _checkboxGroup.classList.remove('error');
-              }
+              var _checkboxGroup = item.querySelector('.contact-form__checkbox');
+              _checkboxGroup.classList.remove('error');
             }
           }
         });
-        var errorDiv = document.querySelector('.js-error');
-        var breadcrumbDiv = document.querySelector('.js-error-breadcrumb');
+
+        // エラーがある場合は処理を中断
         if (!isValid) {
-          errorDiv.style.display = 'block';
-          breadcrumbDiv.style.display = 'inline-block';
-
-          // ヘッダーの高さを取得
-          var headerHeight = document.querySelector('header').offsetHeight;
-          var errorDivPosition = errorDiv.getBoundingClientRect().top + window.scrollY - headerHeight;
-          window.scrollTo({
-            top: errorDivPosition,
-            behavior: 'smooth'
-          });
+          // エラーメッセージを表示するなどの処理をここに記述
+          console.error('Form is invalid');
         } else {
-          errorDiv.style.display = 'none';
-          breadcrumbDiv.style.display = 'none';
+          // ここにフォームが有効である場合の処理を記述
+          console.log('Form is valid');
         }
-      }
-    });
-  }
-
-  // フォームの送信をキャンセル
-  var formElement = document.getElementById('form');
-  if (formElement) {
-    formElement.addEventListener('submit', function (event) {
-      event.preventDefault();
-    });
-  }
+      });
+    }
+  });
 
   // ----------------------------------------
   // タブメニュー インフォメーション

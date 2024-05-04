@@ -1,6 +1,8 @@
 @use "global" as *;
 .page-404{
     position: relative;
+    background-color: $accent;
+
 }
 
 .page-404::before{

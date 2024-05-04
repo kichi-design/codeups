@@ -1,4 +1,5 @@
-<!-- contact -->
+<?php if (!is_404() && !is_page('contact') && !is_page('thanks')): ?>
+            <!-- contact -->
 <section class="contact top-contact">
     <div class="inner contact__inner">
     <div class="contact__container">
@@ -25,7 +26,7 @@
         </div>
         <p class="contact__info-text">ご予約・お問い合わせはコチラ</p>
         <div class="contact__button">
-            <a href="page-contact.html" class="button">
+            <a href="<?php echo get_permalink(get_page_by_path('contact')->ID); ?>" class="button">
             <span>Contact us</span>
             </a>
         </div>
@@ -34,13 +35,14 @@
     </div>
     </div>
 </section>
+<?php endif; ?>
 
 
 <!-- footer -->
 <footer class="footer l-footer">
 <div class="inner footer-inner">
     <div class="footer__title">
-    <a href="index.html" class="footer__logo">
+    <a href="<?php echo esc_url(home_url()); ?>" class="footer__logo">
         <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/CodeUps.svg" alt="ロゴ" decoding="async">
     </a>
     <div class="footer__sns footer-sns">
@@ -55,42 +57,44 @@
     <div class="footer__nav footer-nav">
         <div class="footer-nav__container">
         <ul class="footer-nav__items">
-            <li class="footer-nav__item sp-subnav"><a class="footer-nav__title" href="page-campaign.html">キャンペーン</a>
+        <li class="footer-nav__item sp-subnav">
+            <a class="footer-nav__title" href="<?php echo get_post_type_archive_link('campaign'); ?>">キャンペーン</a>
             <ul class="sp-subnav__items">
-                <li class="sp-subnav__item"><a href="#">ライセンス取得</a></li>
-                <li class="sp-subnav__item"><a href="#">貸切体験ダイビング</a></li>
-                <li class="sp-subnav__item"><a href="#">ナイトダイビング</a></li>
+                <li class="sp-subnav__item"><a href="<?php echo esc_url(add_query_arg('term', 'campaign_license', get_post_type_archive_link('campaign'))); ?>">ライセンス取得</a></li>
+                <li class="sp-subnav__item"><a href="<?php echo esc_url(add_query_arg('term', 'campaign_trial', get_post_type_archive_link('campaign'))); ?>">体験ダイビング</a></li>
+                <li class="sp-subnav__item"><a href="<?php echo esc_url(add_query_arg('term', 'campaign_fun', get_post_type_archive_link('campaign'))); ?>">ファンダイビング</a></li>
             </ul>
-            </li>
-            <li class="footer-nav__item footer-nav__item--adjustment"><a class="footer-nav__title" href="page-about.html">私たちについて</a></li>
+        </li>
+
+            <li class="footer-nav__item footer-nav__item--adjustment"><a class="footer-nav__title" href="<?php echo get_permalink(get_page_by_path('about-us')->ID); ?>">私たちについて</a></li>
         </ul>
         <ul class="footer-nav__items">
-            <li class="footer-nav__item footer-nav__item--information sp-subnav"><a class="footer-nav__title" href="page-information.html">ダイビング情報</a>
+            <li class="footer-nav__item footer-nav__item--information sp-subnav"><a class="footer-nav__title" href="<?php echo get_permalink(get_page_by_path('information')->ID); ?>">ダイビング情報</a>
             <ul class="sp-subnav__items">
-                <li class="sp-subnav__item"><a href="#">ライセンス講習</a></li>
-                <li class="sp-subnav__item"><a href="#">体験ダイビング</a></li>
-                <li class="sp-subnav__item"><a href="#">ファンダイビング</a></li>
+                <li class="sp-subnav__item"><a href="<?php echo get_permalink(get_page_by_path('information')->ID); ?>?id=license-course">ライセンス講習</a></li>
+                <li class="sp-subnav__item"><a href="<?php echo get_permalink(get_page_by_path('information')->ID); ?>?id=experience-diving">体験ダイビング</a></li>
+                <li class="sp-subnav__item"><a href="<?php echo get_permalink(get_page_by_path('information')->ID); ?>?id=fun-diving">ファンダイビング</a></li>
             </ul>
             </li>
-            <li class="footer-nav__item footer-nav__item--adjustment"><a class="footer-nav__title" href="page-blog.html">ブログ</a></li>
+            <li class="footer-nav__item footer-nav__item--adjustment"><a class="footer-nav__title" href="<?php echo get_permalink(get_option('page_for_posts')); ?>">ブログ</a></li>
         </ul>
         </div>
         <div class="footer-nav__container">
         <ul class="footer-nav__items">
-            <li class="footer-nav__item"><a class="footer-nav__title" href="page-voice.html">お客様の声</a></li>
-            <li class="footer-nav__item footer-nav__item--adjustment sp-subnav"><a class="footer-nav__title" href="page-price.html">料金一覧</a>
+            <li class="footer-nav__item"><a class="footer-nav__title" href="<?php echo get_post_type_archive_link('voice'); ?>">お客様の声</a></li>
+            <li class="footer-nav__item footer-nav__item--adjustment sp-subnav"><a class="footer-nav__title" href="<?php echo get_permalink(get_page_by_path('price')->ID); ?>">料金一覧</a>
             <ul class="sp-subnav__items">
-                <li class="sp-subnav__item"><a href="#">ライセンス講習</a></li>
-                <li class="sp-subnav__item"><a  href="#">体験ダイビング</a></li>
-                <li class="sp-subnav__item"><a href="#">ファンダイビング</a></li>
+                <li class="sp-subnav__item"><a href="<?php echo esc_url(get_permalink(get_page_by_path('price')->ID) . '#license-course'); ?>">ライセンス講習</a></li>
+                <li class="sp-subnav__item"><a href="<?php echo esc_url(get_permalink(get_page_by_path('price')->ID) . '#trial-diving'); ?>">体験ダイビング</a></li>
+                <li class="sp-subnav__item"><a href="<?php echo esc_url(get_permalink(get_page_by_path('price')->ID) . '#fun-diving'); ?>">ファンダイビング</a></li>
             </ul>
             </li>
         </ul>
         <ul class="footer-nav__items">
-            <li class="footer-nav__item footer-nav__item--faq"><a class="footer-nav__title" href="page-faq.html">よくある質問</a></li>
-            <li class="footer-nav__item footer-nav__item--adjustment"><a class="footer-nav__title" href="page-privacypolicy.html">プライバシー<br class="display__sp">ポリシー</a></li>
-            <li class="footer-nav__item footer-nav__item--adjustment"><a class="footer-nav__title" href="page-terms.html">利用規約</a></li>
-            <li class="footer-nav__item footer-nav__item--adjustment"><a class="footer-nav__title" href="page-contact.html">お問い合わせ</a></li>
+            <li class="footer-nav__item footer-nav__item--faq"><a class="footer-nav__title" href="<?php echo get_permalink(get_page_by_path('faq')->ID); ?>">よくある質問</a></li>
+            <li class="footer-nav__item footer-nav__item--adjustment"><a class="footer-nav__title" href="<?php echo esc_url(get_permalink(get_page_by_path('privacypolicy'))); ?>">プライバシー<br class="display__sp">ポリシー</a></li>
+            <li class="footer-nav__item footer-nav__item--adjustment"><a class="footer-nav__title" href="<?php echo esc_url(get_permalink(get_page_by_path('terms-of-service'))); ?>">利用規約</a></li>
+            <li class="footer-nav__item footer-nav__item--adjustment"><a class="footer-nav__title" href="<?php echo get_permalink(get_page_by_path('contact')->ID); ?>">お問い合わせ</a></li>
         </ul>
         </div>
     </div>
