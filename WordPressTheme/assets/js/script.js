@@ -243,68 +243,6 @@ if (!splashText) {
   // formエラー
   // ----------------------------------------
 
-  // var contactFormButton = document.querySelector('.button--contact-form');
-  // if (contactFormButton) {
-  //   contactFormButton.addEventListener('click', function () {
-  //     var form = document.getElementById('form');
-
-  //     // フォームが存在する場合のみ処理を実行
-  //     if (form) {
-  //       var isValid = true;
-  //       form.querySelectorAll('[required]').forEach(function (input) {
-  //         if (input.type !== 'checkbox' && input.type !== 'radio') {
-  //           if (!input.value) {
-  //             input.classList.add('error');
-  //             isValid = false;
-  //           } else {
-  //             input.classList.remove('error');
-  //           }
-  //         } else if (input.type === 'checkbox' || input.type === 'radio') {
-  //           var inputName = input.getAttribute('name');
-  //           var checked = form.querySelector("input[name=\"".concat(inputName, "\"]:checked"));
-  //           if (!checked) {
-  //             isValid = false;
-  //             var checkboxGroup = form.querySelector("input[name=\"".concat(inputName, "\"]"));
-  //             if (checkboxGroup) {
-  //               checkboxGroup.classList.add('error');
-  //             }
-  //           } else {
-  //             var _checkboxGroup = form.querySelector("input[name=\"".concat(inputName, "\"]"));
-  //             if (_checkboxGroup) {
-  //               _checkboxGroup.classList.remove('error');
-  //             }
-  //           }
-  //         }
-  //       });
-  //       var errorDiv = document.querySelector('.js-error');
-  //       var breadcrumbDiv = document.querySelector('.js-error-breadcrumb');
-  //       if (!isValid) {
-  //         errorDiv.style.display = 'block';
-  //         breadcrumbDiv.style.display = 'inline-block';
-
-  //         // ヘッダーの高さを取得
-  //         var headerHeight = document.querySelector('header').offsetHeight;
-  //         var errorDivPosition = errorDiv.getBoundingClientRect().top + window.scrollY - headerHeight;
-  //         window.scrollTo({
-  //           top: errorDivPosition,
-  //           behavior: 'smooth'
-  //         });
-  //       } else {
-  //         errorDiv.style.display = 'none';
-  //         breadcrumbDiv.style.display = 'none';
-  //       }
-  //     }
-  //   });
-  // }
-
-  // // フォームの送信をキャンセル
-  // var formElement = document.getElementById('form');
-  // if (formElement) {
-  //   formElement.addEventListener('submit', function (event) {
-  //     event.preventDefault();
-  //   });
-  // }
-
   $(document).ready(function () {
     // 監視対象の要素
     var targetElements = $('.wpcf7-form-control-wrap');

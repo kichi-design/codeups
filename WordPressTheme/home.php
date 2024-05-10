@@ -167,19 +167,7 @@
     </div>
 </div>
         <!-- アーカイブ -->
-        <!-- <div class="sidebar__contents sidebar-contents">
-            <div class="sidebar-contents__header sidebar-header">
-            <h2 class="sidebar-header__title">アーカイブ</h2>
-            </div>
-            <div class="sidebar-contents__archive">
-            <a href="" class="sidebar-contents__year">2023</a>
-            <a href="" class="sidebar-contents__month">3月</a>
-            <a href="" class="sidebar-contents__month">2月</a>
-            <a href="" class="sidebar-contents__month">1月</a>
-            <a href="" class="sidebar-contents__year sidebar-contents__year--right">2022</a>
-            </div>
-        </div> -->
-        
+
         <div class="sidebar__contents sidebar-contents">
         <div class="sidebar-contents__header sidebar-header">
             <h2 class="sidebar-header__title">アーカイブ</h2>

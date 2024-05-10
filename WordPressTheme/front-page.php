@@ -293,25 +293,6 @@
                 echo '<li>該当する投稿が見つかりません。</li>';
             endif;
             ?>
-        <!-- <a href="#" class="voice__item voice-card">
-        <div class="voice-card__header">
-            <div class="voice-card__header-title">
-            <div class="voice-card__info">
-                <p class="voice-card__agegender">30代(男性)</p>
-                <p class="voice-card__tag">ファンダイビング</p>
-            </div>
-            <h3 class="voice-card__title">ここにタイトルが入ります。ここにタイトル</h3>
-            </div>
-            <div class="voice-card__image colorbox">
-            <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/voice2.jpg" alt="男性" decoding="async">
-            </div>
-        </div>
-        <p class="voice-card__text">
-            ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br>
-            ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br>
-            ここにテキストが入ります。ここにテキストが入ります。
-        </p>
-        </a> -->
     </div>
     <div class="voice__button">
         <a href="<?php echo get_post_type_archive_link('voice'); ?>" class="button">

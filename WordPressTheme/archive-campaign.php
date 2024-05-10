@@ -111,7 +111,7 @@
                         <?php endif; ?>
                         <p class="campaign-card__info-text">ご予約・お問い合わせはコチラ</p>
                         <div class="campaign-card__button">
-                            <a href="#" class="button">
+                            <a href="<?php echo get_permalink(get_page_by_path('contact')->ID); ?>" class="button">
                                 <span>Contact us</span>
                             </a>
                         </div>

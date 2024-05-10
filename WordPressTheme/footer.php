@@ -4,7 +4,7 @@
     <div class="inner contact__inner">
     <div class="contact__container">
         <div class="contact__company">
-        <a href="#" class="contact__logo">
+        <a href="<?php echo esc_url(home_url()); ?>" class="contact__logo">
             <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/CodeUps-contact.svg" alt="ロゴ" decoding="async">
         </a>
         <div class="contact__company-body">
@@ -46,10 +46,10 @@
         <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/CodeUps.svg" alt="ロゴ" decoding="async">
     </a>
     <div class="footer__sns footer-sns">
-        <a href="#" class="footer-sns__facebook">
+        <a href="<?php echo esc_url(home_url()); ?>" class="footer-sns__facebook">
         <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/FacebookLogo.png" alt="Facebook" decoding="async">
         </a>
-        <a href="#" class="footer-sns__instagram">
+        <a href="<?php echo esc_url(home_url()); ?>" class="footer-sns__instagram">
         <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/InstagramLogo.png" alt="Instagram" decoding="async">
         </a>
     </div>

@@ -27,17 +27,17 @@
             <ul class="sp-nav__items">
             <li class="sp-nav__item sp-subnav"><a class="sp-nav__title" href="<?php echo get_post_type_archive_link('campaign'); ?>">キャンペーン</a>
                 <ul class="sp-subnav__items">
-                <li class="sp-subnav__item"><a href="#">ライセンス取得</a></li>
-                <li class="sp-subnav__item"><a href="#">貸切体験ダイビング</a></li>
-                <li class="sp-subnav__item"><a href="#">ナイトダイビング</a></li>
+                <li class="sp-subnav__item"><a href="<?php echo esc_url(add_query_arg('term', 'campaign_license', get_post_type_archive_link('campaign'))); ?>">ライセンス取得</a></li>
+                <li class="sp-subnav__item"><a href="<?php echo esc_url(add_query_arg('term', 'campaign_trial', get_post_type_archive_link('campaign'))); ?>">貸切体験ダイビング</a></li>
+                <li class="sp-subnav__item"><a href="<?php echo esc_url(add_query_arg('term', 'campaign_fun', get_post_type_archive_link('campaign'))); ?>">ナイトダイビング</a></li>
                 </ul>
             </li>
             <li class="sp-nav__item sp-nav__item--about"><a class="sp-nav__title" href="<?php echo get_permalink(get_page_by_path('about-us')->ID); ?>">私たちについて</a></li>
             <li class="sp-nav__item sp-nav__item--information sp-subnav"><a class="sp-nav__title" href="<?php echo get_permalink(get_page_by_path('information')->ID); ?>">ダイビング情報</a>
                 <ul class="sp-subnav__items">
-                <li class="sp-subnav__item"><a href="#">ライセンス講習</a></li>
-                <li class="sp-subnav__item"><a href="#">体験ダイビング</a></li>
-                <li class="sp-subnav__item"><a href="#">ファンダイビング</a></li>
+                <li class="sp-subnav__item"><a href="<?php echo get_permalink(get_page_by_path('information')->ID); ?>?id=license-course">ライセンス講習</a></li>
+                <li class="sp-subnav__item"><a href="<?php echo get_permalink(get_page_by_path('information')->ID); ?>?id=experience-diving">体験ダイビング</a></li>
+                <li class="sp-subnav__item"><a href="<?php echo get_permalink(get_page_by_path('information')->ID); ?>?id=fun-diving">ファンダイビング</a></li>
                 </ul>
             </li>
             <li class="sp-nav__item sp-nav__item--blog"><a class="sp-nav__title" href="<?php echo get_permalink(get_option('page_for_posts')); ?>">ブログ</a></li>
@@ -46,9 +46,9 @@
             <li class="sp-nav__item"><a class="sp-nav__title" href="<?php echo get_post_type_archive_link('voice'); ?>">お客様の声</a></li>
             <li class="sp-nav__item sp-nav__item--price sp-subnav"><a class="sp-nav__title" href="<?php echo get_permalink(get_page_by_path('price')->ID); ?>">料金一覧</a>
                 <ul class="sp-subnav__items">
-                <li class="sp-subnav__item"><a href="#">ライセンス講習</a></li>
-                <li class="sp-subnav__item"><a href="#">体験ダイビング</a></li>
-                <li class="sp-subnav__item"><a href="#">ファンダイビング</a></li>
+                <li class="sp-subnav__item"><a href="<?php echo esc_url(get_permalink(get_page_by_path('price')->ID) . '#license-course'); ?>"">ライセンス講習</a></li>
+                <li class="sp-subnav__item"><a href="<?php echo esc_url(get_permalink(get_page_by_path('price')->ID) . '#trial-diving'); ?>">体験ダイビング</a></li>
+                <li class="sp-subnav__item"><a href="<?php echo esc_url(get_permalink(get_page_by_path('price')->ID) . '#fun-diving'); ?>">ファンダイビング</a></li>
                 </ul>
             </li>
             <li class="sp-nav__item sp-nav__item--faq"><a class="sp-nav__title" href="<?php echo get_permalink(get_page_by_path('faq')->ID); ?>">よくある質問</a></li>
