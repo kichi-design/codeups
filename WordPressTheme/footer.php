@@ -46,10 +46,10 @@
         <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/CodeUps.svg" alt="ロゴ" decoding="async">
     </a>
     <div class="footer__sns footer-sns">
-        <a href="<?php echo esc_url(home_url()); ?>" class="footer-sns__facebook">
+    <a href="https://www.facebook.com" class="footer-sns__facebook" target="_blank" rel="noopener noreferrer">
         <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/FacebookLogo.png" alt="Facebook" decoding="async">
         </a>
-        <a href="<?php echo esc_url(home_url()); ?>" class="footer-sns__instagram">
+        <a href="https://www.instagram.com" class="footer-sns__instagram" target="_blank" rel="noopener noreferrer">
         <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/InstagramLogo.png" alt="Instagram" decoding="async">
         </a>
     </div>
@@ -87,6 +87,7 @@
                 <li class="sp-subnav__item"><a href="<?php echo esc_url(get_permalink(get_page_by_path('price')->ID) . '#license-course'); ?>">ライセンス講習</a></li>
                 <li class="sp-subnav__item"><a href="<?php echo esc_url(get_permalink(get_page_by_path('price')->ID) . '#trial-diving'); ?>">体験ダイビング</a></li>
                 <li class="sp-subnav__item"><a href="<?php echo esc_url(get_permalink(get_page_by_path('price')->ID) . '#fun-diving'); ?>">ファンダイビング</a></li>
+                <li class="sp-subnav__item"><a href="<?php echo esc_url(get_permalink(get_page_by_path('price')->ID) . '#special-diving'); ?>">スペシャルダイビング</a></li>
             </ul>
             </li>
         </ul>
@@ -95,6 +96,7 @@
             <li class="footer-nav__item footer-nav__item--adjustment"><a class="footer-nav__title" href="<?php echo esc_url(get_permalink(get_page_by_path('privacypolicy'))); ?>">プライバシー<br class="display__sp">ポリシー</a></li>
             <li class="footer-nav__item footer-nav__item--adjustment"><a class="footer-nav__title" href="<?php echo esc_url(get_permalink(get_page_by_path('terms-of-service'))); ?>">利用規約</a></li>
             <li class="footer-nav__item footer-nav__item--adjustment"><a class="footer-nav__title" href="<?php echo get_permalink(get_page_by_path('contact')->ID); ?>">お問い合わせ</a></li>
+            <li class="footer-nav__item footer-nav__item--adjustment"><a class="footer-nav__title" href="<?php echo get_permalink(get_page_by_path('sitemap')->ID); ?>">サイトマップ</a></li>
         </ul>
         </div>
     </div>

@@ -11,15 +11,15 @@
 }
 
 .sitemap-nav + .sitemap-nav{
-  margin-left: rem(29);
+  margin-left: rem(16);
   @include mq('md'){
-    margin-left: rem(144);
+    margin-left: rem(120);
   }
 }
 
 .sitemap-nav__items:nth-child(n + 2){
   @include mq('md'){
-    margin-left: rem(144);
+    margin-left: rem(120);
   }
 }
 

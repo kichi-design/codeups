@@ -52,6 +52,7 @@
                 <li class="sitemap-nav__subitem"><a href="<?php echo esc_url(get_permalink(get_page_by_path('price')->ID) . '#license-course'); ?>">ライセンス講習</a></li>
                 <li class="sitemap-nav__subitem"><a href="<?php echo esc_url(get_permalink(get_page_by_path('price')->ID) . '#trial-diving'); ?>">体験ダイビング</a></li>
                 <li class="sitemap-nav__subitem"><a href="<?php echo esc_url(get_permalink(get_page_by_path('price')->ID) . '#fun-diving'); ?>">ファンダイビング</a></li>
+                <li class="sitemap-nav__subitem"><a href="<?php echo esc_url(get_permalink(get_page_by_path('price')->ID) . '#special-diving'); ?>">スペシャルダイビング</a></li>
             </ul>
             </li>
         </ul>
@@ -64,6 +65,9 @@
                 href="<?php echo esc_url(get_permalink(get_page_by_path('terms-of-service'))); ?>">利用規約</a></li>
             <li class="sitemap-nav__item sitemap-nav__item--adjustment"><a class="sitemap-nav__title"
                 href="<?php echo get_permalink(get_page_by_path('contact')->ID); ?>">お問い合わせ</a></li>
+            <li class="sitemap-nav__item sitemap-nav__item--adjustment"><a class="sitemap-nav__title"
+                href="<?php echo get_permalink(get_page_by_path('sitemap')->ID); ?>">サイトマップ</a></li>
+                
         </ul>
         </div>
     </div>

@@ -4934,11 +4934,11 @@ textarea {
 }
 
 .sitemap-nav + .sitemap-nav {
-	margin-left: 9rem;
+	margin-left: 7.5rem;
 }
 
 .sitemap-nav__items:nth-child(n+2) {
-	margin-left: 9rem;
+	margin-left: 7.5rem;
 }
 
 .sitemap-nav__item--faq {

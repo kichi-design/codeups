@@ -82,7 +82,7 @@
     $special_courses = SCF::get_option_meta('price-option', 'price-special');
     if (!empty($special_courses)) {
     ?>
-    <div class="page-price__table price-table">
+    <div class="page-price__table price-table" id="special-diving">
         <div class="price-table__head">
             <h2 class="price-table__title">スペシャルダイビング</h2>
         </div>

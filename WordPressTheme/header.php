@@ -5,6 +5,17 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="format-detection" content="telephone=no">
 <meta name="robots" content="noindex">
+<!-- OGP -->
+<meta property="og:url" content="https://k-ichi.com/codeups/">
+<meta property="og:type" content=" website">
+<meta property="og:title" content="CodeUps課題">
+<meta property="og:description" content=" CodeUps課題をwordpress化までおこないました" />
+<meta property="og:site_name" content="CodeUps課題">
+<meta property="og:image" content="https://k-ichi.com/codeups/wp-content/uploads/2024/05/ogp.jpg">
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@kichi2023" />
+
 <?php wp_head(); ?>
 </head>
 <body <?php body_class( is_404() ? 'bg-404' : '' ); ?>>
