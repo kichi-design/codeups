@@ -449,21 +449,6 @@ add_filter('wpcf7_form_tag', function ($tag) {
 
 
 
-// function filter_campaign_posts_by_category($query) {
-//     if (!is_admin() && $query->is_main_query() && is_post_type_archive('campaign')) {
-//         if (isset($_GET['tab']) && $_GET['tab'] !== 'all') {
-//             $query->set('tax_query', array(
-//                 array(
-//                     'taxonomy' => 'campaign_category',
-//                     'field'    => 'slug',
-//                     'terms'    => $_GET['tab']
-//                 )
-//             ));
-//         }
-//     }
-// }
-// add_action('pre_get_posts', 'filter_campaign_posts_by_category');
-
 
 
 

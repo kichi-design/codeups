@@ -221,25 +221,6 @@ if (!splashText) {
   });
 
   // ----------------------------------------
-  // タブメニュー インフォメーション
-  // ----------------------------------------
-  // $(document).ready(function () {
-  //     // 最初のタブとエリアにis-activeクラスを追加
-  //     var initialTab = $('.tabs-information__item:first-of-type a').attr('href');
-  //     $(initialTab).addClass('is-active');
-  //     $('.tabs-information__item:first-of-type').addClass('is-active');
-
-  //     // タブをクリックしたときの処理
-  //     $('.tabs-information a').on('click', function () {
-  //         var idName = $(this).attr('href');
-  //         $('.tab-information-area').removeClass('is-active');
-  //         $(idName).addClass('is-active');
-  //         $('.tabs-information__item').removeClass('is-active');
-  //         $(this).parent().addClass('is-active');
-  //         return false;
-  //     });
-  // });
-  // ----------------------------------------
   // formエラー
   // ----------------------------------------
 
@@ -362,79 +343,6 @@ if (!splashText) {
             scrollTop: $('#' + tabId).offset().top - 250 // ヘッダーなどの高さ調整が必要な場合は値を変更
         }, 300); // スクロールにかかる時間（ミリ秒）
     });
-});
-
-// ----------------------------------------
-// campaign 特定のタブの位置までスクロールする機能
-// ----------------------------------------
-// jQuery(document).ready(function($) {
-//   var urlParams = new URLSearchParams(window.location.search);
-//   var term = urlParams.get('term');
-
-//   if (term) {
-//       setTimeout(function() {
-//           var $tab = $('#campaign-tabs');
-//           if ($tab.length) {
-//               $('html, body').animate({
-//                   scrollTop: $tab.offset().top - 150
-//               }, 800);
-//           }
-//       }, 500);
-//   }
-
-//   // タブのリンククリック時にページ内移動のみスクロールを実行し、それ以外の動作はブラウザに任せる
-//   $('.tabs a').on('click', function(event) {
-//       var targetId = $(this).attr('href').replace('#', '');
-//       var $target = $('#' + targetId);
-
-//       // hrefが "#" を含む場合だけ preventDefault() を実行し、それ以外はデフォルト動作を許可
-//       if ($(this).attr('href').startsWith('#')) {
-//           event.preventDefault();
-//           if ($target.length) {
-//               $('html, body').animate({
-//                   scrollTop: $target.offset().top - 50
-//               }, 800);
-//           }
-//       }
-//   });
-// });
-
-// ----------------------------------------
-// voice 特定のタブの位置までスクロールする機能
-// ----------------------------------------
-jQuery(document).ready(function($) {
-  // URLからクエリパラメータを取得
-  var urlParams = new URLSearchParams(window.location.search);
-  var term = urlParams.get('term');
-
-  // クエリパラメータがある場合、指定されたタブまでスクロールする
-  if (term) {
-      setTimeout(function() {
-          // #voice-tabsを選択するためのセレクタ
-          var $tab = $('#voice-tabs'); // このIDはあなたのページに合わせて設定してください
-          if ($tab.length) {
-              $('html, body').animate({
-                  scrollTop: $tab.offset().top - 150 // タブの位置までスクロールする
-              }, 800);
-          }
-      }, 500); // DOMが完全に読み込まれるまで少し待機する
-  }
-
-  // タブのリンクをクリックした際のカスタムスクロール動作
-  $('.tabs a').on('click', function(event) {
-      var targetId = $(this).attr('href').replace('#', '');
-      var $target = $('#' + targetId);
-
-      // hrefが '#' を含む場合、デフォルトのアンカー動作をキャンセル
-      if ($(this).attr('href').startsWith('#')) {
-          event.preventDefault();
-          if ($target.length) {
-              $('html, body').animate({
-                  scrollTop: $target.offset().top - 50 // 目的のタブの位置までスムーズにスクロール
-              }, 800);
-          }
-      }
-  });
 });
 
 // ----------------------------------------
