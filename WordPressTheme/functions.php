@@ -44,34 +44,27 @@ function my_setup() {
 }
 add_action( 'after_setup_theme', 'my_setup' );
 
-
 // ---------------------------------------
 //アーカイブの表示件数変更
 // ---------------------------------------
-function change_posts_per_page($query) {
-    if ( is_admin() || ! $query->is_main_query() )
+//特定のカスタム投稿の記事一覧数を指定する
+add_filter('parse_query', 'custom_per_page');
+function custom_per_page($query)
+{
+    if (is_admin() || is_singular() || !$query->is_main_query()) {
         return;
-    
-    // campaignまたはvoiceのカスタム投稿タイプアーカイブの場合
-    if ( $query->is_post_type_archive('campaign') || $query->is_post_type_archive('voice') ) {
-        $query->set( 'posts_per_page', '-1' ); // 表示件数を無制限に設定
+    }
+
+    if ($query->get('post_type') == 'campaign' || $query->is_tax('campaign_category')) {
+        // campaign タイプの投稿、または campaign_category タクソノミーが関与する場合
+        $query->set('posts_per_page', 2); // 1ページに2記事
+    }
+
+    if ($query->get('post_type') == 'voice') {
+        // voice タイプの投稿の場合
+        $query->set('posts_per_page', 2);
     }
 }
-add_action( 'pre_get_posts', 'change_posts_per_page' );
-
-
-
-//アーカイブの表示件数変更 複数
-// function change_posts_per_page($query) {
-//     if ( is_admin() || ! $query->is_main_query() )
-//         return;
-//     if ( $query->is_archive(array('works','recruit')) ) { //カスタム投稿タイプを指定
-//         $query->set( 'posts_per_page', '6' ); //表示件数を指定 -1にする全部表示
-//     }
-// }
-// add_action( 'pre_get_posts', 'change_posts_per_page' );
-
-
 
 // ---------------------------------------
 // カスタム投稿campaignページ　詳細へのアクセスはアーカイブ一覧ページへリダイレクト
@@ -96,8 +89,6 @@ function redirect_campaign_single_to_archive() {
     }
 }
 
-
-
 // ---------------------------------------
 // カスタム投稿Voiceページ　詳細へのアクセスはアーカイブ一覧ページへリダイレクト
 // ---------------------------------------
@@ -120,7 +111,6 @@ function redirect_voice_single_to_archive() {
         exit();
     }
 }
-
 
 // ---------------------------------------
 // それぞれのセクションに対してユニークなショートコードを作成（Price） SCFプラグインを使用したものをショートコードにした
@@ -197,10 +187,6 @@ function display_prices_special_shortcode() {
 }
 add_shortcode('display_prices_special', 'display_prices_special_shortcode');
 
-
-
-
-
 // ---------------------------------------
 // 管理画面の「投稿」メニューの名前を「ブログ」に変更
 // ---------------------------------------
@@ -273,8 +259,6 @@ function get_top_viewed_posts() {
     }
 }
 
-
-
 // ---------------------------------------
 // 記事の読まれた回数をカウントして管理画面に表示
 // ---------------------------------------
@@ -335,7 +319,6 @@ echo <<< EOD
 EOD;
 }
 
-
 // ----------------------------------------
 // Smart Custom Fields（SCF）プラグインを使用して、特定のオプションページを作成
 // ----------------------------------------
@@ -382,6 +365,104 @@ SCF::add_options_page(
 	13
 );
 
+// ----------------------------------------
+// Voice、、Blogのタイトル文字数を制限
+// ----------------------------------------
+
+function voice_truncate_text($text, $limit = 20) {
+    if (mb_strlen($text) > $limit) {
+        return mb_substr($text, 0, $limit) . '...';
+    }
+    return $text;
+};
+
+function blog_truncate_text($text, $limit = 16) {
+    if (mb_strlen($text) > $limit) {
+        return mb_substr($text, 0, $limit) . '...';
+    }
+    return $text;
+};
+
+// ----------------------------------------
+// デフォルト画像の追加
+// ----------------------------------------
+// オプションページを追加
+add_action('admin_menu', function() {
+    add_options_page('カスタム設定', 'カスタム設定', 'manage_options', 'custom-settings-page', 'custom_settings_page');
+});
+
+// 設定ページの内容
+function custom_settings_page() {
+    ?>
+    <div class="wrap">
+        <h1>カスタム設定</h1>
+        <form method="post" action="options.php">
+            <?php
+            settings_fields('custom-settings-group');
+            do_settings_sections('custom-settings-group');
+            ?>
+            <table class="form-table">
+                <tr valign="top">
+                    <th scope="row">カスタム画像URL</th>
+                    <td><input type="text" name="my_custom_image" value="<?php echo esc_attr(get_option('my_custom_image')); ?>" /></td>
+                </tr>
+            </table>
+            <?php submit_button(); ?>
+        </form>
+    </div>
+    <?php
+}
+
+// 設定を登録
+add_action('admin_init', function() {
+    register_setting('custom-settings-group', 'my_custom_image');
+});
+
+// ----------------------------------------
+// contact Form 7プラグインを使って、WordPressのカスタム投稿タイプ「campaign」のタイトルを動的に選択肢として取り入れる
+// ----------------------------------------
+add_filter('wpcf7_form_tag', function ($tag) {
+    if ('menu-284' == $tag['name']) { // ここでフィールド名をチェック
+        // 'campaign' カスタム投稿タイプの投稿を取得
+        $args = array(
+            'post_type' => 'campaign',
+            'posts_per_page' => -1 // 全投稿を取得
+        );
+        $campaigns = get_posts($args);
+
+        // 選択肢の初期値
+        $tag['raw_values'][] = "キャンペーン内容を選択";
+        $tag['values'][] = "キャンペーン内容を選択";
+        $tag['labels'][] = "キャンペーン内容を選択";
+
+        // 各カスタム投稿のタイトルを選択肢に追加
+        foreach ($campaigns as $campaign) {
+            $tag['raw_values'][] = $campaign->post_title;
+            $tag['values'][] = $campaign->post_title;
+            $tag['labels'][] = $campaign->post_title;
+        }
+    }
+    return $tag;
+}, 10, 1);
+
+
+
+
+
+// function filter_campaign_posts_by_category($query) {
+//     if (!is_admin() && $query->is_main_query() && is_post_type_archive('campaign')) {
+//         if (isset($_GET['tab']) && $_GET['tab'] !== 'all') {
+//             $query->set('tax_query', array(
+//                 array(
+//                     'taxonomy' => 'campaign_category',
+//                     'field'    => 'slug',
+//                     'terms'    => $_GET['tab']
+//                 )
+//             ));
+//         }
+//     }
+// }
+// add_action('pre_get_posts', 'filter_campaign_posts_by_category');
 
 
 

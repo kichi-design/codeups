@@ -1580,6 +1580,15 @@ textarea {
 .wpcf7-spinner{
 	display: none;
 }
+/* .wpcf7-not-valid-tip {
+display: none;
+} */
+.wpcf7-form.invalid .wpcf7-response-output {
+display: none;
+}
+.wpcf7-form.sent .wpcf7-response-output {
+display: none;
+}
 /* Loading背景画面設定　*/
 
 .fv-animation {
@@ -2663,6 +2672,8 @@ body.is-open {
 	display: flex;
 	flex-direction: column-reverse;
 	margin-top: 1.75rem;
+	position: relative;
+	z-index: 11;
 }
 
 .price__items {
@@ -3535,7 +3546,7 @@ body.is-open {
 
 .voice-card__image img {
 	-o-object-fit: cover;
-	height: 100%;
+	height: auto;
 	max-width: 9.4375rem;
 	object-fit: cover;
 	width: 100%;

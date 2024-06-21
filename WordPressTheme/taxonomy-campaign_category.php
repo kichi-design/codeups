@@ -14,26 +14,25 @@
 
 <!-- パンくず -->
 <?php get_template_part('parts/breadcrumb') ?>
-<!-- IDはタブ切り替え時にページの特定の位置に移動させるため -->
 <section class="page-campaign layout-page" id="campaign-tabs">
     <div class="inner">
         <!-- タブ生成: campaign_category タクソノミーに属する全てのタームを取得し、それぞれのタームに対してナビゲーションタブを生成します。 -->
         <!-- リンク生成: 各タームのリンクは get_term_link($term) 関数によって生成されます。この関数は指定されたタームのアーカイブページへのURLを返します。このURLは taxonomy-campaign_category.php テンプレートを使用する条件にマッチするため、クリックするとそのタームに基づいたページに遷移します。 -->
         <ul class="page-campaign__tab tabs">
-            <li class="tabs__item <?php if (!is_tax('campaign_category')) echo 'active'; ?>"><a href="<?php echo esc_url(get_post_type_archive_link('campaign')); ?>">ALL</a></li>
-            <?php
-            $terms = get_terms([
-                'taxonomy' => 'campaign_category',
-                'hide_empty' => false,
-            ]);
-            $queried_object = get_queried_object();
+    <li class="tabs__item <?php if (!is_tax('campaign_category')) echo 'active'; ?>"><a href="<?php echo esc_url(get_post_type_archive_link('campaign')); ?>">ALL</a></li>
+    <?php
+    $terms = get_terms([
+        'taxonomy' => 'campaign_category',
+        'hide_empty' => false,
+    ]);
+    $queried_object = get_queried_object();
 
-            foreach ($terms as $term) {
-                $class = ($queried_object instanceof WP_Term && $term->term_id === $queried_object->term_id) ? 'active' : '';
-                echo "<li class='tabs__item {$class}'><a href='" . get_term_link($term) . "'>" . $term->name . "</a></li>";
-            }
-            ?>
-        </ul>
+    foreach ($terms as $term) {
+        $class = ($queried_object instanceof WP_Term && $term->term_id === $queried_object->term_id) ? 'active' : '';
+        echo "<li class='tabs__item {$class}'><a href='" . get_term_link($term) . "'>" . $term->name . "</a></li>";
+    }
+    ?>
+</ul>
         <div class="page-campaign__area tab-area">
             <ul class="tab-area__items">
             <?php if ( have_posts() ) : ?>
@@ -102,4 +101,5 @@
         </div>
     </div>
 </section>
+
 <?php get_footer(); ?>

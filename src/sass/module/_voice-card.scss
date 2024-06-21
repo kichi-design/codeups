@@ -93,7 +93,7 @@
 .voice-card__image img{
     max-width: rem(151);
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: cover;
     @include mq('md'){
         max-width: rem(180);

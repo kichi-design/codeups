@@ -60,9 +60,9 @@
         <li class="footer-nav__item sp-subnav">
             <a class="footer-nav__title" href="<?php echo get_post_type_archive_link('campaign'); ?>">キャンペーン</a>
             <ul class="sp-subnav__items">
-                <li class="sp-subnav__item"><a href="<?php echo esc_url(add_query_arg('term', 'campaign_license', get_post_type_archive_link('campaign'))); ?>">ライセンス取得</a></li>
-                <li class="sp-subnav__item"><a href="<?php echo esc_url(add_query_arg('term', 'campaign_trial', get_post_type_archive_link('campaign'))); ?>">体験ダイビング</a></li>
-                <li class="sp-subnav__item"><a href="<?php echo esc_url(add_query_arg('term', 'campaign_fun', get_post_type_archive_link('campaign'))); ?>">ファンダイビング</a></li>
+                <li class="sp-subnav__item"><a href="<?php echo get_term_link('campaign_license', 'campaign_category'); ?>">ライセンス取得</a></li>
+                <li class="sp-subnav__item"><a href="<?php echo get_term_link('campaign_trial', 'campaign_category'); ?>">体験ダイビング</a></li>
+                <li class="sp-subnav__item"><a href="<?php echo get_term_link('campaign_fun', 'campaign_category'); ?>">ファンダイビング</a></li>
             </ul>
         </li>
 

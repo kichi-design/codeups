@@ -28,7 +28,7 @@
             <?php if(get_the_post_thumbnail()): ?>
             <img class="single-body__image" src="<?php the_post_thumbnail_url("full"); ?>" alt="<?php the_title(); ?>のアイキャッチ画像" decoding="async">
             <?php else: ?>
-            <img class="single-body__image" src="<?php echo get_theme_file_uri(); ?>/assets/images/common/no-image.jpg" alt="<?php the_title(); ?>のアイキャッチ画像" decoding="async">
+            <img class="single-body__image" src="<?php echo get_theme_file_uri(); ?>/assets/images/common/default-image.jpg" alt="<?php the_title(); ?>のアイキャッチ画像" decoding="async">
             <?php endif; ?>
             <div class="single-body__content">
             <?php the_content(); ?>

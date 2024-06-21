@@ -48,6 +48,7 @@
         <!-- Swiper -->
         <div class="swiper campaign__swiper js-campaign-slider">
             <div class="swiper-wrapper">
+                <!-- キャンペーンセクションのサブループ -->
                 <?php
                 $args = array(
                     'post_type' => 'campaign', // カスタムポストタイプのスラッグ
@@ -183,6 +184,7 @@
         <div class="section-header__subtitle section-header__subtitle--pc-white">ブログ</div>
     </div>
     <div class="blog__items blog-cards">
+        <!-- ブログセクションのサブループ -->
         <?php
         $args = array(
             'post_type' => 'post', // 投稿タイプを指定
@@ -205,7 +207,7 @@
                 </div>
                 <div class="blog-card__body">
                     <time class="blog-card__date" datetime="<?php the_time( 'c' );?>"><?php the_time('Y.m.d'); ?></time>
-                    <h3 class="blog-card__title"><?php the_title(); ?></h3>
+                    <h3 class="blog-card__title"><?php echo blog_truncate_text(get_the_title()); ?></h3>
                     <div class="blog-card__text">
                     <?php echo wp_trim_words(get_the_content(), 70, '...'); ?>
                     </div>
@@ -235,6 +237,7 @@
         <div class="section-header__subtitle">お客様の声</div>
     </div>
     <div class="voice__items voice-cards">
+    <!-- お客様の声セクションのサブループ -->
     <?php
             $paged = get_query_var('paged') ? get_query_var('paged') : 1;
             $args = [
@@ -274,7 +277,7 @@
                         }
                         ?>
                     </div>
-                    <h3 class="voice-card__title"><?php the_title(); ?></h3>
+                    <h3 class="voice-card__title"><?php echo voice_truncate_text(get_the_title()); ?></h3>
                 </div>
                 <div class="voice-card__image colorbox">
                     <?php if(has_post_thumbnail()): ?>
@@ -283,7 +286,9 @@
                 </div>
             </div>
             <p class="voice-card__text">
-            <?php the_content(); ?>
+            <!-- <?php the_content(); ?> -->
+            <?php echo wp_trim_words(get_the_content(), 172, '...'); ?>
+
             </p>
         </a>
         <?php
@@ -319,7 +324,7 @@
             'special' => 'スペシャルダイビング'
         ];
         foreach ($course_types as $type_key => $type_name) {
-            $course_data = SCF::get_option_meta('price-option', "price-{$type_key}");
+            $course_data = SCF::get_option_meta('price-option', "price-{$type_key}-new");
             if (!empty($course_data)) {
                 ?>
                 <div class="price__item price-card">
@@ -327,8 +332,8 @@
                     <dl class="price-card__body">
                         <?php foreach ($course_data as $course): ?>
                         <div class="price-card__text">
-                            <dt><?php echo esc_html($course["{$type_key}-course"]); ?></dt>
-                            <dd><?php echo esc_html($course["{$type_key}-text"]); ?></dd>
+                            <dt><?php echo esc_html($course["{$type_key}-course-new"]); ?></dt>
+                            <dd><?php echo esc_html($course["{$type_key}-text-new"]); ?></dd>
                         </div>
                         <?php endforeach; ?>
                     </dl>

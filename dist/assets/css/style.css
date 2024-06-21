@@ -1015,6 +1015,22 @@ campaign__swiper {
 	text-align: center;
 }
 
+.custom-tabs {
+	margin-bottom: 20px;
+}
+
+.tab-link {
+	background-color: #f1f1f1;
+	border: none;
+	cursor: pointer;
+	margin-right: 5px;
+	padding: 8px 16px;
+}
+
+.tab-link.active {
+	background-color: #ccc;
+}
+
 .display__sp {
 	display: block;
 }
@@ -3041,7 +3057,7 @@ body.is-open {
 }
 
 .sitemap-nav + .sitemap-nav {
-	margin-left: 1.8125rem;
+	margin-left: 1rem;
 }
 
 .sitemap-nav__item a {
@@ -3515,7 +3531,7 @@ body.is-open {
 
 .voice-card__image img {
 	-o-object-fit: cover;
-	height: 100%;
+	height: auto;
 	max-width: 9.4375rem;
 	object-fit: cover;
 	width: 100%;
@@ -4909,11 +4925,11 @@ textarea {
 }
 
 .sitemap-nav + .sitemap-nav {
-	margin-left: 9rem;
+	margin-left: 7.5rem;
 }
 
 .sitemap-nav__items:nth-child(n+2) {
-	margin-left: 9rem;
+	margin-left: 7.5rem;
 }
 
 .sitemap-nav__item--faq {

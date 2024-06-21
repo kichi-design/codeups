@@ -55,6 +55,17 @@
                     <div class="sidebar-contents__header sidebar-header">
                     <h2 class="sidebar-header__title">人気記事</h2>
                     </div>
+                    <!-- <div class="sidebar-contents__wrapper">
+                    <div class="sidebar-contents__popular-body">
+                        <div class="sidebar-contents__popular-image">
+                        <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/blog-card4.jpg" alt="魚" decoding="async">
+                        </div>
+                        <div class="sidebar-contents__popular-head">
+                        <time class="sidebar-contents__popular-date" datetime="2023-11-17">2023.11/17</time>
+                        <h3 class="sidebar-contents__popular-title">ライセンス取得</h3>
+                        </div>
+                    </div>
+                    </div> -->
                     <?php get_top_viewed_posts(); ?>
                 </div>
 

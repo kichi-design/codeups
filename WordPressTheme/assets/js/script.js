@@ -244,38 +244,50 @@ if (!splashText) {
   // ----------------------------------------
 
   $(document).ready(function () {
-    // 監視対象の要素
-    var targetElements = $('.wpcf7-form-control-wrap');
-  
     // エラーメッセージ要素を取得
     var errorMessageDiv = $('.page-contact__form-error.js-error');
   
-    // MutationObserverを使用してDOM変更を監視
-    var observer = new MutationObserver(function (mutations) {
-      let hasError = false; // エラーの有無を追跡するフラグ
+    // フォームの送信ボタンクリックイベントにバインド
+    $('.wpcf7-form').on('submit', function (e) {
+      e.preventDefault(); // フォームの自動送信を防ぐ
   
-      mutations.forEach(function (mutation) {
-        // 追加されたノードがwpcf7-not-valid-tipクラスのspanであれば
-        if ($(mutation.addedNodes).hasClass('wpcf7-not-valid-tip')) {
-          hasError = true; // エラーがある
-          // 関連する input, textarea, select, checkbox にエラースタイルを適用
-          $(mutation.target).find('input, textarea, select').css({
+      var hasError = false; // エラーの有無を追跡するフラグ
+      var form = $(this);
+  
+      // フォーム内のすべての必須入力フィールドをチェック
+      form.find('.wpcf7-form-control-wrap').each(function () {
+        var input = $(this).find('input, textarea, select');
+        var type = input.attr('type');
+  
+        // チェックボックスのチェック
+        if (type === 'checkbox') {
+          var name = input.attr('name');
+          // 同じname属性を持つチェックボックスが一つも選択されていないかチェック
+          if ($('input[name="' + name + '"]:checked').length === 0) {
+            hasError = true;
+            // 同じグループのチェックボックスにエラースタイルを適用
+            $('input[name="' + name + '"]').next('span').css({
+              'background-color': 'rgba(201, 72, 0, 0.2)',
+              'border': '1px solid #C94800'
+            });
+          } else {
+            $('input[name="' + name + '"]').next('span').css({
+              'background-color': '',
+              'border': ''
+            });
+          }
+        }
+        // その他のフィールドのチェック
+        else if (input.val() === '') {
+          hasError = true;
+          input.css({
             'background-color': 'rgba(201, 72, 0, 0.2)',
             'border': '1px solid #C94800'
           });
-          $(mutation.target).find('input[type="checkbox"]').next('span').css({
-            'border': '1px solid #C94800',
-            'background': 'rgba(201, 72, 0, 0.20)'
-          });
-        } else if ($(mutation.removedNodes).hasClass('wpcf7-not-valid-tip')) {
-          // エラーがない場合
-          $(mutation.target).find('input, textarea, select').css({
+        } else {
+          input.css({
             'background-color': '',
             'border': ''
-          });
-          $(mutation.target).find('input[type="checkbox"]').next('span').css({
-            'border': '',
-            'background': ''
           });
         }
       });
@@ -286,18 +298,11 @@ if (!splashText) {
         errorMessageDiv[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
       } else {
         errorMessageDiv.hide();
+        form.off('submit').submit(); // フォームの送信を再試行
       }
     });
-  
-    // 監視対象の全ての要素にMutationObserverを設定
-    targetElements.each(function () {
-      observer.observe(this, {
-        childList: true,
-        subtree: true
-      });
-    });
   });
-  
+    
   // ----------------------------------------
   // インフォメーション タブメニュー フッターリンクからタブ先へ遷移
   // ----------------------------------------
@@ -354,45 +359,45 @@ if (!splashText) {
 
         // クリックされたタブのコンテンツへスムーズスクロール
         $('html, body').animate({
-            scrollTop: $('#' + tabId).offset().top - 50 // ヘッダーなどの高さ調整が必要な場合は値を変更
-        }, 1000); // スクロールにかかる時間（ミリ秒）
+            scrollTop: $('#' + tabId).offset().top - 250 // ヘッダーなどの高さ調整が必要な場合は値を変更
+        }, 300); // スクロールにかかる時間（ミリ秒）
     });
 });
 
 // ----------------------------------------
 // campaign 特定のタブの位置までスクロールする機能
 // ----------------------------------------
-jQuery(document).ready(function($) {
-  var urlParams = new URLSearchParams(window.location.search);
-  var term = urlParams.get('term');
+// jQuery(document).ready(function($) {
+//   var urlParams = new URLSearchParams(window.location.search);
+//   var term = urlParams.get('term');
 
-  if (term) {
-      setTimeout(function() {
-          var $tab = $('#campaign-tabs');
-          if ($tab.length) {
-              $('html, body').animate({
-                  scrollTop: $tab.offset().top - 150
-              }, 800);
-          }
-      }, 500);
-  }
+//   if (term) {
+//       setTimeout(function() {
+//           var $tab = $('#campaign-tabs');
+//           if ($tab.length) {
+//               $('html, body').animate({
+//                   scrollTop: $tab.offset().top - 150
+//               }, 800);
+//           }
+//       }, 500);
+//   }
 
-  // タブのリンククリック時にページ内移動のみスクロールを実行し、それ以外の動作はブラウザに任せる
-  $('.tabs a').on('click', function(event) {
-      var targetId = $(this).attr('href').replace('#', '');
-      var $target = $('#' + targetId);
+//   // タブのリンククリック時にページ内移動のみスクロールを実行し、それ以外の動作はブラウザに任せる
+//   $('.tabs a').on('click', function(event) {
+//       var targetId = $(this).attr('href').replace('#', '');
+//       var $target = $('#' + targetId);
 
-      // hrefが "#" を含む場合だけ preventDefault() を実行し、それ以外はデフォルト動作を許可
-      if ($(this).attr('href').startsWith('#')) {
-          event.preventDefault();
-          if ($target.length) {
-              $('html, body').animate({
-                  scrollTop: $target.offset().top - 50
-              }, 800);
-          }
-      }
-  });
-});
+//       // hrefが "#" を含む場合だけ preventDefault() を実行し、それ以外はデフォルト動作を許可
+//       if ($(this).attr('href').startsWith('#')) {
+//           event.preventDefault();
+//           if ($target.length) {
+//               $('html, body').animate({
+//                   scrollTop: $target.offset().top - 50
+//               }, 800);
+//           }
+//       }
+//   });
+// });
 
 // ----------------------------------------
 // voice 特定のタブの位置までスクロールする機能
@@ -457,6 +462,10 @@ jQuery(document).ready(function($) {
       scrollToSection();
   });
 });
+
+
+
+
 
 
 
