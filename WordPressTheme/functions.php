@@ -307,14 +307,62 @@ add_action('manage_posts_custom_column', 'display_views_in_admin_panel', 10, 2);
 // ----------------------------------------
 // メール送信完了後にthanksページへ遷移（contactform7）
 // ----------------------------------------
-add_action('wp_footer', 'redirect_to_thanks_page');
-function redirect_to_thanks_page() {
-$homeUrl = home_url(); // トップページのURLを取得
-echo <<< EOD
+// add_action('wp_footer', 'redirect_to_thanks_page');
+// function redirect_to_thanks_page() {
+// $homeUrl = home_url();
+// echo <<< EOD
+// <script>
+//     document.addEventListener( 'wpcf7mailsent', function( event ) {
+//     location = '{$homeUrl}/thanks/';
+//     }, false );
+// </script>
+// EOD;
+// }
+
+add_action('wp_footer', 'redirect_and_scroll_to_thanks_page');
+function redirect_and_scroll_to_thanks_page() {
+    $homeUrl = home_url();
+    echo <<<EOD
 <script>
-    document.addEventListener( 'wpcf7mailsent', function( event ) {
-    location = '{$homeUrl}/thanks/'; // トップページのURLをリダイレクト先に組み込み
-    }, false );
+document.addEventListener('wpcf7mailsent', function() {
+    console.log('Form sent event detected.');
+
+    // リダイレクト先のページURL
+    var thanksPage = '{$homeUrl}/thanks/';
+
+    // スクロール実行をセッションに保存
+    sessionStorage.setItem('scrollToThanks', 'true');
+    console.log('Session storage set for scrollToThanks.');
+
+    // リダイレクト
+    window.location.href = thanksPage;
+}, false);
+
+window.addEventListener('load', function() {
+    console.log('Page load event detected.');
+    var scrollToThanks = sessionStorage.getItem('scrollToThanks');
+    var currentPath = window.location.pathname;
+    console.log('scrollToThanks:', scrollToThanks);
+    console.log('currentPath:', currentPath);
+
+    // パスが「/thanks」で終わるかどうかを確認
+    if (scrollToThanks === 'true' && currentPath.includes('/thanks')) {
+        console.log('scrollToThanks detected in session storage and path matches.');
+
+        // スクロール対象の要素のIDを指定
+        var element = document.getElementById('thanks-text');
+        if (element) {
+            console.log('Element found. Scrolling to it.');
+            element.scrollIntoView({ behavior: 'smooth' });
+            sessionStorage.removeItem('scrollToThanks');
+            console.log('Session storage scrollToThanks removed.');
+        } else {
+            console.log('Element with ID "thanks-text" not found.');
+        }
+    } else {
+        console.log('Condition for scrollToThanks not met.');
+    }
+});
 </script>
 EOD;
 }
@@ -444,8 +492,6 @@ add_filter('wpcf7_form_tag', function ($tag) {
     }
     return $tag;
 }, 10, 1);
-
-
 
 
 

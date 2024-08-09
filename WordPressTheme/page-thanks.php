@@ -14,7 +14,7 @@
 
 <!-- パンくず -->
 <?php get_template_part('parts/breadcrumb') ?>
-<div class="page-thanks layout-page layout-page--thanks">
+<div id="thanks-text" class="page-thanks layout-page layout-page--thanks">
       <div class="page-thanks__inner inner">
         <div class="page-thanks__completion">
           <p>お問い合わせ内容を送信完了しました。</p>
