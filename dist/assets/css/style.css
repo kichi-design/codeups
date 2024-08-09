@@ -1015,22 +1015,6 @@ campaign__swiper {
 	text-align: center;
 }
 
-.custom-tabs {
-	margin-bottom: 20px;
-}
-
-.tab-link {
-	background-color: #f1f1f1;
-	border: none;
-	cursor: pointer;
-	margin-right: 5px;
-	padding: 8px 16px;
-}
-
-.tab-link.active {
-	background-color: #ccc;
-}
-
 .display__sp {
 	display: block;
 }
