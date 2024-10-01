@@ -20,7 +20,9 @@
         <!-- タブ生成: campaign_category タクソノミーに属する全てのタームを取得し、それぞれのタームに対してナビゲーションタブを生成します。 -->
         <!-- リンク生成: 各タームのリンクは get_term_link($term) 関数によって生成されます。この関数は指定されたタームのアーカイブページへのURLを返します。このURLは taxonomy-campaign_category.php テンプレートを使用する条件にマッチするため、クリックするとそのタームに基づいたページに遷移します。 -->
         <ul class="page-campaign__tab tabs">
-            <li class="tabs__item <?php if (!is_tax('campaign_category')) echo 'active'; ?>"><a href="<?php echo esc_url(get_post_type_archive_link('campaign')); ?>">ALL</a></li>
+            <li class="tabs__item <?php if (!is_tax('campaign_category')) echo 'active'; ?>">
+                <a href="<?php echo esc_url(get_post_type_archive_link('campaign')); ?>">ALL</a>
+            </li>
             <?php
             $terms = get_terms([
                 'taxonomy' => 'campaign_category',
@@ -30,7 +32,13 @@
 
             foreach ($terms as $term) {
                 $class = ($queried_object instanceof WP_Term && $term->term_id === $queried_object->term_id) ? 'active' : '';
-                echo "<li class='tabs__item {$class}'><a href='" . get_term_link($term) . "'>" . $term->name . "</a></li>";
+                ?>
+                <li class="tabs__item <?php echo $class; ?>">
+                    <a href="<?php echo esc_url(get_term_link($term)); ?>">
+                        <?php echo esc_html($term->name); ?>
+                    </a>
+                </li>
+                <?php
             }
             ?>
         </ul>
@@ -51,9 +59,11 @@
                                     <?php
                                     $terms = get_the_terms(get_the_ID(), 'campaign_category');
                                     if ($terms && !is_wp_error($terms)) {
-                                        foreach ($terms as $term) {
-                                            echo '<div class="campaign-card__tag">' . esc_html($term->name) . '</div>';
-                                        }
+                                        foreach ($terms as $term) { ?>
+                                            <div class="campaign-card__tag">
+                                                <?php echo esc_html($term->name); ?>
+                                            </div>
+                                        <?php }
                                     }
                                     ?>
                                     <h3 class="campaign-card__title campaign-card__title--campaign-card-pc"><?php the_title(); ?></h3>

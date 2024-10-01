@@ -445,6 +445,7 @@ a {
 .breadcrumb__error {
 	display: none;
 }
+
 .btn-input {
 	background-color: #408F95;
 	border: 1px solid #408F95;
@@ -1567,8 +1568,6 @@ textarea {
 	width: 0.9625rem;
 }
 
-
-
 /* エラー時のスタイル */
 
 .contact-form__agreement-label.error::before {
@@ -1576,19 +1575,20 @@ textarea {
 	border-color: #C94800;
 }
 
-/* 送信ボタン　Contactform7 */
-.wpcf7-spinner{
+.wpcf7-spinner {
 	display: none;
 }
-/* .wpcf7-not-valid-tip {
-display: none;
-} */
-.wpcf7-form.invalid .wpcf7-response-output {
-display: none;
+
+.wpcf7-list-item {
+	display: block;
+	margin-left: 0;
+	text-align: inherit;
 }
-.wpcf7-form.sent .wpcf7-response-output {
-display: none;
+
+.contact-form__checkbox .wpcf7-list-item {
+	text-align: left;
 }
+
 /* Loading背景画面設定　*/
 
 .fv-animation {
@@ -1762,10 +1762,11 @@ display: none;
 }
 
 .gallery__item img {
+	-o-object-fit: cover;
 	cursor: pointer;
-	width: 100%;
 	height: 100%;
-    object-fit: cover;
+	object-fit: cover;
+	width: 100%;
 }
 
 .gallery__item:nth-of-type(6n + 1),
@@ -1778,9 +1779,6 @@ display: none;
 	-o-object-fit: cover;
 	object-fit: cover;
 	width: 100%;
-	height: 100%;
-    object-fit: cover;
-
 }
 
 .modal-window-image {
@@ -1961,6 +1959,7 @@ body.is-open {
 }
 
 .page-404 {
+	background-color: #408F95;
 	position: relative;
 }
 
@@ -2273,19 +2272,18 @@ body.is-open {
 	top: -1.5rem;
 	width: 7.5rem;
 }
+
 .page-privacypolicy__inner h2 {
 	font-size: 1.5rem;
-	line-height: 2;
-	margin-top: 2rem;
 	font-weight: 500;
-	
+	line-height: 2;
 }
 
 .page-privacypolicy__inner h3 {
+	font-size: 1rem;
+	font-weight: 400;
 	line-height: 2;
 	margin-top: 2.5rem;
-	font-weight: 400;
-	font-size: 1rem;
 }
 
 .page-privacypolicy__inner ol {
@@ -2301,33 +2299,6 @@ body.is-open {
 .page-privacypolicy__inner p {
 	line-height: 2;
 	margin-top: 2.5rem;
-}
-
-.page-privacypolicy__item {
-	margin-top: 2rem;
-}
-
-.page-privacypolicy__description {
-	line-height: 2;
-	margin-top: 2.5rem;
-}
-
-.page-privacypolicy__title {
-	font-size: 1.5rem;
-}
-
-.privacypolicy-item {
-	line-height: 2;
-}
-
-.privacypolicy-item__title {
-	line-height: 2;
-}
-
-.privacypolicy-item__description {
-	line-height: 2;
-	list-style-type: number;
-	padding-left: 1.4375rem;
 }
 
 .page-single {
@@ -2672,8 +2643,6 @@ body.is-open {
 	display: flex;
 	flex-direction: column-reverse;
 	margin-top: 1.75rem;
-	position: relative;
-	z-index: 11;
 }
 
 .price__items {
@@ -2851,12 +2820,12 @@ body.is-open {
 	-o-object-fit: cover;
 	height: 100%;
 	object-fit: cover;
-	width: 100%;
 	transition: transform 0.3s;
+	width: 100%;
 }
 
-.sidebar-contents__popular-image:hover img{
-    transform: scale(1.2);
+.sidebar-contents__popular-image:hover img {
+	transform: scale(1.2);
 }
 
 .sidebar-contents__popular-head {
@@ -3072,7 +3041,7 @@ body.is-open {
 }
 
 .sitemap-nav + .sitemap-nav {
-	margin-left: 1.8125rem;
+	margin-left: 1rem;
 }
 
 .sitemap-nav__item a {
@@ -3104,10 +3073,10 @@ body.is-open {
 .sitemap-nav__subitem a {
 	color: #0D2936;
 	display: block;
+	font-weight: 500;
 	padding-bottom: 0.5625rem;
 	padding-left: 1.375rem;
 	padding-top: 0.5625rem;
-	font-weight: 500;
 }
 
 .sitemap-nav__item--faq {
@@ -3577,6 +3546,10 @@ body.is-open {
 	margin-top: 2.8125rem;
 }
 
+.voice-card {
+	width: 100%;
+}
+
 .voice-card + .voice-card {
 	margin-top: 2.5rem;
 }
@@ -3645,21 +3618,8 @@ body.is-open {
 	color: #fff;
 }
 
-.wpcf7-spinner {
-	display: none;
-}
-
-.wpcf7-list-item {
-    display: block;
-    margin-left: 0;
-    text-align: inherit;
-}
-
-.contact-form__checkbox .wpcf7-list-item {
-	text-align: left;
-}
-
 @media (hover: hover) {
+
 .button:hover {
 	color: #408F95;
 }
@@ -3939,6 +3899,7 @@ html {
 .breadcrumb--404 {
 	margin-top: 6.125rem;
 }
+
 .btn-input:hover::before {
 	transform: scale(1, 1);
 }
@@ -4286,6 +4247,10 @@ textarea {
 	text-indent: 0;
 }
 
+.contact-form__agreement-label {
+	padding: 0 0 0 2.25rem;
+}
+
 .fv-animation__text {
 	margin-top: 0;
 	margin-top: 2.25rem;
@@ -4630,6 +4595,10 @@ textarea {
 	max-width: 50rem;
 }
 
+.page-privacypolicy__inner h2 {
+	font-size: 2rem;
+}
+
 .page-privacypolicy__inner ol:first-of-type {
 	margin-top: 4.375rem;
 }
@@ -4637,7 +4606,6 @@ textarea {
 .page-privacypolicy__inner p {
 	margin-top: 4.375rem;
 }
-
 
 .page-single::before {
 	aspect-ratio: 301/138;
@@ -4678,10 +4646,6 @@ textarea {
 .page-privacypolicy__inner {
 	margin: 0 auto;
 	max-width: 50rem;
-}
-.page-privacypolicy__inner h2 {
-	font-size: 2rem;
-	font-weight: 500;
 }
 
 .page-privacypolicy__title {

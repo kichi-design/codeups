@@ -68,62 +68,27 @@ jQuery(function ($) {
   // メインビューアニメーションの表示設定
   // ----------------------------------------
 
-// Cookieをセットする関数
-function setCookie(name, value, days) {
-  let expires = "";
-  if (days) {
-    const date = new Date();
-    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-    expires = "; expires=" + date.toUTCString();
+  var splash_text = $.cookie('accessdate'); // Cookieからアクセス日付を取得
+
+  if (!splash_text) {
+    // Cookieが存在しない場合（初回アクセス）
+    var myD = new Date(); // 現在の日付データを取得
+    var myYear = myD.getFullYear().toString(); // 年を文字列として取得
+    var myMonth = (myD.getMonth() + 1).toString().padStart(2, '0'); // 月を文字列として取得（2桁で表示）
+    var myDate = myD.getDate().toString().padStart(2, '0'); // 日を文字列として取得（2桁で表示）
+    var currentDate = myYear + myMonth + myDate; // 現在の年月日を結合
+
+    // Cookieにアクセス日付をセット
+    $.cookie('accessdate', currentDate, {
+      expires: 1
+    }); // 1日間有効
+    $(".fv-animation").css("display", "block"); // ローディングを表示
+    setTimeout(function () {
+      $(".fv-animation").delay(2500).fadeOut('slow'); // ローディング画面を1.5秒待機してからフェードアウト
+    }, 0); // ゼロミリ秒遅延で実行（次のイベントループまで待たない）
+  } else {
+    $(".fv-animation").css("display", "none"); // Cookieが存在する場合はローディング画面非表示
   }
-  document.cookie = name + "=" + (value || "") + expires + "; path=/";
-}
-
-// Cookieを取得する関数
-function getCookie(name) {
-  const nameEQ = name + "=";
-  const ca = document.cookie.split(';');
-  for (let i = 0; i < ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) === ' ') c = c.substring(1);
-    if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length);
-  }
-  return null;
-}
-
-// アニメーションの表示設定
-let splashText = getCookie('accessdate');
-
-if (!splashText) {
-  // Cookieが存在しない場合（初回アクセス）
-  const myD = new Date();
-  const myYear = myD.getFullYear().toString();
-  const myMonth = (myD.getMonth() + 1).toString().padStart(2, '0');
-  const myDate = myD.getDate().toString().padStart(2, '0');
-  const currentDate = myYear + myMonth + myDate;
-
-  // Cookieにアクセス日付をセット（1日間有効）
-  setCookie('accessdate', currentDate, 1);
-
-  // ローディングを表示
-  const animationElement = document.querySelector(".fv-animation");
-  if (animationElement) {
-    animationElement.style.display = "block";
-
-    setTimeout(function() {
-      animationElement.style.opacity = 0;
-      animationElement.style.transition = "opacity 1.5s";
-
-      // アニメーション終了後に要素を非表示にする
-      setTimeout(() => {
-        animationElement.style.display = "none";
-      }, 1500);
-    }, 3000); // 1.5秒遅延で実行
-  }
-} else {
-  // Cookieが存在する場合はローディング画面非表示
-  document.querySelector(".fv-animation").style.display = "none";
-}
 
   // ----------------------------------------
   // ページトップのボタン
@@ -221,71 +186,136 @@ if (!splashText) {
   });
 
   // ----------------------------------------
+  // タブメニュー インフォメーション
+  // ----------------------------------------
+  // $(document).ready(function () {
+  //     // 最初のタブとエリアにis-activeクラスを追加
+  //     var initialTab = $('.tabs-information__item:first-of-type a').attr('href');
+  //     $(initialTab).addClass('is-active');
+  //     $('.tabs-information__item:first-of-type').addClass('is-active');
+
+  //     // タブをクリックしたときの処理
+  //     $('.tabs-information a').on('click', function () {
+  //         var idName = $(this).attr('href');
+  //         $('.tab-information-area').removeClass('is-active');
+  //         $(idName).addClass('is-active');
+  //         $('.tabs-information__item').removeClass('is-active');
+  //         $(this).parent().addClass('is-active');
+  //         return false;
+  //     });
+  // });
+  // ----------------------------------------
   // formエラー
   // ----------------------------------------
 
-  $(document).ready(function () {
-    // エラーメッセージ要素を取得
-    var errorMessageDiv = $('.page-contact__form-error.js-error');
-  
-    // フォームの送信ボタンクリックイベントにバインド
-    $('.wpcf7-form').on('submit', function (e) {
-      e.preventDefault(); // フォームの自動送信を防ぐ
-  
-      var hasError = false; // エラーの有無を追跡するフラグ
-      var form = $(this);
-  
-      // フォーム内のすべての必須入力フィールドをチェック
-      form.find('.wpcf7-form-control-wrap').each(function () {
-        var input = $(this).find('input, textarea, select');
-        var type = input.attr('type');
-  
-        // チェックボックスのチェック
-        if (type === 'checkbox') {
-          var name = input.attr('name');
-          // 同じname属性を持つチェックボックスが一つも選択されていないかチェック
-          if ($('input[name="' + name + '"]:checked').length === 0) {
-            hasError = true;
-            // 同じグループのチェックボックスにエラースタイルを適用
-            $('input[name="' + name + '"]').next('span').css({
-              'background-color': 'rgba(201, 72, 0, 0.2)',
-              'border': '1px solid #C94800'
-            });
-          } else {
-            $('input[name="' + name + '"]').next('span').css({
-              'background-color': '',
-              'border': ''
-            });
+  // const contactFormButton = document.querySelector('.button--contact-form');
+
+  // if (contactFormButton) {
+  //     contactFormButton.addEventListener('click', function () {
+  //         const form = document.getElementById('form');
+
+  //         // フォームが存在する場合のみ処理を実行
+  //         if (form) {
+  //             let isValid = true;
+
+  //             form.querySelectorAll('[required]').forEach(function (input) {
+  //                 if (input.type !== 'checkbox' && input.type !== 'radio') {
+  //                     if (!input.value) {
+  //                         input.classList.add('error');
+  //                         isValid = false;
+  //                     } else {
+  //                         input.classList.remove('error');
+  //                     }
+  //                 } else if (input.type === 'checkbox' || input.type === 'radio') {
+  //                     const inputName = input.getAttribute('name');
+  //                     const checked = form.querySelector(`input[name="${inputName}"]:checked`);
+  //                     if (!checked) {
+  //                         isValid = false;
+  //                         const checkboxGroup = form.querySelector(`input[name="${inputName}"]`);
+  //                         if (checkboxGroup) {
+  //                             checkboxGroup.classList.add('error');
+  //                         }
+  //                     } else {
+  //                         const checkboxGroup = form.querySelector(`input[name="${inputName}"]`);
+  //                         if (checkboxGroup) {
+  //                             checkboxGroup.classList.remove('error');
+  //                         }
+  //                     }
+  //                 }
+  //             });
+
+  //             const errorDiv = document.querySelector('.js-error');
+  //             const breadcrumbDiv = document.querySelector('.js-error-breadcrumb');
+
+  //             if (!isValid) {
+  //                 errorDiv.style.display = 'block';
+  //                 breadcrumbDiv.style.display = 'inline-block';
+
+  //                 // ヘッダーの高さを取得
+  //                 const headerHeight = document.querySelector('header').offsetHeight;
+  //                 const errorDivPosition = errorDiv.getBoundingClientRect().top + window.scrollY - headerHeight;
+  //                 window.scrollTo({ top: errorDivPosition, behavior: 'smooth' });
+  //             } else {
+  //                 errorDiv.style.display = 'none';
+  //                 breadcrumbDiv.style.display = 'none';
+  //             }
+  //         }
+  //     });
+  // }
+
+  // // フォームの送信をキャンセル
+  // const formElement = document.getElementById('form');
+  // if (formElement) {
+  //     formElement.addEventListener('submit', function (event) {
+  //         event.preventDefault();
+  //     });
+  // }
+  document.addEventListener('DOMContentLoaded', function () {
+    var submitButton = document.querySelector('.contact-form__button [type="submit"]');
+    if (submitButton) {
+      submitButton.addEventListener('click', function (event) {
+        event.preventDefault(); // フォームの自動送信を防ぐ
+        var isValid = true;
+        var formItems = document.querySelectorAll('.contact-form__item');
+        formItems.forEach(function (item) {
+          var input = item.querySelector('input, select, textarea');
+          if (input && input.getAttribute('type') !== 'checkbox' && input.getAttribute('type') !== 'radio') {
+            // テキスト、メール、電話、テキストエリアの検証
+            if (!input.value) {
+              input.classList.add('error');
+              isValid = false;
+            } else {
+              input.classList.remove('error');
+            }
+          } else if (input && (input.getAttribute('type') === 'checkbox' || input.getAttribute('type') === 'radio')) {
+            // チェックボックスとラジオボタンの検証
+            var name = input.getAttribute('name');
+            if (!document.querySelector("input[name=\"".concat(name, "\"]:checked"))) {
+              var checkboxGroup = item.querySelector('.contact-form__checkbox');
+              checkboxGroup.classList.add('error');
+              isValid = false;
+            } else {
+              var _checkboxGroup = item.querySelector('.contact-form__checkbox');
+              _checkboxGroup.classList.remove('error');
+            }
           }
-        }
-        // その他のフィールドのチェック
-        else if (input.val() === '') {
-          hasError = true;
-          input.css({
-            'background-color': 'rgba(201, 72, 0, 0.2)',
-            'border': '1px solid #C94800'
-          });
+        });
+
+        // エラーがある場合は処理を中断
+        if (!isValid) {
+          // エラーメッセージを表示するなどの処理をここに記述
+          console.error('Form is invalid');
         } else {
-          input.css({
-            'background-color': '',
-            'border': ''
-          });
+          // ここにフォームが有効である場合の処理を記述
+          console.log('Form is valid');
         }
       });
-  
-      // エラーがある場合、エラーメッセージを表示し、その位置までスクロール
-      if (hasError) {
-        errorMessageDiv.show();
-        errorMessageDiv[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
-      } else {
-        errorMessageDiv.hide();
-        form.off('submit').submit(); // フォームの送信を再試行
-      }
-    });
+    }
   });
 
   // ----------------------------------------
-  // インフォメーション タブメニュー フッターリンクからタブ先へ遷移
+  // タブメニュー インフォメーション
+  // ダイビング情報ページ　フッターリンクからタブ先へ遷移
   // ----------------------------------------
   $(function () {
     // URLからクエリパラメータを取得
@@ -298,86 +328,40 @@ if (!splashText) {
 
     // クエリパラメータがある場合
     if (tabParam) {
-        // タブの非表示・非アクティブ化
-        $tabs.removeClass('is-active');
-        $tabContents.removeClass('is-active');
+      // タブの非表示・非アクティブ化
+      $tabs.removeClass('is-active');
+      $tabContents.removeClass('is-active');
 
-        // クエリパラメータに対応するタブが存在するか確認
-        var $matchingTab = $tabs.has('a[href="#' + tabParam + '"]');
-        if ($matchingTab.length > 0) {
-            // タブをアクティブにする
-            $matchingTab.addClass('is-active');
+      // クエリパラメータに対応するタブが存在するか確認
+      var $matchingTab = $tabs.has('a[href="#' + tabParam + '"]');
+      if ($matchingTab.length > 0) {
+        // タブをアクティブにする
+        $matchingTab.addClass('is-active');
 
-            // クエリパラメータに対応するタブのコンテンツを表示
-            $('#' + tabParam).addClass('is-active');
-
-            // スクロール処理を追加
-            $('html, body').animate({
-                scrollTop: $('#' + tabParam).offset().top - 200 // ヘッダーなどの高さ調整が必要な場合は値を変更
-            }, 1000); // スクロールにかかる時間（ミリ秒）
-        }
+        // クエリパラメータに対応するタブのコンテンツを表示
+        $('#' + tabParam).addClass('is-active');
+      }
     } else {
-        // クエリパラメータがない場合はデフォルトの処理を行う
-        // ここでは最初のタブを表示
-        $tabs.first().addClass('is-active');
-        $tabContents.first().addClass('is-active');
+      // クエリパラメータがない場合はデフォルトの処理を行う
+      // ここでは最初のタブを表示
+      $tabs.first().addClass('is-active');
+      $tabContents.first().addClass('is-active');
     }
 
     // タブをクリックしたときの処理
     $tabs.find('a').on('click', function (event) {
-        event.preventDefault();
-        var tabId = $(this).attr('href').substring(1);
+      event.preventDefault();
+      var tabId = $(this).attr('href').substring(1);
 
-        // タブの非表示・非アクティブ化
-        $tabs.removeClass('is-active');
-        $tabContents.removeClass('is-active');
+      // タブの非表示・非アクティブ化
+      $tabs.removeClass('is-active');
+      $tabContents.removeClass('is-active');
 
-        // クリックされたタブをアクティブにする
-        $(this).parent().addClass('is-active');
+      // クリックされたタブをアクティブにする
+      $(this).parent().addClass('is-active');
 
-        // クリックされたタブに対応するコンテンツを表示
-        $('#' + tabId).addClass('is-active');
-
-        // クリックされたタブのコンテンツへスムーズスクロール
-        $('html, body').animate({
-            scrollTop: $('#' + tabId).offset().top - 250 // ヘッダーなどの高さ調整が必要な場合は値を変更
-        }, 300); // スクロールにかかる時間（ミリ秒）
+      // クリックされたタブに対応するコンテンツを表示
+      $('#' + tabId).addClass('is-active');
     });
-});
-
-// ----------------------------------------
-// price 特定のタブの位置までスクロールする機能
-// ----------------------------------------
-jQuery(document).ready(function($) {
-  // スクロール関数定義
-  function scrollToSection() {
-      var hash = window.location.hash; // 現在のURLからハッシュ値を取得
-      var headerHeight = $('.header').outerHeight(); // ヘッダーの高さを取得
-
-      // ハッシュ値が存在し、対象の要素が存在する場合のみスクロールを実行
-      if (hash && $(hash).length) {
-          $('html, body').animate({
-              scrollTop: $(hash).offset().top - headerHeight // ヘッダーの高さを考慮したスクロール位置へ移動
-          }, 1000);
-      }
-  }
-
-  // ページ読み込み時にスクロールを実行
-  scrollToSection();
-
-  // ハッシュ値が変更されたときにスクロールを実行
-  $(window).on('hashchange', function() {
-      scrollToSection();
   });
 });
-
-
-
-
-
-
-
-});
-
-
-

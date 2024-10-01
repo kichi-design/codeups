@@ -388,11 +388,20 @@ SCF::add_options_page(
 
 SCF::add_options_page(
 	'codeups-new',
+	'FVギャラリ(スマホ)',
+	'manage_options',
+	'fv-sp-option',
+	'dashicons-admin-generic',
+	11
+);
+
+SCF::add_options_page(
+	'codeups-new',
 	'AboutUsギャラリ',
 	'manage_options',
 	'about-us-option',
 	'dashicons-admin-generic',
-	11
+	12
 );
 
 SCF::add_options_page(
@@ -401,7 +410,7 @@ SCF::add_options_page(
 	'manage_options',
 	'faq-option',
 	'dashicons-admin-generic',
-	12
+	13
 );
 
 SCF::add_options_page(
@@ -410,7 +419,7 @@ SCF::add_options_page(
 	'manage_options',
 	'price-option',
 	'dashicons-admin-generic',
-	13
+	14
 );
 
 // ----------------------------------------

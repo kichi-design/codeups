@@ -18,8 +18,10 @@
 
 <section class="page-voice layout-page" id="voice-tabs">
     <div class="inner">
-    <ul class="page-voice__tab tabs">
-        <li class="tabs__item <?php if (!is_tax('voice_category')) echo 'active'; ?>"><a href="<?php echo esc_url(get_post_type_archive_link('voice')); ?>">ALL</a></li>
+        <ul class="page-voice__tab tabs">
+        <li class="tabs__item <?php if (!is_tax('voice_category')) echo 'active'; ?>">
+            <a href="<?php echo esc_url(get_post_type_archive_link('voice')); ?>">ALL</a>
+        </li>
         <?php
         $terms = get_terms([
             'taxonomy' => 'voice_category',
@@ -27,12 +29,17 @@
         ]);
         $queried_object = get_queried_object();
 
-        foreach ($terms as $term) {
-            $class = ($queried_object instanceof WP_Term && $term->term_id === $queried_object->term_id) ? 'active' : '';
-            echo "<li class='tabs__item {$class}'><a href='" . get_term_link($term) . "'>" . $term->name . "</a></li>";
-        }
-        ?>
-    </ul>
+        if ($terms && !is_wp_error($terms)) {
+            foreach ($terms as $term) {
+                $class = ($queried_object instanceof WP_Term && $term->term_id === $queried_object->term_id) ? 'active' : ''; ?>
+                <li class="tabs__item <?php echo $class; ?>">
+                    <a href="<?php echo esc_url(get_term_link($term)); ?>">
+                        <?php echo esc_html($term->name); ?>
+                    </a>
+                </li>
+            <?php }
+        } ?>
+        </ul>
 
         <div class="page-voice__area tab-area">
             <ul class="tab-area__item voice-cards">

@@ -11,28 +11,42 @@
     </div>
     <div class="swiper-wrapper">
     <?php
-    $fv_slider_list = SCF::get_option_meta('fv-option', 'fv-slider');
-    if ( is_array( $fv_slider_list ) ) {
-        $count = 0; // カウンターの初期化
-        foreach ( $fv_slider_list as $fv_slider_list_field ) {
-            if ( $count >= 4 ) break; // 4枚表示したらループを抜ける
-            
-            $image_id = $fv_slider_list_field['fvsliderimage']; // 画像フィールドから画像のIDを取得
-            $image_url = wp_get_attachment_image_src( $image_id, 'full' ); // 画像のURLを取得
-            if ( !empty($image_url) ) {
-                ?>
+    // パソコン用画像リストを取得
+    $fv_slider_list_pc = SCF::get_option_meta('fv-option', 'fv-slider');
+    // スマホ用画像リストを取得
+    $fv_slider_list_sp = SCF::get_option_meta('fv-sp-option', 'fv-slider-sp');
+    ?>
+
+    <?php if (!empty($fv_slider_list_pc)) : ?>
+        <?php foreach ($fv_slider_list_pc as $index => $fv_slider_list_field_pc) : ?>
+            <?php
+            // パソコン用画像
+            $image_id_pc = isset($fv_slider_list_field_pc['fvsliderimage']) ? $fv_slider_list_field_pc['fvsliderimage'] : '';
+            $image_url_pc = wp_get_attachment_image_url($image_id_pc, 'full');
+
+            // スマホ用画像 (存在すれば取得、なければnull)
+            $fv_slider_list_field_sp = isset($fv_slider_list_sp[$index]) ? $fv_slider_list_sp[$index] : null;
+            $image_id_sp = $fv_slider_list_field_sp ? $fv_slider_list_field_sp['fvsliderimage_sp'] : '';
+            $image_url_sp = $image_id_sp ? wp_get_attachment_image_url($image_id_sp, 'full') : null;
+            ?>
+
+            <?php if ($image_url_pc) : ?>
                 <div class="swiper-slide">
                     <div class="fv__img">
-                        <img class="fv__img-01" src="<?php echo esc_url( $image_url[0] ); ?>" alt="スライダー画像" />
+                        <picture>
+                            <!-- スマホ用の画像がある場合は表示、なければパソコン用画像のみ -->
+                            <?php if ($image_url_sp) : ?>
+                                <source media="(max-width: 767px)" srcset="<?php echo esc_url($image_url_sp); ?>">
+                            <?php endif; ?>
+                            <!-- パソコン用の画像 -->
+                            <img class="fv__img-01" src="<?php echo esc_url($image_url_pc); ?>" alt="スライダー画像" decoding="async">
+                        </picture>
                     </div>
                 </div>
-                <?php
-            }
-            $count++; // カウンターをインクリメント
-        }
-    }
-    ?>
-    </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    <?php endif; ?>
+</div>
 </div>
 
 </div>
