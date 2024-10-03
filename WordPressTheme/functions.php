@@ -503,12 +503,87 @@ add_filter('wpcf7_form_tag', function ($tag) {
 }, 10, 1);
 
 
+// ----------------------------------------
+// 管理画面
+// ----------------------------------------
+// "price-option" ページ用のCSSを読み込む
+function custom_admin_styles_for_price_option_page($hook_suffix) {
+    if (isset($_GET['page']) && $_GET['page'] == 'price-option') {
+        wp_enqueue_style('custom-admin-price-option-style', get_template_directory_uri() . '/assets/css/admin-price-option-style.css');
+    }
+}
+add_action('admin_enqueue_scripts', 'custom_admin_styles_for_price_option_page');
+
+// ----------------------------------------
+// "faq-option" ページ用のCSSを読み込む
+function custom_admin_styles_for_faq_option_page($hook_suffix) {
+    if (isset($_GET['page']) && $_GET['page'] == 'faq-option') {
+        wp_enqueue_style('custom-admin-faq-option-style', get_template_directory_uri() . '/assets/css/admin-faq-option-style.css');
+    }
+}
+add_action('admin_enqueue_scripts', 'custom_admin_styles_for_faq_option_page');
+
+// ----------------------------------------
+// 管理画面ログインページのロゴ変更
+function custom_login_logo() {
+    ?>
+    <style type="text/css">
+    #login h1 a {
+        display: block;
+        background-image: url(<?php echo get_template_directory_uri(); ?>/assets/images/common/CodeUps.webp);
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 320px; /* 適切な幅を指定 */
+        height: 80px; /* 適切な高さを指定 */
+        margin: 0 auto;
+    }
+    </style>
+    <?php
+}
+add_action('login_head', 'custom_login_logo');
+
+// ----------------------------------------
+// ダッシュボードに新規ウィジェットを追加
+function add_dashboard_widgets() {
+    wp_add_dashboard_widget(
+        'plan_dashboard_widget', // ウィジェットのスラッグ名
+        '設定一覧', // ウィジェットに表示するタイトル
+        'dashboard_widget_function' // 実行する関数
+    );
+}
+add_action( 'wp_dashboard_setup', 'add_dashboard_widgets' );
+
+function dashboard_widget_function() {
+    // 各オプションページへのリンクを作成
+    $links = [
+        'FVギャラリ' => admin_url('admin.php?page=fv-option'),
+        'FVギャラリ(スマホ)' => admin_url('admin.php?page=fv-sp-option'),
+        'AboutUsギャラリ' => admin_url('admin.php?page=about-us-option'),
+        'FAQ' => admin_url('admin.php?page=faq-option'),
+        '料金表' => admin_url('admin.php?page=price-option')
+    ];
+
+    // 各リンクをボタン形式で出力
+    foreach ($links as $title => $url) {
+        echo '<p>
+                <a href="' . esc_url($url) . '" style="
+                    display: inline-block;
+                    padding: 10px 20px;
+                    background-color: #408F95;
+                    color: white;
+                    text-decoration: none;
+                    border-radius: 5px;
+                    font-size: 14px;
+                    margin-bottom: 10px;
+                ">
+                    ' . esc_html($title) . 'の設定はこちら
+                </a>
+              </p>';
+    }
+}
 
 
 
-
-
-
-
+    
 
 ?>

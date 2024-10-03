@@ -1,0 +1,11 @@
+table.smart-cf-field-type-text.smart-cf-layout-type-default:first-of-type {
+    background-color: #408F95;
+    color: #fff;
+}
+table.smart-cf-field-type-text.smart-cf-layout-type-default:first-of-type th{
+    color: #fff;
+}
+
+.smart-cf-meta-box-table {
+    margin-bottom: 7px;
+}

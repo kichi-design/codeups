@@ -3,13 +3,13 @@
 <!-- sub-mv -->
 <div class="sub-mv">
     <div class="sub-mv__image">
-    <picture>
-        <source media="(min-width: 768px)" srcset="<?php echo get_theme_file_uri(); ?>/assets/images/common/page-voice-pc.jpg">
-        <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/page-voice-sp.jpg" alt="ダイビング" decoding="async">
-    </picture>
+        <picture>
+            <source media="(min-width: 768px)" srcset="<?php echo get_theme_file_uri(); ?>/assets/images/common/page-voice-pc.jpg">
+            <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/page-voice-sp.jpg" alt="ダイビング" decoding="async">
+        </picture>
     </div>
     <div class="sub-mv-header">
-    <h1 class="sub-mv-header__title">Voice</h1>
+        <h1 class="sub-mv-header__title">Voice</h1>
     </div>
 </div>
 
@@ -80,7 +80,7 @@
 
         <!-- ページネーション -->
         <div class="blog-column__pagination">
-        <?php wp_pagenavi(); ?>
+            <?php wp_pagenavi(); ?>
         </div>
     </div>
 </section>

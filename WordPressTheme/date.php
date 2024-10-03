@@ -2,13 +2,13 @@
 <!-- sub-mv -->
 <div class="sub-mv">
     <div class="sub-mv__image">
-    <picture>
-        <source media="(min-width: 768px)" srcset="<?php echo get_theme_file_uri(); ?>/assets/images/common/blog-mv-pc.jpg">
-        <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/blog-mv-sp.jpg" alt="魚群" decoding="async">
-    </picture>
+        <picture>
+            <source media="(min-width: 768px)" srcset="<?php echo get_theme_file_uri(); ?>/assets/images/common/blog-mv-pc.jpg">
+            <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/blog-mv-sp.jpg" alt="魚群" decoding="async">
+        </picture>
     </div>
     <div class="sub-mv-header">
-    <h1 class="sub-mv-header__title">Blog</h1>
+        <h1 class="sub-mv-header__title">Blog</h1>
     </div>
 </div>
 
@@ -24,14 +24,14 @@
                 <div class="blog-column__cards blog-cards blog-cards--2col">
                     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
                         <a href="<?php the_permalink(); ?>" class="blog-cards__item blog-card">
-                        <div class="blog-card__image">
-                            <?php if (has_post_thumbnail()): ?>
-                                <img src="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>" alt="<?php echo esc_attr(get_the_title()); ?>" decoding="async">
-                            <?php else: ?>
-                                <!-- アイキャッチ画像が設定されていない場合のデフォルト画像 -->
-                                <img src="<?php echo esc_url(get_theme_file_uri()); ?>/assets/images/common/default-image.jpg" alt="デフォルト画像" decoding="async">
-                            <?php endif; ?>
-                        </div>
+                            <div class="blog-card__image">
+                                <?php if (has_post_thumbnail()): ?>
+                                    <img src="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>" alt="<?php echo esc_attr(get_the_title()); ?>" decoding="async">
+                                <?php else: ?>
+                                    <!-- アイキャッチ画像が設定されていない場合のデフォルト画像 -->
+                                    <img src="<?php echo esc_url(get_theme_file_uri()); ?>/assets/images/common/default-image.jpg" alt="デフォルト画像" decoding="async">
+                                <?php endif; ?>
+                            </div>
 
                             <div class="blog-card__body">
                                 <time class="blog-card__date" datetime="<?php the_time( 'c' );?>"><?php the_time('Y.m.d'); ?></time>

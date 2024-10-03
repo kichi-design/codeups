@@ -2,13 +2,13 @@
 <!-- sub-mv -->
 <div class="sub-mv">
     <div class="sub-mv__image">
-    <picture>
-        <source media="(min-width: 768px)" srcset="<?php echo get_theme_file_uri(); ?>/assets/images/common/page-campaign-mv.jpg">
-        <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/page-campaign-mv-sp.jpg" alt="魚" decoding="async">
-    </picture>
+        <picture>
+            <source media="(min-width: 768px)" srcset="<?php echo get_theme_file_uri(); ?>/assets/images/common/page-campaign-mv.jpg">
+            <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/page-campaign-mv-sp.jpg" alt="魚" decoding="async">
+        </picture>
     </div>
     <div class="sub-mv-header">
-    <h1 class="sub-mv-header__title">Campaign</h1>
+        <h1 class="sub-mv-header__title">Campaign</h1>
     </div>
 </div>
 
