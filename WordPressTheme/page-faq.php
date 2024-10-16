@@ -17,31 +17,35 @@
 
 <div class="page-faq layout-page-faq">
     <div class="page-faq__inner inner">
-    <div class="page-faq__items">
-        <?php
-        $faq_list = SCF::get_option_meta('faq-option', 'faq'); // オプションページの識別子とグループ名を使用
-        if (!empty($faq_list)) {
-            foreach ($faq_list as $faq_item) {
-                ?>
-                <div class="page-faq__item faq-item">
-                    <div class="faq-item__question-wrapper">
-                        <p class="faq-item__question"><?php echo esc_html($faq_item['faq-title']); ?></p>
-                        <div class="faq-item__icon is-open">
-                            <div class="faq-item__bar1"></div>
-                            <div class="faq-item__bar2"></div>
+        <div class="page-faq__items">
+            <?php
+            $faq_list = SCF::get_option_meta('faq-option', 'faq'); // オプションページの識別子とグループ名を使用
+            if (!empty($faq_list)) :
+                foreach ($faq_list as $faq_item) :
+                    // どちらかが空なら、その項目をスキップ
+                    if (empty($faq_item['faq-title']) || empty($faq_item['faq-text'])) :
+                        continue; // スキップして次のアイテムへ
+                    endif;
+                    ?>
+                    <div class="page-faq__item faq-item">
+                        <div class="faq-item__question-wrapper">
+                            <p class="faq-item__question"><?php echo esc_html($faq_item['faq-title']); ?></p>
+                            <div class="faq-item__icon is-open">
+                                <div class="faq-item__bar1"></div>
+                                <div class="faq-item__bar2"></div>
+                            </div>
+                        </div>
+                        <div class="faq-item__answer-wrapper">
+                            <p class="faq-item__answer">
+                                <?php echo esc_html($faq_item['faq-text']); ?>
+                            </p>
                         </div>
                     </div>
-                    <div class="faq-item__answer-wrapper">
-                        <p class="faq-item__answer">
-                            <?php echo esc_html($faq_item['faq-text']); ?>
-                        </p>
-                    </div>
-                </div>
-                <?php
-            }
-        }
-        ?>
-    </div>
+                    <?php
+                endforeach;
+            endif;
+            ?>
+        </div>
     </div>
 </div>
 

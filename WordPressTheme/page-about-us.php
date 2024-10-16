@@ -41,39 +41,33 @@
 <!--  ギャラリー    -->
 <section class="page-about-gallery layoout-page-about-gallery">
     <div class="inner page-about-gallery__inner">
-    <div class="page-about-gallery__section-header section-header">
-        <h2 class="section-header__title">Gallery</h2>
-        <div class="section-header__subtitle">フォト</div>
-    </div>
-    <div class="modal-window-image"></div>
-    <div class="page-about-gallery__container gallery">
+        <div class="page-about-gallery__section-header section-header">
+            <h2 class="section-header__title">Gallery</h2>
+            <div class="section-header__subtitle">フォト</div>
+        </div>
+        <div class="modal-window-image"></div>
+        <div class="page-about-gallery__container gallery">
+            <?php
+            // オプションページからギャラリーデータを取得
+            $gallery_images = SCF::get_option_meta('about-us-option', 'about_us_gallery');
+            // 画像データがある場合、それを表示
+            if (!empty($gallery_images)) {
+                foreach ($gallery_images as $image) {
+                    $image_id = isset($image['gallery_picture']) ? $image['gallery_picture'] : '';
+                    $image_url = wp_get_attachment_image_url($image_id, 'medium');
+                    $alt_text = get_post_meta($image_id, '_wp_attachment_image_alt', true); // 画像のaltテキストを取得
 
-
-
-    <?php
-// オプションページからギャラリーデータを取得
-$gallery_images = SCF::get_option_meta('about-us-option', 'about_us_gallery');
-
-// 画像データがある場合、それを表示
-if (!empty($gallery_images)) {
-    foreach ($gallery_images as $image) {
-        $image_id = isset($image['gallery_picture']) ? $image['gallery_picture'] : '';
-        $image_url = wp_get_attachment_image_url($image_id, 'medium');
-        if ($image_url) {
-            echo '<div class="gallery__item">';
-            echo '<img src="' . esc_url($image_url) . '" decoding="async" alt="">';
-            echo '</div>';
-        }
-    }
-}
-?>
-
-
-        
-
-
-
-    </div>
+                    if ($image_url) {
+                        ?>
+                        <div class="gallery__item">
+                            <img src="<?= esc_url($image_url); ?>" decoding="async" alt="<?= esc_attr($alt_text); ?>">
+                        </div>
+                        <?php
+                    }
+                }
+            }
+            ?>
+        </div>
     </div>
 </section>
 
